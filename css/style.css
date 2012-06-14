@@ -1,0 +1,128 @@
+/* 
+    Document   : style
+    Created on : 14.06.2012, 19:23:24
+    Author     : serjoga
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+root { 
+    display: block;
+}
+html, body {
+  margin:0;
+  padding:0;
+  width:100%;
+  height:100%;
+ font-family: arial, sans-serif;  	
+ font-size: 12pt;
+}
+div.main{ 
+    width: 100%;
+}
+#main_0{
+    width: 1023px;
+    height: 730px;
+    margin: 0 auto;
+    background-image: url('../images/bg.png');
+    z-index: 0;
+}
+#storefront{
+    position: relative;
+    left: -3px;
+    top: -3px;
+    background-image:url('../images/storefront.png');
+    width: 228px;
+    height: 176px;
+    z-index: 1;
+}
+#barrel{
+    position: relative;
+    left: 864px;
+    top: -462px;
+    background-image:url('../images/barrel.png');
+    width: 122px;
+    height: 327px;
+    z-index: 3;
+    cursor: pointer;
+}
+#rabbit{
+   position: relative;
+    left: 390px;
+    top: -50px;
+    width: 395px;
+    height: 591px;
+    z-index: 12;
+    cursor: pointer;
+    text-align: center;
+    font-size: 14px;
+    font-weight: bold;
+}
+#lt_pocket{
+   position: relative;
+    left: 59px;
+    top: -250px;
+    width: 53px;
+    height: 53px;
+
+    z-index: 4;
+    cursor: pointer;  
+}
+#lb_pocket{
+   position: relative;
+    left: 67px;
+    top: -225px;
+    width: 53px;
+    height: 53px;
+
+    z-index: 5;
+    cursor: pointer;  
+}
+#rt_pocket{
+   position: relative;
+    left: 266px;
+    top: -374px;
+    width: 53px;
+    height: 53px;
+
+    z-index: 6;
+    cursor: pointer;  
+}
+#rb_pocket{
+   position: relative;
+    left: 266px;
+    top: -332px;
+    width: 53px;
+    height: 53px;
+
+    z-index: 7;
+    cursor: pointer;  
+}
+#midle_penis{
+   position: relative;
+    left: 163px; 
+    top: -365px;
+    width: 53px;
+    height: 63px;
+
+    z-index: 8;
+    cursor: pointer;  
+}
+#hint_l{
+    position: relative;
+    left: -196px; 
+    top: -825px;
+    width: 282px;
+    height: 276px;
+    background-image: url('../images/hint_l.png');
+    z-index: 9;
+}
+#hint_r{
+    position: relative;
+    left: 293px; 
+    top: -1025px;
+    width: 282px;
+    height: 276px;
+    background-image: url('../images/hint_r.png');
+    z-index: 10;
+}
