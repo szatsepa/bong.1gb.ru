@@ -1,0 +1,42 @@
+/* 
+    Document   : sec
+    Created on : 15.06.2012, 20:19:56
+    Author     : serjoga
+    Description:
+        Purpose of the stylesheet follows.
+*/
+#s_rabbit{
+    position: relative;
+    width: 512px;
+    height: 521px;
+    top: 120px;
+    background-image: url('../images/rabbit_s.png');
+    z-index: 1;
+}
+#beaver{
+    position: relative;
+    width: 512px;
+    height: 521px;
+    top: -400px;
+    left: 512px;
+    background-image: url('../images/beaver.png');
+    z-index: 2;
+}
+#squirell{
+    position: relative;
+    width: 404px;
+    height: 445px;
+    top: -1040px;
+    left: 272px;
+    background-image: url('../images/squirell.png');
+    z-index: 3;
+}
+#table{
+    position: relative;
+    width: 404px;
+    height: 445px;
+    top: -1040px;
+    left: 212px;
+    background-image: url('../images/table.png');
+    z-index: 3;  
+}

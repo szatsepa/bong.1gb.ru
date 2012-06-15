@@ -13,7 +13,7 @@ $(document).ready(function () {
         $("#storefront").css('visibility','hidden');
         
         $("#lt_pocket").hide();
-
+        
         $("#lb_pocket").hide();
 
         $("#rt_pocket").hide();
@@ -22,29 +22,47 @@ $(document).ready(function () {
 
         $("#midle_penis").hide();
         
-        $("#hint_l").hide();
+        $("#hint_l").css({opacity:0, top: -825});
         
-        $("#hint_r").hide();
+        $("#hint_r").css({opacity:0, top: -1078});
+        
+//        $("#hint_l").attr('disabled', true);
+//        
+//        $("#hint_r").attr('disabled', true);
         
         var st_int = 0;
         
         var st = false;
         
-        st_int = setInterval(function(){if(!st){$("#storefront").css('visibility','visible');}else{$("#storefront").css('visibility','hidden');}st=!st;},1000);
+        var morg = 500;
+        
+        st_int = setInterval(function(){
+            if(!st){
+                $("#storefront").css('visibility','visible');
+            }else{
+                $("#storefront").css('visibility','hidden');
+                
+            }
+            st=!st;
+        },1000);
         
         var r_int = 0;
+                
+        r_int = setTimeout(changeRabbit_1,2500);
         
-        var yee = false;
-        
-        r_int = setInterval(changeRabbit,1120);
-        
-        function changeRabbit(){
-            if(!yee){
+        function changeRabbit_1(){
+            
                 $("#rabbit_btn").attr('src', '../images/rabbit_1.png');
-            }else{
+                
+                r_int = setTimeout(changeRabbit_0,500);
+
+        }
+        function changeRabbit_0(){
+            
                 $("#rabbit_btn").attr('src', '../images/rabbit_0.png');
-            }
-            yee = !yee;
+                
+                r_int = setTimeout(changeRabbit_1,2500);
+
         }
         
         $("#rabbit_btn").mousedown(function(){
@@ -55,25 +73,25 @@ $(document).ready(function () {
             
             $("#rabbit_btn").attr('src', '../images/rabbit_2.png');
             
-            $("#lt_pocket").show();
+            $("#lt_pocket").toggle();
             
-            $("#lb_pocket").show();
+            $("#lb_pocket").toggle();
             
-            $("#rt_pocket").show();
+            $("#rt_pocket").toggle();
             
-            $("#rb_pocket").show();
+            $("#rb_pocket").toggle();
             
-            $("#midle_penis").show();
+            $("#midle_penis").toggle();
 
         });
         
         $("#midle_penis").mousedown(function(){
             
-            $("#rabbit_btn").attr('src', '../images/rabbit_1.png');
+            $("#rabbit_btn").attr('src', '../images/rabbit_0.png');
                         
-            r_int = setInterval(changeRabbit,1120);
+             r_int = setTimeout(changeRabbit_1,2500);
             
-            $("#hint_l").hide();
+            $("#hint_l").css({opacity:0});
         
             $("#hint_r").hide();
             
@@ -89,48 +107,79 @@ $(document).ready(function () {
             
         });
         
-        $("#lt_pocket").mousedown(function(){
+        $("#lt_pocket").mouseover(function(){
             
-            $("#hint_l").hide();
-        
-            $("#hint_r").hide();
+            $("#hint_l").animate({opacity:0.6, top: -825},1200,'linear');           
             
-            $("#hint_l").show();
-            
-            $("#hint_l").css('top', '-825px');
         });
         
-        $("#lb_pocket").mousedown(function(){
-            
-            $("#hint_l").hide();
+        $("#lt_pocket").mouseout(function(){
+
+            $("#hint_l").animate({opacity:0},1200,'linear');
+
+        });
         
-            $("#hint_r").hide();
+        $("#lb_pocket").mouseover(function(){
             
-            $("#hint_l").show();
-            
-            $("#hint_l").css('top', '-720px');
+            $("#hint_l").animate({opacity:0.6, top:-720},1200,'linear'); 
+        });
+        
+        $("#lb_pocket").mouseout(function(){
+
+            $("#hint_l").animate({opacity:0},1200,'linear');
+
         });
          
-        $("#rt_pocket").mousedown(function(){
+        $("#rt_pocket").mouseover(function(){
             
-            $("#hint_l").hide();
-        
-            $("#hint_r").hide();
-            
-            $("#hint_r").show();
-            
-            $("#hint_r").css('top', '-825px');
+            $("#hint_r").animate({opacity:0.6,top:-1078},1200, 'linear');
         });
         
-        $("#rb_pocket").mousedown(function(){
-            
-            $("#hint_l").hide();
+         $("#rt_pocket").mouseout(function(){
+
+            $("#hint_r").animate({opacity:0},1200,'linear');
+
+        });
         
-            $("#hint_r").hide();
+        $("#rb_pocket").mouseover(function(){
             
-            $("#hint_r").show();
-            
-            $("#hint_r").css('top', '-720px');
+            $("#hint_r").animate({opacity:0.6,top:-973},1200, 'linear');
+        });
+        
+        $("#rb_pocket").mouseout(function(){
+
+            $("#hint_r").animate({opacity:0},1200,'linear');
+
+        });
+        
+        $(".pocket").mousedown(function(){
+           document.location = "?act=sec"; 
+        });
+        
+//        $("#hint_l").mouseover(function(){
+//             $("#hint_l").css({opacity:0.6});
+//        });
+//        $("#hint_l").mouseout(function(){
+//             $("#hint_l").animate({opacity:0},700,'linear');
+//        });
+//        $("#hint_l").mousedown(function(){
+//            
+//        });
+        
+//        $("#hint_r").mouseover(function(){
+//             $("#hint_r").css({opacity:0.6});
+//        });
+//        $("#hint_r").mouseout(function(){
+//             $("#hint_r").animate({opacity:0},700,'linear');
+//        });
+//        $("#hint_r").mousedown(function(){
+//            
+//        });
+        
+        $("#main_0").bindImageLoad(function () {
+            alert("ATASS");
+            // делаем что-нибудь полезное
+            // переменная this указывает на картинку
         });
 
 });

@@ -11,16 +11,16 @@
 </div>
 <div id="rabbit">
     <div style="text-align: left" >
-        <img  id="rabbit_btn" style="cursor:pointer;" src="../images/rabbit_1.png"/> 
+        <img  id="rabbit_btn" style="cursor:pointer;" src="../images/rabbit_0.png"/> 
     </div>
            
-    <div id='lt_pocket'></div>
+    <div id='lt_pocket' class="pocket"></div>
 
-    <div id='lb_pocket'></div>
+    <div id='lb_pocket' class="pocket"></div>
 
-    <div id='rt_pocket'></div>
+    <div id='rt_pocket' class="pocket"></div>
 
-    <div id='rb_pocket'></div>
+    <div id='rb_pocket' class="pocket"></div>
 
     <div id='midle_penis'></div>
     
