@@ -28,7 +28,7 @@
     position: relative;
     width: 404px;
     height: 445px;
-    top: -940px;
+    top: -1000px;
     left: 272px;
     background-image: url('../images/squirell.png');
     background-repeat: no-repeat;
@@ -42,5 +42,32 @@
     left: 352px;
     background-image: url('../images/table.png');
     background-repeat: no-repeat;
+    cursor: pointer;
     z-index: 4;  
+}
+#items{
+    position: relative;
+    width: 320px;
+    height: 130px;
+    visibility: hidden;
+    z-index: 5;
+    top: -1410px;
+    left: 322px;
+}
+div.item{
+    position: relative;
+    float: left;
+    width: 80px;
+    height: 77px;
+    cursor: pointer;
+}
+#item_dscr{
+    position: fixed;
+    z-index: 5;
+    width: 273px;
+    height: 199px;
+    background-image: url('../images/items/item_description.png');
+    opacity: 0.77;
+    top: 0;
+    left: 0;
 }
