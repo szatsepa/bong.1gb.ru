@@ -8,6 +8,8 @@ $(document).ready(function () {
 		return;
 	}
         
+        _statistic();
+        
 //        $("div").css('outline','1px solid black');
         
         $("#storefront").css('visibility','hidden');
@@ -156,25 +158,23 @@ $(document).ready(function () {
            document.location = "?act=sec"; 
         });
         
-//        $("#hint_l").mouseover(function(){
-//             $("#hint_l").css({opacity:0.6});
-//        });
-//        $("#hint_l").mouseout(function(){
-//             $("#hint_l").animate({opacity:0},700,'linear');
-//        });
-//        $("#hint_l").mousedown(function(){
-//            
-//        });
+        function _statistic(){
+            var scr_W = screen.width;
+            var scr_H = screen.height;
+            var colorDepth = screen.colorDepth;
+            $.ajax({
+                url: 'http://bong.1gb.ru/action/statistics.php',
+                type:'post',
+                dataType:'json',
+                data:{scr_W:scr_W,scr_H:scr_H,colorDepth:colorDepth},
+                success:function(data){
+                    return;
+                }
+            });
+            return;
+        }
         
-//        $("#hint_r").mouseover(function(){
-//             $("#hint_r").css({opacity:0.6});
-//        });
-//        $("#hint_r").mouseout(function(){
-//             $("#hint_r").animate({opacity:0},700,'linear');
-//        });
-//        $("#hint_r").mousedown(function(){
-//            
-//        });
+
         
         $("#main_0").bindImageLoad(function () {
             alert("ATASS");

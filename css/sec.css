@@ -70,4 +70,39 @@ div.item{
     opacity: 0.77;
     top: 0;
     left: 0;
+    visibility: hidden;
+}
+#description{
+    font-size: 2em;
+    text-align: center;
+}
+#my_cart{
+    position: relative;
+    width: 220px;
+/*    height: 120px;*/
+    left: 800px;
+    top: -1844px;
+/*    outline: 1px solid gold;*/
+    text-align: left;
+    visibility: hidden;
+}
+#email{
+    text-align: center;
+    font-size: 14px;
+    color: gold;
+}
+#in_cart{
+    text-align: right;
+    font-size: 14px;
+    color: gold;
+}
+#log_in{
+    text-align: right;
+    font-size: 14px;
+    color: gold;
+}
+#cost{
+    text-align: right;
+    font-size: 14px;
+    color: gold;
 }
