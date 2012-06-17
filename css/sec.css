@@ -79,10 +79,7 @@ div.item{
 #my_cart{
     position: relative;
     width: 220px;
-/*    height: 120px;*/
-    left: 800px;
     top: -1844px;
-/*    outline: 1px solid gold;*/
     text-align: left;
     visibility: hidden;
 }
@@ -105,4 +102,16 @@ div.item{
     text-align: right;
     font-size: 14px;
     color: gold;
+}
+#your_cart{
+    position: relative;
+    width: 800px;
+    height: 600px;
+    background-color: yellow;
+    left: 101px;
+    top: -2216px;
+    z-index: 6;
+} 
+#close_cart{
+    position:relative;
 }

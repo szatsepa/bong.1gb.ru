@@ -39,6 +39,12 @@ $(document).ready(function () {
             
         });
         
+        $("#your_cart").mousedown(function(){
+            
+            var coord = $("#your_cart").offset();
+            alert("X "+coord['left']+" Y "+coord['top']);
+        });
+        
         $("div.item").mousedown(function(){
             var id = this.id;
             if(customer['id'] == undefined){

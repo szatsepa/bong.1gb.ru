@@ -38,10 +38,7 @@
         
     </p>
 </div>
-<div id="my_cart"> 
-<!--    <p id="email" style="text-align: center;font-size: 14px;color: gold;">Почтовый ящик</p>
-    <p id="in_cart"  style="text-align: right;font-size: 14px;color: gold;">В корзине 2 предмета</p>
-    <p id="sum" style="text-align: right;font-size: 14px;color: gold;">на 800 р.</p>-->
+<div id="my_cart">
 
 </div>
 <div id="vrWrapper">
@@ -98,4 +95,7 @@
             </div>
         </div>
     </div>
-<!--<script type="text/javascript" src="../js/my_forms.js"></script>-->
+<div id="your_cart"> 
+    <div id="close_cart">X</div>
+    
+</div>
