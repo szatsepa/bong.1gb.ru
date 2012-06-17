@@ -25,7 +25,13 @@ if($cnt != 0){
     $user['ok']=NULL;
 }
 
+$_SESSION[id] = $user[id];
 
+$_SESSION[auth] = 1;
+
+setcookie("di", $_SESSION['id'], time()+(3600*12));
+
+$user['coo'] = $_COOKIE;
 
 echo json_encode($user);
 

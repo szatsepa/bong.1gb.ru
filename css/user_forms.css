@@ -5,11 +5,12 @@
     margin-top: 42px;
     width: 380px;
     height: 400px;
-    left:620px;
-    top: -1900px;
+    left:320px;
+    top: -1700px;
     overflow: hidden;
     z-index: 6;
     visibility: hidden;
+    color: black;
 }
 #vrWrapper .wr
 {
@@ -62,13 +63,26 @@
 }
 #indicator
 {
-/*    display: none;*/
     width: 16px;
     height: 16px;
     position: absolute;
     right: 43px;
     top: 25px;
     background: url('../images/ajax-loader.gif') left top no-repeat;
+}
+#closer
+{
+    width: 18px;
+    height: 18px;
+    position: absolute;
+    right: 43px;
+    top: 35px;
+/*    background-color: #bbb;*/
+    text-align: center;
+    font-size: 11px;
+    font-weight: bold;
+    cursor: pointer;
+/*    outline: 1px solid grey;*/
 }
 .buttonDiv
 {

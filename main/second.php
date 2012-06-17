@@ -18,15 +18,18 @@
     
 </div>
 <div id="items">
-    <?php 
-    for($i=1;$i<7;$i++){
+    <?php
+    $row = 0;
+    foreach ($items_array as $value){
         ?>
-    <div class="item" id="item_<?php echo $i;?>">
-        <p class="item" style="text-align: center;">
-            <img src="../images/items/item_<?php echo $i;?>.png"/>
+    <div class="item" id="<?php echo $value[artikul];?>">
+        <p class="item" style="text-align: center;" id="MMM">
+            <img src="../images/items/<?php echo $value[img];?>" alt=""<?php echo $value[id];?>/>
         </p>
     </div>
     <?php
+    $row++;
+    if($row>8)break;
     }
     ?>
 </div>
@@ -41,11 +44,11 @@
     <p id="sum" style="text-align: right;font-size: 14px;color: gold;">на 800 р.</p>-->
 
 </div>
-    <div id="vrWrapper">
+<div id="vrWrapper">
         <div id="wr" class="wr" style="margin: 12px auto;">
             <div id="indicator">
             </div>
-
+            <div id="closer">X</div>
             <div class='loginBlock' id="signup">
                 <label for="email">Email:</label> <input id="email" type="text" class='textinput' />
                 <label for="password">Пароль:</label> <input id="password" type="password" class='textinput' />
@@ -68,7 +71,7 @@
                     <div id="error1" class="error">
                     </div>
                     <div class='buttonDiv'>
-                        <input id="loginButton" type="button" value="Войти" onClick="javascript:authUser();"/>
+                        <input id="loginButton" type="button" value="Войти"/>
                     </div>
                     <div class='additional'>
                         <a name="" id="rem_l"  style="text-decoration: underline;cursor: pointer;">Вспомнить пароль</a> 

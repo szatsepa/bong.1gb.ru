@@ -9,8 +9,11 @@ $(document).ready(function () {
 	}
         
         var customer = new Object();
+        var cart = new Object();
+        var items = new Array('товар','товара','товаров');
         
         $("#indicator").hide();
+        $("#closer").hide();
         $("#signup").hide();
         $("#signin").hide();
         $("#remindPass").hide();
@@ -22,42 +25,41 @@ $(document).ready(function () {
         $("#table").mousedown(function(){
             $("#items").css('visibility','visible');
         });
+        
         $("div.item").mouseover(function(){
             var id = this.id;
             var coord = $(eval('"#'+id+'"')).offset();
             var cX = coord['left'];
             var cY = coord['top'];
             $("#item_dscr").css({top:(cY-169),left:(cX-256)});
-            $("#item_dscr").css('visibility', 'visible');
-            $("#description").text(id);
+            if(customer['id'] != undefined){
+                $("#item_dscr").css('visibility', 'visible');
+                $("#description").text(id);
+            }
+            
         });
+        
         $("div.item").mousedown(function(){
-            $("#my_cart").css('visibility', 'visible');
-//            $("#my_cart > p").remove();
+            var id = this.id;
             if(customer['id'] == undefined){
-                $("#my_cart").append("<p id='log_in' name='#'>Войти/Зарегистрироваться</p>");
-                $("#my_cart").css('padding-top','22px');
-                $("#log_in").css('text-decoration','underline');
-                $("#log_in").css('cursor','pointer');
-                $("#log_in").css('text-align','left');
-                $("#log_in").css('font-weight','bold');
-                $("#items").css('visibility','hidden');
-                $("#item_dscr").css('visibility', 'hidden');
-            }else{
+                $("#vrWrapper").css('visibility','visible');
                 
+                $("#signin").show(300, function(){
+                    $("#item_dscr").css('visibility', 'hidden');
+                    $("#items").css('visibility', 'hidden');
+                    $('#loginEmail').focus();
+                });
+        }else{
+
+               _addCart(id); 
             }
         });
         $("#vrWrapper").mousedown(function(){
-//            var cnty = $("#vrWrapper").offset();
-//            alert("X-"+cnty['left']+"; Y-"+cnty['top']);
+
         });
         
         $('#my_cart').mousedown(function() {
-        $("#log_in").css({'visibility': 'hidden'});
-            $("#vrWrapper").css('visibility','visible');
-            $("#signin").show(300, function(){
-                $('#loginEmail').focus();
-            });
+
             
         });
         
@@ -108,6 +110,10 @@ $(document).ready(function () {
                 });
 
         });
+        
+        $("#closer").mousedown(function(){
+            $("#vrWrapper").css('visibility', 'hidden');
+        });
     
 // end move
             
@@ -136,6 +142,10 @@ $(document).ready(function () {
     
     $("#registerButton").mousedown(function(event){
             SignUp();
+    });
+    
+    $("#loginButton").mousedown(function(){
+            authUser();
     });
     
     var er = [];
@@ -188,6 +198,24 @@ $(document).ready(function () {
             if ((code != "") && (code == passAgain)) {
                 $("#indicator").show();
                 $.ajax({
+                    url:'../action/registration.php',
+                    type:'post',
+                    dataType:'json',
+                    data:{email:email,code:code},
+                    success:function(data){
+                        var re = data['ok'];
+                        if(re == 1){
+                            ShowMessage(1);
+                            $("#indicator").hide();
+                            $("#closer").show();
+                        }else{
+                            ShowError(2);
+                            $("#indicator").hide();
+                        }
+                    },
+                    error:function(data){
+                        document.write(data['response']);
+                    }
 
                 });
             } else {
@@ -203,20 +231,18 @@ $(document).ready(function () {
             var  code = $('#loginPass').val();
             var  email = $('#loginEmail').val();
 
-//            ShowIndicator();
             if ((email != "") && ValidEmail(email)) {
                 var uid = 0;
                 $.ajax({
-                    url: 'http://bong.1gb.ru/query/authorisation.php',
+                    url: '../query/authorisation.php',
                     type: 'post',
                     dataType: 'json',
                     data: {email:email,code:code},
                     success:function(data){
                         var re = data['ok'];
-                        
                         if(re == 1){
-                            user = data;
-                            checkCart(user['id']);
+                            customer = data;
+                            checkCart(data['id']);
                         }else{
                             $("#signin").hide(300, function(){
                                 $("#signup").show(300);
@@ -243,7 +269,25 @@ $(document).ready(function () {
             $("#indicator").show();
                     
             $.ajax({
-
+                url:'../query/reminde.php',
+                type:'post',
+                dataType:'json',
+                data:{email:email},
+                success:function(data){
+                   var re = data['ok'];
+                    if(re == 1){
+                        ShowMessage(0);
+                        $("#indicator").hide();                       
+                        $("#closer").show();
+                    }else {
+                        ShowError(4);
+                        $("#indicator").hide();
+                    } 
+                },
+                error:function(data){
+                    document.write(data['response']);
+                }
+                
             });            
         }
     }
@@ -272,19 +316,79 @@ $(document).ready(function () {
     }
     
     function checkCart(id){
+        
         var id = id;
+        
         $.ajax({
-            url:'http://bong.1gb.ru/query/ceck_cart.php',
+            url:'../query/check_cart.php',
             type:'post',
             dataType:'json',
             data:{id:id},
             success:function(data){
-                
+                cart = data;
+                $("#indikator").hide();
+                $("#vrWrapper").css('visibility', 'hidden');
+                $("#my_cart").css({'visibility': 'visible'});
+                $("#my_cart").append("<p id='log_in' name='#'>"+customer['email']+"&nbsp;&nbsp;&nbsp;&nbsp;</p>");
+                if(data['amount'] != null){
+                  var num = _checkItems(cart['amount']);
+                  $("#my_cart").append("<p id='in_cart' name='#'>В корзине "+cart['amount']+" "+items[num]+"&nbsp;&nbsp;&nbsp;&nbsp;</p>");
+                  $("#my_cart").append("<p id='cost' name='#'>На сумму "+cart['cash']+" р.&nbsp;&nbsp;&nbsp;&nbsp;</p>");
+                }else{
+                   $("#my_cart").append("<p id='in_cart' name='#'>Корзина пустая.&nbsp;&nbsp;&nbsp;&nbsp;</p>"); 
+                }
             },
             error:function(data){
                 document.write(data['response']);
             }
         });
+        
+        return;
+    }
+    
+    function _addCart(id){
+        var artikul = id;
+        var customer_id = customer['id'];
+        $.ajax({
+           url:'../action/add_cart.php',
+           type:'post',
+           dataType:'json',
+           data:{artikul:artikul,customer:customer_id},
+           success:function(data){
+               cart = data;
+               $("#items").css('visibility','hidden');
+               $("#item_dscr").css('visibility', 'hidden');
+               if(data['amount'] != null){
+                   $("#in_cart").remove();
+                   $("#cost").remove();
+                   var num = _checkItems(data['amount']);
+                  $("#my_cart").append("<p id='in_cart' name='#'>В корзине "+cart['amount']+" "+items[num]+"&nbsp;&nbsp;&nbsp;&nbsp;</p>");
+                  $("#my_cart").append("<p id='cost' name='#'>На сумму "+cart['cash']+" р.&nbsp;&nbsp;&nbsp;&nbsp;</p>");
+                }else{
+                   $("#my_cart").append("<p id='in_cart' name='#'>Корзина пустая.&nbsp;&nbsp;&nbsp;&nbsp;</p>"); 
+                }
+                
+           },
+           error:function(data){
+               document.write(data['response']);
+           }
+        });
+        
+    }
+    
+    function _checkItems(items){
+        var str = items.toString();
+        str = str.substr(-1);
+        var sho = parseInt(str);
+        var num;
+        if(sho==1){
+            num = 0;
+        }else if(sho>1 && sho<5){
+            num = 1;
+        }else{
+            num = 2;
+        }
+        return num;
     }
     
 });
