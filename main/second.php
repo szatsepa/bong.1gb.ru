@@ -4,6 +4,21 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
+
+?>
+<script type="text/javascript">
+    var customer = new Object();
+</script>
+<?php
+if(isset($user)){
+    ?>
+<script type="text/javascript">
+    
+ var customer = {id:<?php echo $user->data[id];?>,name:'<?php echo $user->data[name];?>',surname:'<?php echo $user->data[surname];?>',email:'<?php echo $user->data[email];?>',phone:'<?php echo $user->data[phone];?>'};
+    
+</script>
+    <?php
+}
 ?>
 <div id="s_rabbit">
     

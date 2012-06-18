@@ -6,13 +6,25 @@
  */
 include 'connect.php';
 
+if(!isset($_SESSION)){
+
+    session_start();    
+}
+
 $user = array();
 
 $email = $_POST[email];
 
 $code = $_POST[code];
 
-$query = "SELECT * FROM customers WHERE code='$code' AND email='$email'";
+$query = "SELECT  id,
+                    surname, 
+                    name, 
+                    email, 
+                    phone 
+            FROM customers 
+            WHERE code='$code' AND 
+                  email='$email'";
 
 $result = mysql_query($query);
 

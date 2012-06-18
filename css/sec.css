@@ -80,6 +80,7 @@ div.item{
     position: relative;
     width: 220px;
     top: -1844px;
+    left: 720px;
     text-align: left;
     visibility: hidden;
 }
@@ -92,11 +93,14 @@ div.item{
     text-align: right;
     font-size: 14px;
     color: gold;
+    
 }
 #log_in{
     text-align: right;
     font-size: 14px;
     color: gold;
+    cursor: pointer;
+    text-decoration: underline;
 }
 #cost{
     text-align: right;
@@ -111,6 +115,8 @@ div.item{
     left: 101px;
     top: -2216px;
     z-index: 6;
+    visibility: hidden;
+    opacity: 0.6;
 } 
 #close_cart{
     position:relative;

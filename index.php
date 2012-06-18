@@ -15,14 +15,16 @@ if(isset($_COOKIE[di]) && !isset ($_SESSION[auth]) && $_COOKIE[di] != ''){
    $_SESSION[auth] = 1;
          
 }
+$_SESSION['arc'] = 'PERETS';
+
 include 'query/connect.php';
 
 include 'classes/User.php';
 
-if(isset ($_SESSION[id])) {
+if(isset ($_SESSION[id]) or isset($_SESSION[auth])) {
     include 'query/checkauth.php';
 }
-//print_r($_COOKIE);
+//print_r($_SESSION);
 include 'main/header.php';
 
 switch ($_GET[act]) {
@@ -43,4 +45,6 @@ switch ($_GET[act]) {
 include 'main/footer.php';
 
 mysql_close();
+
+//print_r($user);
 ?>

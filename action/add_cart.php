@@ -9,9 +9,18 @@ $id = intval($_POST[customer]);
 
 $artikul = $_POST[artikul];
 
+$query = "UPDATE cart 
+             SET amount = (amount + 1),
+                 time = now()
+             WHERE artikul = '$artikul'
+             AND customer = $customer";
 
+$result = mysql_query($query);
 
-$query1 = "INSERT INTO cart (
+$aff_r = mysql_affected_rows();
+
+if($aff_r == 0){
+    $query = "INSERT INTO cart (
                         amount,
                         artikul,
                         price_id,
@@ -25,7 +34,10 @@ $query1 = "INSERT INTO cart (
                         $id,
                         now())";
 
-$result = mysql_query($query1);
+    $result = mysql_query($query);
+}
+
+
 
 
 $query = "UPDATE pricelist 

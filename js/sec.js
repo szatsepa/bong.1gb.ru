@@ -3,12 +3,13 @@
  * and open the template in the editor.
  */
 $(document).ready(function () {
+     $("#main_0").css('background-image', 'url("../images/bg_1.png")');
 	if (document.readyState != "complete"){
 		setTimeout( arguments.callee, 100 );
 		return;
 	}
         
-        var customer = new Object();
+//        var customer = new Object();
         var cart = new Object();
         var items = new Array('товар','товара','товаров');
         
@@ -20,10 +21,12 @@ $(document).ready(function () {
         $("div.error").hide();
         $("div.message").hide()
         
-        $("#main_0").css('background-image', 'url("../images/bg_1.png")');
+       
         
-        $("#table").mousedown(function(){
+        $("#table").mousedown(function(){ 
+            checkCart(customer['id']);
             $("#items").css('visibility','visible');
+            
         });
         
         $("div.item").mouseover(function(){
@@ -35,11 +38,19 @@ $(document).ready(function () {
             if(customer['id'] != undefined){
                 $("#item_dscr").css('visibility', 'visible');
                 $("#description").text(id);
+//                
+            }
+            
+        });
+         $("div.item").mouseout(function(){
+            var id = this.id;
+            if(customer['id'] != undefined){
+                $("#item_dscr").css('visibility', 'hidden');
             }
             
         });
         
-        $("#your_cart").mousedown(function(){
+        $("#my_cart").mousedown(function(){
             
             var coord = $("#your_cart").offset();
             alert("X "+coord['left']+" Y "+coord['top']);
@@ -67,6 +78,27 @@ $(document).ready(function () {
         $('#my_cart').mousedown(function() {
 
             
+        });
+        
+        $("#log_in").mousedown(function(){
+            var id = customer['id'];
+            $.ajax({
+                url:'../query/cart.php',
+                type:'post',
+                dataType:'json',
+                data:{customer:id},
+                success:function(data){
+                    var str = '';
+                    for(var i in data[0]){
+                        str += i+" "+data[0][i]+";\n";
+                    }
+                    alert(str);
+                },
+                error:function(data){
+                    document.write(data['response']);
+                }
+            });
+//             $("#your_cart").css({'visibility': 'visible'});            
         });
         
         
@@ -248,7 +280,7 @@ $(document).ready(function () {
                         var re = data['ok'];
                         if(re == 1){
                             customer = data;
-                            checkCart(data['id']);
+                            checkCart(data['id']); 
                         }else{
                             $("#signin").hide(300, function(){
                                 $("#signup").show(300);
@@ -321,10 +353,11 @@ $(document).ready(function () {
         return reg.test(email)
     }
     
+    
     function checkCart(id){
         
         var id = id;
-        
+//        alert("Cu "+id);
         $.ajax({
             url:'../query/check_cart.php',
             type:'post',
@@ -332,6 +365,9 @@ $(document).ready(function () {
             data:{id:id},
             success:function(data){
                 cart = data;
+                $("#log_in").remove();
+                $("#in_cart").remove();
+                $("#cost").remove();
                 $("#indikator").hide();
                 $("#vrWrapper").css('visibility', 'hidden');
                 $("#my_cart").css({'visibility': 'visible'});
@@ -343,6 +379,7 @@ $(document).ready(function () {
                 }else{
                    $("#my_cart").append("<p id='in_cart' name='#'>Корзина пустая.&nbsp;&nbsp;&nbsp;&nbsp;</p>"); 
                 }
+               
             },
             error:function(data){
                 document.write(data['response']);
@@ -362,7 +399,6 @@ $(document).ready(function () {
            data:{artikul:artikul,customer:customer_id},
            success:function(data){
                cart = data;
-               $("#items").css('visibility','hidden');
                $("#item_dscr").css('visibility', 'hidden');
                if(data['amount'] != null){
                    $("#in_cart").remove();
@@ -376,7 +412,7 @@ $(document).ready(function () {
                 
            },
            error:function(data){
-               document.write(data['response']);
+               document.write(data['response']); 
            }
         });
         
@@ -396,6 +432,16 @@ $(document).ready(function () {
         }
         return num;
     }
+    $("#your_cart").mousedown(function(){
+        $.ajax({
+            url:'../query/exp.php',
+            type:'post',
+            dataType:'json',
+            data:{customer:customer['id']},
+            success:function(data){
+               alert(data['ok']) ;
+            }
+        });
+    });
     
 });
-
