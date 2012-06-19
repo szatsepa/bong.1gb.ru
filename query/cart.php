@@ -5,7 +5,7 @@
  */
 include 'connect.php';
 
-$customer = intval($_POST[id]);
+$customer = intval($_POST[customer]);
 
 $query = "SELECT 
                     b.id, 

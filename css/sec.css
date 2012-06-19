@@ -113,11 +113,15 @@ div.item{
     height: 600px;
     background-color: yellow;
     left: 101px;
-    top: -2216px;
+    top: -2306px;
     z-index: 6;
     visibility: hidden;
     opacity: 0.6;
 } 
 #close_cart{
     position:relative;
+    outline: 1px solid gray;
+    width: 32px;
+    text-align: center;
+    cursor: pointer;
 }

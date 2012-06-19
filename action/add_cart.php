@@ -5,21 +5,21 @@
  */
 include '../query/connect.php';
 
-$id = intval($_POST[customer]);
+$customer = intval($_POST[customer]);
 
 $artikul = $_POST[artikul];
 
-$query = "UPDATE cart 
+$query1 = "UPDATE cart 
              SET amount = (amount + 1),
                  time = now()
              WHERE artikul = '$artikul'
              AND customer = $customer";
 
-$result = mysql_query($query);
+$result = mysql_query($query1);
 
 $aff_r = mysql_affected_rows();
 
-if($aff_r == 0){
+if($aff_r === 0){
     $query = "INSERT INTO cart (
                         amount,
                         artikul,
@@ -31,7 +31,7 @@ if($aff_r == 0){
                         1,
                         '$artikul',
                         1,
-                        $id,
+                        $customer,
                         now())";
 
     $result = mysql_query($query);
@@ -59,7 +59,7 @@ if (isset($parent_order) and $parent_order > 0) {
 
 
     $query = "UPDATE cart SET parent_order = $parent_order  
-                            WHERE customer  = $id
+                            WHERE customer  = $customer
                             AND price_id = 1";
    
     mysql_query($query);
@@ -69,15 +69,19 @@ if (isset($parent_order) and $parent_order > 0) {
 
 mysql_query("DELETE FROM cart WHERE amount = 0");
 
-$query = "SELECT SUM(c.amount) AS amount,
-                 SUM(c.amount*p.price) AS cash  
-            FROM cart AS c, pricelist AS p  
-            WHERE c.customer = $id  
-            AND p.artikul = c.artikul";
+//$query = "SELECT SUM(c.amount) AS amount,
+//                 SUM(c.amount*p.price) AS cash  
+//            FROM cart AS c, pricelist AS p  
+//            WHERE c.customer = $customer  
+//            AND p.artikul = c.artikul";
+//
+//$result = mysql_query($query);
 
-$result = mysql_query($query);
+$out['rows'] = $customer;
 
-$out = mysql_fetch_assoc($result);
+$out['query'] = $query1;
+
+
 
 echo json_encode($out);
 

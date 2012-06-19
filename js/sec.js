@@ -9,6 +9,10 @@ $(document).ready(function () {
 		return;
 	}
         
+        if(customer['id'] || customer['id'] != undefined){
+                checkCart(customer['id']);
+            }
+        
 //        var customer = new Object();
         var cart = new Object();
         var items = new Array('товар','товара','товаров');
@@ -23,8 +27,11 @@ $(document).ready(function () {
         
        
         
-        $("#table").mousedown(function(){ 
-            checkCart(customer['id']);
+        $("#table").mousedown(function(){
+            if(customer['id'] || customer['id'] != undefined){
+                checkCart(customer['id']);
+            }
+            
             $("#items").css('visibility','visible');
             
         });
@@ -51,36 +58,6 @@ $(document).ready(function () {
         });
         
         $("#my_cart").mousedown(function(){
-            
-            var coord = $("#your_cart").offset();
-            alert("X "+coord['left']+" Y "+coord['top']);
-        });
-        
-        $("div.item").mousedown(function(){
-            var id = this.id;
-            if(customer['id'] == undefined){
-                $("#vrWrapper").css('visibility','visible');
-                
-                $("#signin").show(300, function(){
-                    $("#item_dscr").css('visibility', 'hidden');
-                    $("#items").css('visibility', 'hidden');
-                    $('#loginEmail').focus();
-                });
-        }else{
-
-               _addCart(id); 
-            }
-        });
-        $("#vrWrapper").mousedown(function(){
-
-        });
-        
-        $('#my_cart').mousedown(function() {
-
-            
-        });
-        
-        $("#log_in").mousedown(function(){
             var id = customer['id'];
             $.ajax({
                 url:'../query/cart.php',
@@ -92,15 +69,47 @@ $(document).ready(function () {
                     for(var i in data[0]){
                         str += i+" "+data[0][i]+";\n";
                     }
+                    $("#your_cart").css({'visibility': 'visible'});
                     alert(str);
                 },
                 error:function(data){
                     document.write(data['response']);
                 }
             });
-//             $("#your_cart").css({'visibility': 'visible'});            
+            
+//            var coord = $("#your_cart").offset();
+//            alert("X "+coord['left']+" Y "+coord['top']);
         });
         
+        $("div.item").mousedown(function(){
+            var id = this.id;
+            if(customer['id'] != undefined){
+                       _addCart(id);
+                }else{
+                        $("#vrWrapper").css('visibility','visible');
+
+                        $("#signin").show(300, function(){
+                            $("#item_dscr").css('visibility', 'hidden');
+                            $("#items").css('visibility', 'hidden');
+                            $('#loginEmail').focus();
+                        });
+
+                    }
+        });
+        $("#vrWrapper").mousedown(function(){
+
+        });
+        
+        $('#my_cart').mousedown(function() {
+
+            
+        });
+        
+        $('#close_cart').mousedown(function() {
+            $("#your_cart").css('visibility', 'hidden');
+            
+        });
+               
         
 // move===
         $("#reg_l").mousedown(function(){
@@ -365,11 +374,13 @@ $(document).ready(function () {
             data:{id:id},
             success:function(data){
                 cart = data;
+//                $("#my_cart").remove();
                 $("#log_in").remove();
                 $("#in_cart").remove();
                 $("#cost").remove();
                 $("#indikator").hide();
                 $("#vrWrapper").css('visibility', 'hidden');
+//                $("#main_0").append('div id="my_cart"></div>');
                 $("#my_cart").css({'visibility': 'visible'});
                 $("#my_cart").append("<p id='log_in' name='#'>"+customer['email']+"&nbsp;&nbsp;&nbsp;&nbsp;</p>");
                 if(data['amount'] != null){
@@ -398,18 +409,7 @@ $(document).ready(function () {
            dataType:'json',
            data:{artikul:artikul,customer:customer_id},
            success:function(data){
-               cart = data;
-               $("#item_dscr").css('visibility', 'hidden');
-               if(data['amount'] != null){
-                   $("#in_cart").remove();
-                   $("#cost").remove();
-                   var num = _checkItems(data['amount']);
-                  $("#my_cart").append("<p id='in_cart' name='#'>В корзине "+cart['amount']+" "+items[num]+"&nbsp;&nbsp;&nbsp;&nbsp;</p>");
-                  $("#my_cart").append("<p id='cost' name='#'>На сумму "+cart['cash']+" р.&nbsp;&nbsp;&nbsp;&nbsp;</p>");
-                }else{
-                   $("#my_cart").append("<p id='in_cart' name='#'>Корзина пустая.&nbsp;&nbsp;&nbsp;&nbsp;</p>"); 
-                }
-                
+                    checkCart(customer_id);
            },
            error:function(data){
                document.write(data['response']); 
@@ -419,6 +419,7 @@ $(document).ready(function () {
     }
     
     function _checkItems(items){
+        var items = items;
         var str = items.toString();
         str = str.substr(-1);
         var sho = parseInt(str);
@@ -430,18 +431,21 @@ $(document).ready(function () {
         }else{
             num = 2;
         }
+        if(items>10 && items<21){
+            num = 2;
+        }
         return num;
     }
-    $("#your_cart").mousedown(function(){
-        $.ajax({
-            url:'../query/exp.php',
-            type:'post',
-            dataType:'json',
-            data:{customer:customer['id']},
-            success:function(data){
-               alert(data['ok']) ;
-            }
-        });
-    });
+//    $("#your_cart").mousedown(function(){
+////        $.ajax({
+////            url:'../query/exp.php',
+////            type:'post',
+////            dataType:'json',
+////            data:{customer:customer['id']},
+////            success:function(data){
+////               alert(data['ok']) ;
+////            }
+////        });
+//    });
     
 });
