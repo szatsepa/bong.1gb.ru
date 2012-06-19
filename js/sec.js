@@ -65,20 +65,17 @@ $(document).ready(function () {
                 dataType:'json',
                 data:{customer:id},
                 success:function(data){
-                    var str = '';
-                    for(var i in data[0]){
-                        str += i+" "+data[0][i]+";\n";
-                    }
+//                    var str = '';
+//                    for(var i in data[0]){
+//                        str += i+" "+data[0][i]+";\n";
+//                    }
                     $("#your_cart").css({'visibility': 'visible'});
-                    alert(str);
+//                    alert(str);
                 },
                 error:function(data){
                     document.write(data['response']);
                 }
             });
-            
-//            var coord = $("#your_cart").offset();
-//            alert("X "+coord['left']+" Y "+coord['top']);
         });
         
         $("div.item").mousedown(function(){
@@ -106,6 +103,7 @@ $(document).ready(function () {
         });
         
         $('#close_cart').mousedown(function() {
+
             $("#your_cart").css('visibility', 'hidden');
             
         });
@@ -366,7 +364,6 @@ $(document).ready(function () {
     function checkCart(id){
         
         var id = id;
-//        alert("Cu "+id);
         $.ajax({
             url:'../query/check_cart.php',
             type:'post',
@@ -374,13 +371,11 @@ $(document).ready(function () {
             data:{id:id},
             success:function(data){
                 cart = data;
-//                $("#my_cart").remove();
                 $("#log_in").remove();
                 $("#in_cart").remove();
                 $("#cost").remove();
                 $("#indikator").hide();
                 $("#vrWrapper").css('visibility', 'hidden');
-//                $("#main_0").append('div id="my_cart"></div>');
                 $("#my_cart").css({'visibility': 'visible'});
                 $("#my_cart").append("<p id='log_in' name='#'>"+customer['email']+"&nbsp;&nbsp;&nbsp;&nbsp;</p>");
                 if(data['amount'] != null){
@@ -436,16 +431,5 @@ $(document).ready(function () {
         }
         return num;
     }
-//    $("#your_cart").mousedown(function(){
-////        $.ajax({
-////            url:'../query/exp.php',
-////            type:'post',
-////            dataType:'json',
-////            data:{customer:customer['id']},
-////            success:function(data){
-////               alert(data['ok']) ;
-////            }
-////        });
-//    });
     
 });

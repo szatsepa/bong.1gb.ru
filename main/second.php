@@ -112,5 +112,10 @@ if(isset($user)){
     </div>
 <div id="your_cart"> 
     <div id="close_cart">X</div>
+    <div class="row_cart">
+        <div class="image_cart">
+            <img id="image_c" src="../images/items/item_1.png" alt="001"/>
+        </div>
+    </div>
     
 </div>
