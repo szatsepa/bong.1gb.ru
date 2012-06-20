@@ -110,24 +110,3 @@ if(isset($user)){
             </div>
         </div>
     </div>
-<div id="your_cart"> 
-    <div id="close_cart">X</div>
-<!--    <div class="row_cart">
-        <div class="image_cart">
-            <img id="image_c" src="" alt=""/>
-        </div>
-        <div class="item_name">
-            <p></p>
-        </div>
-        <div class="item_price">
-            <p></p>
-        </div>
-        <div class="up_down">
-            <div class="up"></div>
-            <div class="amount"><p></p></div>
-            <div class="down"></div>
-        </div>
-        <div class="item_cash"><p></p></div>
-    </div>-->
-    
-</div>

@@ -5,12 +5,24 @@
  */
 include '../query/connect.php';
 
+if(isset($_POST[amount])){
+    $amount = intval($_POST[amount]);
+}else{
+    $amount = 1;
+}
+
+if(isset($_POST[pid])){
+    $price_id = intval($_POST[pid]);
+}else{
+    $price_id = 1;
+}
+
 $customer = intval($_POST[customer]);
 
 $artikul = $_POST[artikul];
 
 $query1 = "UPDATE cart 
-             SET amount = (amount + 1),
+             SET amount = (amount + $amount),
                  time = now()
              WHERE artikul = '$artikul'
              AND customer = $customer";
@@ -28,9 +40,9 @@ if($aff_r === 0){
                         time)
                         VALUES
                         (
-                        1,
+                        $amount,
                         '$artikul',
-                        1,
+                        $price_id,
                         $customer,
                         now())";
 
@@ -41,14 +53,14 @@ if($aff_r === 0){
 
 
 $query = "UPDATE pricelist 
-	  SET amount = (`amount` - $volume) 
+	  SET amount = (`amount` - $amount) 
 	  WHERE artikul = '$artikul' AND code2 <> 'X'";
 
 mysql_query($query);
 
  $query = "UPDATE cart SET time = now()  
 	   WHERE customer  = id 
-           AND price_id = 1";
+           AND price_id = $price_id";
  
  mysql_query($query);
  
@@ -60,7 +72,7 @@ if (isset($parent_order) and $parent_order > 0) {
 
     $query = "UPDATE cart SET parent_order = $parent_order  
                             WHERE customer  = $customer
-                            AND price_id = 1";
+                            AND price_id = $price_id";
    
     mysql_query($query);
 }
@@ -69,19 +81,11 @@ if (isset($parent_order) and $parent_order > 0) {
 
 mysql_query("DELETE FROM cart WHERE amount = 0");
 
-//$query = "SELECT SUM(c.amount) AS amount,
-//                 SUM(c.amount*p.price) AS cash  
-//            FROM cart AS c, pricelist AS p  
-//            WHERE c.customer = $customer  
-//            AND p.artikul = c.artikul";
-//
-//$result = mysql_query($query);
+$out = array();
 
 $out['rows'] = $customer;
 
 $out['query'] = $query1;
-
-
 
 echo json_encode($out);
 
