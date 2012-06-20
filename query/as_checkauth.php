@@ -8,7 +8,7 @@
 
 if(!isset ($user)){
     
-    $user = new Customer();
+    $user = new User();
 
 if (isset($_SESSION[auth])) {
 	
@@ -16,7 +16,7 @@ if (isset($_SESSION[auth])) {
     
        if($_SESSION[auth] != 0){
            
-            $user->setCustomer($user_id);
+            $user->setUser($user_id);
 
        }
      

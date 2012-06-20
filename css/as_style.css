@@ -1,0 +1,135 @@
+/* 
+    Document   : as_style
+    Created on : 09.06.2012, 15:00:06
+    Author     : serjoga
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+root { 
+    display: block;
+
+}
+div{
+/*    color: black;*/
+    font-family: Arial;
+    font-size: 12px; 
+}
+a.header2{
+	background: #002778;
+	color:White;
+	font-size:9pt;
+	padding: 3px 6px;	
+	font-weight:bold;
+	text-decoration:none;	
+	margin:0;
+}
+
+a:hover.header2 {
+	background: #000000;
+	color: Yellow;
+	font-size:10pt;
+	padding: 3px 10px;
+	font-weight:bold;
+	text-decoration:none;
+	margin:0;
+}
+table.dat {
+	display: block;
+	border: solid 1px gray;	
+	font-size:10pt;
+	margin-left: 2px;
+	margin-right: 2px;
+}
+th.dat{
+		background: #002778;
+		color:White;
+		font-size:9pt;
+		padding: 3px 15px;
+		
+}
+td.dat {
+		padding: 1px 1px ;
+		font-size:9pt;
+		
+	    border-bottom : thin solid;
+}
+tr.dat {
+	border: solid 1px gray;
+	
+}
+
+div.kab {
+	background-color:#ececec;
+	padding-top: 2px;
+	padding-bottom: 2px;
+	padding-left: 5px;
+	padding-right: 5px;
+	display: inline;
+	font-weight: bold;
+}
+
+td.kab {
+	border-right:1px dashed #a7a7a7;
+}
+a.new_order{
+    text-decoration: underline;
+    cursor: pointer;
+}
+div.selector {
+	background-color:#ccc;
+	border-top:1px solid #a7a7a7;
+	border-bottom:1px solid white;
+	font-size:4ex;
+/*	padding: 0 0 0 0;*/
+        padding-left: 22px;
+	width:98%;
+        height: 32px;
+} 
+span.selector3 {
+	display: inline;
+	position: relative;
+        float: right;
+	margin:auto 27px auto auto;
+	padding-top: 2px;
+	font-size: 1ex;
+
+}
+div.main_menu{
+    position: relative;
+    width: 1008px;
+    height: 104px;
+    color: black;
+}
+span.menu_select{
+    position: relative;
+    color: black;
+    font-size: 14px;
+    font-weight: bold;
+    bottom: 4px;
+}
+input.submit {
+	font-size: 8pt;
+	width:2em;
+	position:relative;
+	top:-5px;	
+	
+}
+
+input.submit2 {
+	font-size: 8pt;
+	width:13em;
+	position:relative;
+	top:-5px;	
+}
+
+input.submit3 {
+	font-size: 8pt;
+	font-weight: bold;
+	width:2em;
+	margin-left: 3px;
+	margin-bottom: 0px;
+	margin-right: 0px;
+	margin-top:0px;	
+	position:relative;	
+}

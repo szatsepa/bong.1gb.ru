@@ -118,6 +118,13 @@ div.item{
     visibility: hidden;
     opacity: 0.73;
 } 
+div.row_cart{
+    position:relative;
+    width:800px;
+    height:102px;
+    top:12px;
+/*    outline:1px solid black;*/
+}
 #close_cart{
     position:relative;
     outline: 1px solid gray;
@@ -130,7 +137,65 @@ div.item{
 }
 div.image_cart{
     position: relative;
-    float: left;
+    margin-left: 72px;
+    top: 4px;
+}
+div.item_name{
+    position: relative;
+/*    outline: 1px solid blue;*/
     margin-left: 16px;
-    top: 42px;
+    top:-8px;
+    width:166px;
+    height:42px;
+    text-align:center;
+}
+div.item_price{
+    position: relative;
+/*    outline: 1px solid blue;*/
+    top:-98px;
+    left: 198px;
+    width:96px;
+    height:27px;
+}
+div.up_down{
+    position: relative;
+/*    outline: 1px solid blue;*/
+    top:-152px;
+    left: 328px;
+    width:39px;
+    height:100px;
+}
+div.up{
+    position: relative;
+    background-image: url('../images/up.png');
+/*    outline: 1px solid red;*/
+    width:39px;
+    height:39px;
+    cursor:pointer;
+}
+div.amount{
+    position: relative;
+/*    outline: 1px solid red;*/
+    width:39px;
+    height:22px;
+    top:-16px;
+    text-align:center;
+    font-weight:bold;
+} 
+div.down{
+    position: relative;
+    background-image: url('../images/down.png');
+/*    outline: 1px solid red;*/
+    width:39px;
+    height:39px;
+    top:-16px;
+    cursor:pointer;
+}
+div.item_cash{
+    position: relative;
+/*    outline: 1px solid blue;*/
+    top:-238px;
+    left: 418px;
+    width:96px;
+    height:27px;
 }

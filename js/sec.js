@@ -65,12 +65,16 @@ $(document).ready(function () {
                 dataType:'json',
                 data:{customer:id},
                 success:function(data){
-//                    var str = '';
-//                    for(var i in data[0]){
-//                        str += i+" "+data[0][i]+";\n";
-//                    }
                     $("#your_cart").css({'visibility': 'visible'});
-//                    alert(str);
+                    for(var i=0;i< data.length;i++){
+                        $("#your_cart").append('<div class="row_cart"><div class="image_cart"><img id="image_c" src="" alt=""/></div><div class="item_name"><p></p></div><div class="item_price"><p></p></div><div class="up_down"><div class="up"></div><div class="amount"><p></p></div><div class="down"></div></div><div class="item_cash"><p></p></div></div>');
+                        $("#image_c").attr({src:'../images/items/'+data[i]['img'],alt:data[i]['artikul']});
+                        $("div.item_name > p").text(data[i]['name']);
+                        $("div.item_price > p").text(data[i]['price']);
+                        $("div.amount > p").text(data[i]['amount']);
+                        $("div.item_cash > p").text(data[i]['cost']);
+                    }
+                    
                 },
                 error:function(data){
                     document.write(data['response']);
@@ -95,11 +99,6 @@ $(document).ready(function () {
         });
         $("#vrWrapper").mousedown(function(){
 
-        });
-        
-        $('#my_cart').mousedown(function() {
-
-            
         });
         
         $('#close_cart').mousedown(function() {

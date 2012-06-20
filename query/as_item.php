@@ -12,7 +12,7 @@ $query = "SELECT barcode,
                 ingridients, 
                 specification, 
                 nds
-            FROM goods
+            FROM items
             WHERE barcode = '$barcode'
             ORDER BY barcode";
 
