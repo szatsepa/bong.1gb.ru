@@ -14,7 +14,7 @@ $(document).ready(function () {
             }
 //начальные установки инициализация переменных
         var cart = new Object();
-        
+        var check = false;
         var items = new Array('товар','товара','товаров');
         
         $("#indicator").hide();
@@ -29,10 +29,7 @@ $(document).ready(function () {
 //клик по столу покажем товары
 
         $("#table").mousedown(function(){
-//            if(customer['id'] || customer['id'] != undefined){
-//                checkCart(customer['id']);
-//            }
-            
+
             $("#items").css('visibility','visible');
             
         });
@@ -55,7 +52,6 @@ $(document).ready(function () {
 //        скроем описание
 
          $("div.item").mouseout(function(){
-//            var id = this.id;
             if(customer['id'] != undefined){
                 $("#item_dscr").css('visibility', 'hidden');
             }
@@ -67,121 +63,12 @@ $(document).ready(function () {
 // тыц по ссылке в виде емейла выведем подробное описание корзины 
 
         $("#my_cart").mousedown(function(){
-            buildCart();
-        });
-        
-//  есле надо закрыть корзину
-
-        $("#close").live('mousedown',function(){
-            $("#your_cart").remove();
-        });
-        
-//        изменить (добавить удалить продукт)
-        
-        $(".up").live('mousedown',function(){
-            var id = this.id;
-            id = parseInt(id);
-            var artikul = cart[id]['artikul'];
-            changeCart(artikul,1);
-        })
-        $(".down").live('mousedown',function(){
-            var id = this.id;
-            id = parseInt(id);
-            var artikul = cart[id]['artikul'];
-            changeCart(artikul,-1);
-        })
-        
-//        привлечем внимание к ссылке создать заказ
-        
-        $("#crt_order").live('mouseover',function(){
-            $("#crt_order").css({'color':'blueviolet'});
-        });
-        $("#crt_order").live('mouseout',function(){
-            $("#crt_order").css({'color':'black'});
-        });
-        
-//        тыц - строим форму создать заказ
-
-        $("#crt_order").live('mousedown',function(){
-            buildOrder();
-        });
-//  функция изменить корзину
-
-        function changeCart(id,act){
-            
-                var artikul = id;
-                var customer_id = customer['id'];
-                var amount = act;
-                $.ajax({
-                    url:'../action/add_cart.php',
-                    type:'post',
-                    dataType:'json',
-                    data:{artikul:artikul,customer:customer_id,amount:amount},
-                    success:function(data){
-//                        при успехе строим нокую корзину
-                        buildCart();
-//                        изменяем содерхание в углу
-                        checkCart(customer_id);
-                                
-                    },
-                    error:function(data){
-                        document.write(data['response']); 
-                    }
-                });
-        }
- 
-// функция построить форму отображающую содержание корзины
-
-        function buildCart(){
-            var id = customer['id'];
-            $.ajax({
-                url:'../query/cart.php',
-                type:'post',
-                dataType:'json',
-                data:{customer:id},
-                success:function(data){
-                    var summ_cash = 0;
-                    cart = data;
-                    $("#your_cart").remove();
-                    $("#main_0").append('<div id="your_cart"></div>');
-                    $("#your_cart").css({'visibility': 'visible'});
-                    $("#your_cart").append('<div id="close_cart"><a name="#" id="close">X</a></div>');
-                    for(var i=0;i< data.length;i++){
-                        $("#your_cart").append('<div class="row_cart"><div class="image_cart"><img id="image_c'+i+'" src="" alt=""/></div><div class="item_name"><p  id="name_c'+i+'" ></p></div><div class="item_price"><p id="price_c'+i+'" ></p></div><div class="up_down"><div class="up"  id="'+i+'_up" ></div><div class="amount"><p id="amount_c'+i+'" ></p></div><div class="down"  id="'+i+'_down" ></div></div><div class="item_cash"><p id="cash_c'+i+'" ></p></div></div>');
-                        $("#image_c"+i).attr({src:'../images/items/'+data[i]['img'],alt:data[i]['artikul']});
-                        $("#name_c"+i).text(data[i]['name']);
-                        $("#price_c"+i).text(data[i]['price']);
-                        $("#amount_c"+i).text(data[i]['amount']);
-                        $("#cash_c"+i).text(data[i]['cost']);
-                       summ_cash += parseInt(data[i]['cost']);
-                    }
-                    $("#your_cart").append('<div class="row_cart"><div class="image_cart"><img id="image_c" src="" alt=""/></div><div class="item_name"><p  id="name_c" ></p></div><div class="item_price"><p id="price_c" ></p></div><div class="up_down"><div class="amount" id="amount"><p id="amount_c" ></p></div></div><div class="item_cash"><p id="cash_c" ></p></div></div>');
-                    $("#amount_c").text("Итого:");
-                    $("#amount").css({'top':'32px'});
-                    $("#amount_c").css({'font-size':'16px','font-weight':'bold'});
-                    $("#cash_c").text(summ_cash+" p.");
-                    $("#cash_c").css({'font-size':'16px','font-weight':'bold'});
-                    $("#your_cart").append('<div class="cr_order"><a name="#" id="crt_order">Оформить заказ</a></div>');
-                   return;
-                },
-                error:function(data){
-                    document.write(data['response']);
-                }
-                
-            });
-        }
-        
-//        строим форму "оформить заказ"
-
-        function buildOrder(){
-            $("#your_cart").remove();
-            var str = '';
-            for(var i=0;i< cart.length;i++){
-                str += cart[i]['artikul']+';\n';
+            if(check){
+               document.location.href = '?act=cart'; 
             }
-            alert(str+"Тутай буить форма заказу!");
-        }
+        });
         
+       
 //      при тыц по изображению товара если клиент определен ложим товар в корзину иначе формы регистрации - логинизации
 //        =======================================================
         
@@ -487,10 +374,12 @@ $(document).ready(function () {
                 $("#my_cart").css({'visibility': 'visible'});
                 $("#my_cart").append("<p id='log_in' name='#'>"+customer['email']+"&nbsp;&nbsp;&nbsp;&nbsp;</p>");
                 if(data['amount'] != null){
+                    check = true;
                   var num = _checkItems(cart['amount']);
                   $("#my_cart").append("<p id='in_cart' name='#'>В корзине "+cart['amount']+" "+items[num]+"&nbsp;&nbsp;&nbsp;&nbsp;</p>");
                   $("#my_cart").append("<p id='cost' name='#'>На сумму "+cart['cash']+" р.&nbsp;&nbsp;&nbsp;&nbsp;</p>");
                 }else{
+                    check = false;
                    $("#my_cart").append("<p id='in_cart' name='#'>Корзина пустая.&nbsp;&nbsp;&nbsp;&nbsp;</p>"); 
                 }
                return;

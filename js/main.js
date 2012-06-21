@@ -8,6 +8,8 @@ $(document).ready(function () {
 		return;
 	}
         
+        $("#main_0").css({'background-image': "url('../images/bg.png')"});
+        
         _statistic();
         
 //        $("div").css('outline','1px solid black');
