@@ -56,7 +56,7 @@ $headers  .= 'MIME-Version: 1.0' . "\r\n";
 
 $headers .= 'Content-type: text/plain; charset=utf-8' . "\r\n";
 
-$to= "Serg <arcady.1254@gmail.com>, <7905415@mail.ru>, <$email>" ; //обратите внимание на запятую
+$to= $row[name]." ".$row[surname]."<".$row[email].">" ; //обратите внимание на запятую
 
 mail($to, 'Заказ', $message, $headers);
 

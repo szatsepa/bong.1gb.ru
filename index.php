@@ -41,6 +41,10 @@ switch ($_GET[act]) {
         include 'main/cart.php';
         break;
     
+    case 'faq':
+        include 'main/faq.php';
+        break;
+    
     default :
         header("location:?act=main");
         break;

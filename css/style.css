@@ -49,7 +49,7 @@ div.main{
 #rabbit{
    position: relative;
     left: 390px;
-    top: -50px;
+    top: -155px;
     width: 395px;
     height: 591px;
     z-index: 12;
@@ -61,7 +61,7 @@ div.main{
 #lt_pocket{
    position: relative;
     left: 59px;
-    top: -250px;
+    top: 278px;
     width: 53px;
     height: 53px;
 
@@ -71,7 +71,7 @@ div.main{
 #lb_pocket{
    position: relative;
     left: 67px;
-    top: -225px;
+    top: 303px;
     width: 53px;
     height: 53px;
 
@@ -81,7 +81,7 @@ div.main{
 #rt_pocket{
    position: relative;
     left: 266px;
-    top: -374px;
+    top: 157px;
     width: 53px;
     height: 53px;
 
@@ -91,38 +91,55 @@ div.main{
 #rb_pocket{
    position: relative;
     left: 266px;
-    top: -332px;
+    top: 193px;
     width: 53px;
     height: 53px;
 
     z-index: 7;
     cursor: pointer;  
 }
+div.pocket{
+    background-color: blue;
+}
 #midle_penis{
    position: relative;
-    left: 163px; 
-    top: -365px;
+    left: 162px; 
+    top: 445px;
     width: 53px;
     height: 63px;
-
+    background-color: green;
     z-index: 8;
     cursor: pointer;  
 }
 #hint_l{
     position: relative;
-    left: -196px; 
-    top: -825px;
+    left: -282px; 
+    top: -276px;
     width: 282px;
     height: 276px;
+    opacity: 0;
     background-image: url('../images/hint_l.png');
     z-index: 9;
 }
 #hint_r{
     position: relative;
-    left: 293px; 
-    top: -1025px;
+    left: 56px; 
+    top: -276px;
     width: 282px;
     height: 276px;
+    opacity: 0;
     background-image: url('../images/hint_r.png');
     z-index: 10;
+}
+div.rebbit_btn{
+    z-index: 2;
+    cursor: pointer;
+}
+#entry{
+    position: relative;
+    background-image: url('../images/entry.png');
+    width: 169px;
+    height: 65px;
+    z-index: 12;
+    cursor: pointer;
 }

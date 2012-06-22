@@ -8,8 +8,8 @@
     left:320px;
     top: -1700px;
     overflow: hidden;
-    z-index: 6;
-    visibility: hidden;
+    z-index: 16;
+/*    visibility: hidden;*/
     color: black;
 }
 #vrWrapper .wr

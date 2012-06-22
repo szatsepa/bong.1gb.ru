@@ -3,6 +3,7 @@
  * and open the template in the editor.
  */
 $(document).ready(function () {
+    
 	if (document.readyState != "complete"){
 		setTimeout( arguments.callee, 100 );
 		return;
@@ -10,37 +11,45 @@ $(document).ready(function () {
         
         $("#main_0").css({'background-image': "url('../images/bg.png')"});
         
-        _statistic();
+////если клиент определен проверяем и выводим его корзину================        
+//        if(customer['id'] || customer['id'] != undefined){
+//                checkCart(customer['id']);
+//            }
+////начальные установки инициализация переменных
+//        var cart = new Object();
+//        var check = false;
+//        var items = new Array('товар','товара','товаров');
+//        
+//        $("#indicator").hide();
+//        $("#closer").hide();
+//        $("#signup").hide();
+//        $("#signin").hide();
+//        $("#remindPass").hide();
+//        $("div.error").hide();
+//        $("div.message").hide()
         
-//        $("div").css('outline','1px solid black');
+        var stat = false;
+        
+        if(!stat){
+           stat =  _statistic();
+        }
+        
+        var rbt = false;
         
         $("#storefront").css('visibility','hidden');
         
-        $("#lt_pocket").hide();
+        $(".rebbit_btn").css('cursor', 'pointer');
         
-        $("#lb_pocket").hide();
-
-        $("#rt_pocket").hide();
-
-        $("#rb_pocket").hide();
-
-        $("#midle_penis").hide();
-        
-        $("#hint_l").css({opacity:0, top: -825});
-        
-        $("#hint_r").css({opacity:0, top: -1078});
-        
-//        $("#hint_l").attr('disabled', true);
+//        $("#vrWrapper").css({'top': '-1500px','visibility':'hidden','display':'none'});
 //        
-//        $("#hint_r").attr('disabled', true);
-        
-        var st_int = 0;
-        
+//        $("#vrWrapper").mousedown(function(){
+//
+//                alert(":JGGF");
+//        });
+//        
         var st = false;
-        
-        var morg = 500;
-        
-        st_int = setInterval(function(){
+                
+       var st_int = setInterval(function(){
             if(!st){
                 $("#storefront").css('visibility','visible');
             }else{
@@ -51,138 +60,117 @@ $(document).ready(function () {
         },1000);
         
         var r_int = 0;
-                
+   
         r_int = setTimeout(changeRabbit_1,2500);
         
         function changeRabbit_1(){
             
-                $("#rabbit_btn").attr('src', '../images/rabbit_1.png');
+                $("#rebbit_2").css('display', 'block');
+                $("#rebbit_1").css('display', 'none');
                 
                 r_int = setTimeout(changeRabbit_0,500);
 
         }
         function changeRabbit_0(){
             
-                $("#rabbit_btn").attr('src', '../images/rabbit_0.png');
+                $("#rebbit_1").css('display', 'block');
+                $("#rebbit_2").css('display', 'none');
                 
                 r_int = setTimeout(changeRabbit_1,2500);
 
         }
         
-        $("#rabbit_btn").mousedown(function(){
+        $(".rebbit_btn").mouseover(function(){
             
-            clearInterval(r_int);
+            if(!rbt){
+                clearInterval(r_int);
             
-            $("#rabbit_btn").css('cursor','default');
-            
-            $("#rabbit_btn").attr('src', '../images/rabbit_2.png');
-            
-            $("#lt_pocket").toggle();
-            
-            $("#lb_pocket").toggle();
-            
-            $("#rt_pocket").toggle();
-            
-            $("#rb_pocket").toggle();
-            
-            $("#midle_penis").toggle();
+                $(".rebbit_btn").css('cursor','default');
 
+                $("#rebbit_1").css('display', 'none');
+
+                $("#rebbit_2").css('display', 'none');
+
+                $("#rebbit_3").css({'display':'block','cursor':'default'});
+
+                $("#rebbit_3").append('<div id="midle_penis"></div>');
+                
+                $("#rebbit_3").append('<div class="L_pocket" id="lt_pocket"></div>');
+                
+                $("#rebbit_3").append('<div class="L_pocket" id="lb_pocket"></div>');
+                
+                $("#rebbit_3").append('<div class="R_pocket" id="rt_pocket"></div>');
+                
+                $("#rebbit_3").append('<div class="R_pocket" id="rb_pocket"></div>');
+                
+                rbt = true;
+            }
+            
+            
         });
         
-        $("#midle_penis").mousedown(function(){
+        $(".L_pocket").live('mouseover',function(){
+            var tid = this.id;
+            $(eval(tid)).append('<div id="hint_l"><br/><br/><br/>Text?</div>');
+            $("#hint_l").animate({opacity:0.6},1200,'linear');
+        });
+        $(".L_pocket").live('mouseout',function(){
+            var tid = this.id;
+            $(eval(tid)).empty();
+        });
+        
+        
+        $(".R_pocket").live('mouseover',function(){
+            var tid = this.id;
+            $(eval(tid)).append('<div id="hint_r"><br/><br/><br/>Text?</div>');
+            $("#hint_r").animate({opacity:0.6},1200,'linear');
+        });
+        $(".R_pocket").live('mouseout',function(){
+            var tid = this.id;
+            $(eval(tid)).empty();
+        });
+        
+        $("#midle_penis").live('mousedown',function(){
             
-            $("#rabbit_btn").attr('src', '../images/rabbit_0.png');
+            $("#rebbit_3").css('display', 'none');
+            
+            $("#rebbit_1").css({'display':'block','cursor':'pointer'});
                         
              r_int = setTimeout(changeRabbit_1,2500);
-            
-            $("#hint_l").css({opacity:0});
-        
-            $("#hint_r").hide();
-            
-            $("#lt_pocket").hide();
-            
-            $("#lb_pocket").hide();
-            
-            $("#rt_pocket").hide();
-            
-            $("#rb_pocket").hide();
-            
-            $("#midle_penis").hide();
-            
+  
         });
-        
-        $("#lt_pocket").mouseover(function(){
-            
-            $("#hint_l").animate({opacity:0.6, top: -825},1200,'linear');           
-            
-        });
-        
-        $("#lt_pocket").mouseout(function(){
-
-            $("#hint_l").animate({opacity:0},1200,'linear');
-
-        });
-        
-        $("#lb_pocket").mouseover(function(){
-            
-            $("#hint_l").animate({opacity:0.6, top:-720},1200,'linear'); 
-        });
-        
-        $("#lb_pocket").mouseout(function(){
-
-            $("#hint_l").animate({opacity:0},1200,'linear');
-
-        });
-         
-        $("#rt_pocket").mouseover(function(){
-            
-            $("#hint_r").animate({opacity:0.6,top:-1078},1200, 'linear');
-        });
-        
-         $("#rt_pocket").mouseout(function(){
-
-            $("#hint_r").animate({opacity:0},1200,'linear');
-
-        });
-        
-        $("#rb_pocket").mouseover(function(){
-            
-            $("#hint_r").animate({opacity:0.6,top:-973},1200, 'linear');
-        });
-        
-        $("#rb_pocket").mouseout(function(){
-
-            $("#hint_r").animate({opacity:0},1200,'linear');
-
-        });
-        
-        $(".pocket").mousedown(function(){
+       
+        $(".L_pocket").live('mousedown',function(){
            document.location = "?act=sec"; 
         });
+        $(".R_pocket").live('mousedown',function(){
+           document.location = "?act=sec"; 
+        });
+        
+        $("#barrel").mousedown(function(){
+            document.location = "?act=faq";
+        }); 
+        
+//        $("#entry").mousedown(function(){
+//            
+//        });
         
         function _statistic(){
             var scr_W = screen.width;
             var scr_H = screen.height;
             var colorDepth = screen.colorDepth;
             $.ajax({
-                url: 'http://bong.1gb.ru/action/statistics.php',
+                url: '../action/statistics.php',
                 type:'post',
                 dataType:'json',
                 data:{scr_W:scr_W,scr_H:scr_H,colorDepth:colorDepth},
                 success:function(data){
-                    return;
+                    return true;
                 }
             });
-            return;
+            return true;
         }
         
-
-        
-        $("#main_0").bindImageLoad(function () {
-            alert("ATASS");
-            // делаем что-нибудь полезное
-            // переменная this указывает на картинку
-        });
 
 });
 

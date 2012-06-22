@@ -24,7 +24,7 @@ $(document).ready(function () {
         $("#remindPass").hide();
         $("div.error").hide();
         $("div.message").hide()
-        
+        $("#vrWrapper").css({'top':'-1700px','visibility':'hidden'});
        
 //клик по столу покажем товары
 

@@ -1,0 +1,38 @@
+/* 
+    Document   : sec
+    Created on : 15.06.2012, 20:19:56
+    Author     : serjoga
+    Description:
+        Purpose of the stylesheet follows.
+*/
+#my_cart{
+    position: relative;
+    width: 220px;
+    top: -1844px;
+    left: 720px;
+    text-align: left;
+    visibility: hidden;
+}
+#my_email{
+    text-align: center;
+    font-size: 14px;
+    color: gold;
+}
+#in_cart{
+    text-align: right;
+    font-size: 14px;
+    color: gold;
+    
+}
+#log_in{
+    text-align: right;
+    font-size: 14px;
+    color: gold;
+    cursor: pointer;
+    text-decoration: underline;
+}
+#cost{
+    text-align: right;
+    font-size: 14px;
+    color: gold;
+}
