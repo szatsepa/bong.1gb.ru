@@ -54,7 +54,6 @@ $(document).ready(function () {
                     $("#expt").append('<th class="cart">Артикул</th><th class="cart">Наименование</th><th class="cart">Цена ед.</th><th class="cart">Кол-во (л.)</th><th class="cart"></th>');
                     for(var i = 0;i<data['items'].length;i++){
                         $("#expt").append("<tr><td>"+data['items'][i]['artikul']+"</td><td>"+data['items'][i]['name']+"</td><td>"+data['items'][i]['price']+"</td><td align='center'>"+data['items'][i]['amount']+"</td></tr>");
-//                        $(eval("#cell_"+i)).css('background-color','hsl('+data['items'][i]['hsb']+')');
                     }
                     $("#exp").append('<br/><br/>');
                     $('#status_btn').attr('name', order_id);
@@ -95,12 +94,12 @@ $(document).ready(function () {
         $("#stat").mousedown(function(e){
             var status = $("#stat").attr('name');
             var order = $('#status_btn').attr('name');
-            //alert("M "+status+" "+order);
+            var step = $("#stat").text();
             $.ajax({
                 url: '../action/as_change_status.php',
                 type:'post',
                 dataType:'json',
-                data:{status:status,order:order},
+                data:{status:status,order:order,step:step},
                 success:function(data){
                     var re = data['ok'];
                     //alert("OK "+re);

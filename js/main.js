@@ -11,23 +11,6 @@ $(document).ready(function () {
         
         $("#main_0").css({'background-image': "url('../images/bg.png')"});
         
-////если клиент определен проверяем и выводим его корзину================        
-//        if(customer['id'] || customer['id'] != undefined){
-//                checkCart(customer['id']);
-//            }
-////начальные установки инициализация переменных
-//        var cart = new Object();
-//        var check = false;
-//        var items = new Array('товар','товара','товаров');
-//        
-//        $("#indicator").hide();
-//        $("#closer").hide();
-//        $("#signup").hide();
-//        $("#signin").hide();
-//        $("#remindPass").hide();
-//        $("div.error").hide();
-//        $("div.message").hide()
-        
         var stat = false;
         
         if(!stat){
@@ -40,13 +23,6 @@ $(document).ready(function () {
         
         $(".rebbit_btn").css('cursor', 'pointer');
         
-//        $("#vrWrapper").css({'top': '-1500px','visibility':'hidden','display':'none'});
-//        
-//        $("#vrWrapper").mousedown(function(){
-//
-//                alert(":JGGF");
-//        });
-//        
         var st = false;
                 
        var st_int = setInterval(function(){
@@ -151,9 +127,9 @@ $(document).ready(function () {
             document.location = "?act=faq";
         }); 
         
-//        $("#entry").mousedown(function(){
-//            
-//        });
+        $("#entry").mousedown(function(){
+            document.location.href = '?act=entry';
+        });
         
         function _statistic(){
             var scr_W = screen.width;
