@@ -19,11 +19,12 @@ html, body {
 }
 div.main{ 
     width: 100%;
+    visibility: hidden;
 }
 #main_0{
     width: 1023px;
     height: 730px;
-    margin: 0 auto;
+    margin: -43px auto;
 /*    background-image: url('../images/bg.png');*/
     z-index: 0;
 }
@@ -99,7 +100,7 @@ div.main{
     cursor: pointer;  
 }
 div.pocket{
-    background-color: blue;
+/*    background-color: blue;*/
 }
 #midle_penis{
    position: relative;
@@ -107,7 +108,7 @@ div.pocket{
     top: 445px;
     width: 53px;
     height: 63px;
-    background-color: green;
+/*    background-color: green;*/
     z-index: 8;
     cursor: pointer;  
 }

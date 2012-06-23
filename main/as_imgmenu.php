@@ -26,7 +26,7 @@
 
 <br>
 <br>
-
+<!--
 <table class="dat" width="99%">
     <tr>
         <td align="left" valign="top"><strong>Загрузка логотипа компании</strong><br><br></td>
@@ -44,7 +44,7 @@
 		<small>Максимальный объем загружаемого файла не должен превышать 500 килобайт, формат изображения GIF.</small>
             </td>
     </form>
-<!--        <form action="index.php?act=logo_delete" method="post">   </form>  -->
+        <form action="index.php?act=logo_delete" method="post">   </form>  
                 <td>
                     <input id="del_logo" type="button" value="Удалить логотип" >
                 </td>		    
@@ -83,7 +83,7 @@
 	    <td>
                 <input type="hidden" name="MAX_FILE_SIZE" value="512000"> 
                 <input type="hidden" name="filetype" value="jpg"> 
-<!--                <input type="hidden" name="tag" value="tag"/>-->
+                <input type="hidden" name="tag" value="tag"/>
                 <input name="userfile" type="file" size="20">
                 <input type="submit" value="Загрузить">
                 <br />
@@ -91,11 +91,11 @@
 		<small>Максимальный объем загружаемого файла не должен превышать 500 килобайт, формат изображения - JPG.</small>
             </td>
     </form>
-<!--    <form action="index.php?act=tagimg_delete" method="post"></form>    -->
+    <form action="index.php?act=tagimg_delete" method="post"></form>    
 	    <td>
                 <input id="del_pimg" type="button" value="Удалить" >
             </td>		    
     
     </tr>
        
-</table>
+</table>-->

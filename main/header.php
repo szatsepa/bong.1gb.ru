@@ -20,10 +20,14 @@ header('Content-Type: text/html; charset=utf-8');
         <script type="text/javascript" src="../js/jquery-1.4.4.min.js"></script>
         <script type="text/javascript" src="../js/my_request.js"></script>
         <script type="text/javascript" src="../js/img_load.js"></script>
+<!--        <script type="text/javascript" src="../js/u.js"></script>
+        <script type="text/javascript" src="../js/jquery.blockUI.js"></script>-->
+<!--        <script type="text/javascript" src="jquery.blockUI.js"></script>-->
         <script type="text/javascript" src="../js/<?php echo $_GET[act];?>.js"></script>
         
         
 </head>
-    <body onload="">
+    <body onload="$('.main').css('visibility', 'visible');">
+<!--        <div id="pl" style="background-color:#000;opacity:0.6;width:100%;height:100%;z-index:22;padding-top: 175px;padding-left: 325px;"><img src="../images/indicator_load.gif" border="0"  alt=""></div>-->
        <div class="main"> 
         <div id="main_0"> 

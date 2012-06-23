@@ -2,14 +2,35 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
+//==========================================
+function opTsa(){
+    $('.main').css('visibility', 'visible');
+    setTimeout(function(){$("#pl").remove();},600 );
+//    $("#pl").remove();
+}
+//==========================================
 $(document).ready(function () {
+    
+    
     
 	if (document.readyState != "complete"){
 		setTimeout( arguments.callee, 100 );
 		return;
 	}
+//        window.onload(function(){$("#pl").remove();});
         
         $("#main_0").css({'background-image': "url('../images/bg.png')"});
+        
+//        $("../images/bg.png").bindImageLoad(function () {
+//            // делаем что-нибудь полезное
+//            // переменная this указывает на картинку
+//        });
+
+        
+        
+        $("url('../images/bg.png')").bindImageLoad(function () {
+            $(this).appendTo("div.block");
+        }).css({'background-image': "url('../images/bg.png')"});
         
         var stat = false;
         
