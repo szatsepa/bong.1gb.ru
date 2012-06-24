@@ -2,35 +2,16 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-//==========================================
-function opTsa(){
-    $('.main').css('visibility', 'visible');
-    setTimeout(function(){$("#pl").remove();},600 );
-//    $("#pl").remove();
-}
-//==========================================
+
 $(document).ready(function () {
     
-    
-    
-	if (document.readyState != "complete"){
+        if (document.readyState != "complete"){
+             
 		setTimeout( arguments.callee, 100 );
 		return;
 	}
-//        window.onload(function(){$("#pl").remove();});
         
-        $("#main_0").css({'background-image': "url('../images/bg.png')"});
-        
-//        $("../images/bg.png").bindImageLoad(function () {
-//            // делаем что-нибудь полезное
-//            // переменная this указывает на картинку
-//        });
-
-        
-        
-        $("url('../images/bg.png')").bindImageLoad(function () {
-            $(this).appendTo("div.block");
-        }).css({'background-image': "url('../images/bg.png')"});
+        $("#main_0").css({'background-image': "url('../images/bg.png')",'margin-top':'0 auto'});
         
         var stat = false;
         
@@ -39,11 +20,35 @@ $(document).ready(function () {
         }
         
         var rbt = false;
-        
+                
         $("#storefront").css('visibility','hidden');
         
         $(".rebbit_btn").css('cursor', 'pointer');
         
+        $("#vrWrapper").css({'top':'-1100px','left':'147px','visibility':'hidden'});
+        
+         $("#my_cart").css({'top': '-1155px','color':'black'});
+                 
+        $("#entry").mousedown(function(){
+            
+            if(!customer['id'] || customer['id'] == undefined){
+                
+                    $("#vrWrapper").css('visibility','visible');
+
+                    $("#signin").show(300, function(){
+                        $('#loginEmail').focus();
+                    });
+
+            }else{
+                if(confirm("Действительно выйти?")){
+                    document.location.href = '?act=logout';
+                }
+                
+            }
+            
+        });
+
+
         var st = false;
                 
        var st_int = setInterval(function(){
@@ -55,10 +60,8 @@ $(document).ready(function () {
             }
             st=!st;
         },1000);
-        
-        var r_int = 0;
-   
-        r_int = setTimeout(changeRabbit_1,2500);
+           
+        var r_int = setTimeout(changeRabbit_1,2500);
         
         function changeRabbit_1(){
             
@@ -77,18 +80,15 @@ $(document).ready(function () {
 
         }
         
-        $(".rebbit_btn").mouseover(function(){
-            
-            if(!rbt){
+        $("#r_btn").mouseover(function(){
+
                 clearInterval(r_int);
-            
-                $(".rebbit_btn").css('cursor','default');
 
                 $("#rebbit_1").css('display', 'none');
 
                 $("#rebbit_2").css('display', 'none');
 
-                $("#rebbit_3").css({'display':'block','cursor':'default'});
+                $("#rebbit_3").css({'display':'block'});
 
                 $("#rebbit_3").append('<div id="midle_penis"></div>');
                 
@@ -99,11 +99,6 @@ $(document).ready(function () {
                 $("#rebbit_3").append('<div class="R_pocket" id="rt_pocket"></div>');
                 
                 $("#rebbit_3").append('<div class="R_pocket" id="rb_pocket"></div>');
-                
-                rbt = true;
-            }
-            
-            
         });
         
         $(".L_pocket").live('mouseover',function(){
@@ -127,11 +122,13 @@ $(document).ready(function () {
             $(eval(tid)).empty();
         });
         
-        $("#midle_penis").live('mousedown',function(){
+        $("#midle_penis").live('mouseover',function(){
+            
+            $("#rebbit_3").empty();
             
             $("#rebbit_3").css('display', 'none');
             
-            $("#rebbit_1").css({'display':'block','cursor':'pointer'});
+            $("#rebbit_1").css({'display':'block'});
                         
              r_int = setTimeout(changeRabbit_1,2500);
   
@@ -147,10 +144,6 @@ $(document).ready(function () {
         $("#barrel").mousedown(function(){
             document.location = "?act=faq";
         }); 
-        
-        $("#entry").mousedown(function(){
-            document.location.href = '?act=entry';
-        });
         
         function _statistic(){
             var scr_W = screen.width;

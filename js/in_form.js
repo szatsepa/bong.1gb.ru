@@ -3,7 +3,7 @@
  * and open the template in the editor.
  */
 $(document).ready(function () {
-     $("#main_0").css('background-image', 'url("../images/bg_1.png")');
+    
 	if (document.readyState != "complete"){
 		setTimeout( arguments.callee, 100 );
 		return;
@@ -23,16 +23,18 @@ $(document).ready(function () {
         $("#signin").hide();
         $("#remindPass").hide();
         $("div.error").hide();
-        $("div.message").hide()
-        $("#vrWrapper").css({'top':'320px','visibility':'visible'});
+        $("div.message").hide();
         
-        $("#signin").show(300, function(){
-                            $("#item_dscr").css('visibility', 'hidden');
-                            $("#items").css('visibility', 'hidden');
-                            $('#loginEmail').focus();
-                        });
-        
-// move=== движение форм ===
+        //   ========== суета вокруг корзины =================     
+
+// тыц по ссылке в виде емейла выведем подробное описание корзины 
+
+        $("#my_cart").mousedown(function(){
+            if(check){
+               document.location.href = '?act=cart'; 
+            }
+        });
+         // move=== движение форм ===
 
         $("#reg_l").mousedown(function(){
                 $("#signin").hide(300, function(){
@@ -219,7 +221,8 @@ $(document).ready(function () {
                     success:function(data){
                         var re = data['ok'];
                         if(re == 1){
-                            document.location.href = '?act=main'; 
+                            customer = data;
+                            checkCart(data['id']); 
                         }else{
                             $("#signin").hide(300, function(){
                                 $("#signup").show(300);
@@ -293,7 +296,65 @@ $(document).ready(function () {
         var reg = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
         return reg.test(email)
     }
+    
+//проверим содержимое корзины в плане общего количества и суммы
 
+    function checkCart(id){
+        
+        var id = id;
+        $.ajax({
+            url:'../query/check_cart.php',
+            type:'post',
+            dataType:'json',
+            data:{id:id},
+            success:function(data){
+                var cart = data;
+                $("#log_in").remove();
+                $("#in_cart").remove();
+                $("#cost").remove();
+                $("#indikator").hide();
+                $("#vrWrapper").css('visibility', 'hidden');
+                $("#my_cart").css({'visibility': 'visible'});
+                $("#my_cart").append("<p id='log_in' name='#'>"+customer['email']+"&nbsp;&nbsp;&nbsp;&nbsp;</p>");
+                if(data['amount'] != null){
+                    check = true;
+                  var num = _checkItems(cart['amount']);
+                  $("#my_cart").append("<p id='in_cart' name='#'>В корзине "+cart['amount']+" "+items[num]+"&nbsp;&nbsp;&nbsp;&nbsp;</p>");
+                  $("#my_cart").append("<p id='cost' name='#'>На сумму "+cart['cash']+" р.&nbsp;&nbsp;&nbsp;&nbsp;</p>");
+                }else{
+                    check = false;
+                   $("#my_cart").append("<p id='in_cart' name='#'>Корзина пустая.&nbsp;&nbsp;&nbsp;&nbsp;</p>"); 
+                }
+               return;
+            },
+            error:function(data){
+                document.write(data['response']);
+            }
+        });
+        
+        return;
+    }
+    
+
+  
+//функция боль мень правильного написание слова товар товаров товара
+
+    function _checkItems(items){
+        var items = items;
+        var str = items.toString();
+        str = str.substr(-1);
+        var sho = parseInt(str);
+        var num;
+        if(sho==1){
+            num = 0;
+        }else if(sho>1 && sho<5){
+            num = 1;
+        }else{
+            num = 2;
+        }
+        if(items>10 && items<21){
+            num = 2;
+        }
+        return num;
+    }
 });
-
-

@@ -5,34 +5,143 @@
     Description:
         Purpose of the stylesheet follows.
 */
-#my_cart{
+
+#r_btn{
+    cursor: pointer;
     position: relative;
-    width: 220px;
-    top: -1844px;
-    left: 720px;
-    text-align: left;
-    visibility: hidden;
+    width: 73px;
+    height: 140px;
+    top: -330px;
+    left: 156px;
+    z-index: 16;
 }
-#my_email{
+#storefront{
+    position: relative;
+    left: -3px;
+    top: -3px;
+    background-image:url('../images/storefront.png');
+    width: 228px;
+    height: 176px;
+    z-index: 1;
+}
+#barrel{
+    position: relative;
+    left: 864px;
+    top: -462px;
+    background-image:url('../images/barrel.png');
+    width: 122px;
+    height: 327px;
+    z-index: 3;
+    cursor: pointer;
+}
+#rabbit{
+   position: relative;
+    left: 390px;
+    top: -155px;
+    width: 395px;
+    height: 591px;
+    z-index: 12;
+    cursor: pointer;
     text-align: center;
     font-size: 14px;
-    color: gold;
+    font-weight: bold;
 }
-#in_cart{
-    text-align: right;
-    font-size: 14px;
-    color: gold;
-    
+#lt_pocket{
+   position: relative;
+    left: 59px;
+    top: 278px;
+    width: 53px;
+    height: 53px;
+
+    z-index: 4;
+    cursor: pointer;  
 }
-#log_in{
-    text-align: right;
-    font-size: 14px;
-    color: gold;
+#lb_pocket{
+   position: relative;
+    left: 67px;
+    top: 303px;
+    width: 53px;
+    height: 53px;
+
+    z-index: 5;
+    cursor: pointer;  
+}
+#rt_pocket{
+   position: relative;
+    left: 266px;
+    top: 157px;
+    width: 53px;
+    height: 53px;
+
+    z-index: 6;
+    cursor: pointer;  
+}
+#rb_pocket{
+   position: relative;
+    left: 266px;
+    top: 193px;
+    width: 53px;
+    height: 53px;
+
+    z-index: 7;
+    cursor: pointer;  
+}
+div.pocket{
+/*    background-color: blue;*/
+}
+#midle_penis{
+   position: relative;
+    left: 162px; 
+    top: 445px;
+    width: 53px;
+    height: 63px;
+/*    background-color: green;*/
+    z-index: 8;
+    cursor: pointer;  
+}
+#hint_l{
+    position: relative;
+    left: -282px; 
+    top: -276px;
+    width: 282px;
+    height: 276px;
+    opacity: 0;
+    background-image: url('../images/hint_l.png');
+    z-index: 9;
+}
+#hint_r{
+    position: relative;
+    left: 56px; 
+    top: -276px;
+    width: 282px;
+    height: 276px;
+    opacity: 0;
+    background-image: url('../images/hint_r.png');
+    z-index: 10;
+}
+div.rebbit_btn{
+    position: relative;
+    width: 398px;
+    height: 594px;
+    z-index: 2;
+}
+#rebbit_1{
+    display: block;
+    background-image: url('../images/rabbit_0.png');
+}
+#rebbit_2{
+    display: none;
+    background-image: url('../images/rabbit_1.png');
+}
+#rebbit_3{
+    display: none;
+    background-image: url('../images/rabbit_2.png');
+}
+#entry{
+    position: relative;
+    background-image: url('../images/entry.png');
+    width: 169px;
+    height: 65px;
+    z-index: 12;
     cursor: pointer;
-    text-decoration: underline;
-}
-#cost{
-    text-align: right;
-    font-size: 14px;
-    color: gold;
 }

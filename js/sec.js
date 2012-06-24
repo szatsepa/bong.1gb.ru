@@ -23,8 +23,10 @@ $(document).ready(function () {
         $("#signin").hide();
         $("#remindPass").hide();
         $("div.error").hide();
-        $("div.message").hide()
+        $("div.message").hide();
         $("#vrWrapper").css({'top':'-1700px','visibility':'hidden'});
+        
+//         $("#my_cart").css({'top': '-1155px','color':'black'});
        
 //клик по столу покажем товары
 
@@ -38,23 +40,16 @@ $(document).ready(function () {
 
         $("div.item").mouseover(function(){
             var id = this.id;
-            var coord = $(eval('"#'+id+'"')).offset();
-            var cX = coord['left'];
-            var cY = coord['top'];
-            $("#item_dscr").css({top:(cY-169),left:(cX-256)});
-            if(customer['id'] != undefined){
-                $("#item_dscr").css('visibility', 'visible');
-                $("#description").text(id);
+            $(eval('"#'+id+'"')).append('<div id="item_dscr"><p id="description"></p></div>');
+            $("#description").text(id);
 //                
-            }
+            
             
         });
 //        скроем описание
 
          $("div.item").mouseout(function(){
-            if(customer['id'] != undefined){
-                $("#item_dscr").css('visibility', 'hidden');
-            }
+           $("#item_dscr").remove();
             
         });
         
@@ -67,7 +62,7 @@ $(document).ready(function () {
                document.location.href = '?act=cart'; 
             }
         });
-        
+         
        
 //      при тыц по изображению товара если клиент определен ложим товар в корзину иначе формы регистрации - логинизации
 //        =======================================================

@@ -152,7 +152,7 @@ $("div.message").hide();
             if ((code != "") && (code == passAgain)) {
                 $("#indicator").show();
                 $.ajax({
-                    url: 'http://brioso-lab.ru/action/j_registration.php',
+                    url: '../action/registration.php',
                     type: 'post',
                     dataType: 'json',
                     data: {email:email,code:code},
@@ -182,7 +182,7 @@ $("div.message").hide();
             if ((email != "") && ValidEmail(email)) {
                 var uid = 0;
                 $.ajax({
-                    url: 'http://brioso-lab.ru/query/jauth.php',
+                    url: '../query/authorisation.php',
                     type: 'post',
                     dataType: 'json',
                     data: '&code='+code+'&email='+email,
@@ -220,7 +220,7 @@ $("div.message").hide();
             $("#indicator").show();
                     
             $.ajax({
-                url: 'http://brioso-lab.ru/query/reminde_password.php',
+                url: '../query/reminde.php',
                 type:'post',
                 dataType:'json',
                 data: {email:email},

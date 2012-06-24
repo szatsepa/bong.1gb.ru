@@ -45,9 +45,14 @@ switch ($_GET[act]) {
         include 'main/faq.php';
         break;
     
-    case 'entry':
-        include 'main/entry.php';
-        break;
+//    case 'entry':
+//        include 'main/entry.php';
+//        break;
+    
+     case "logout": 
+            include 'action/logout.php';
+            break;
+    
     
     default :
         header("location:?act=main");

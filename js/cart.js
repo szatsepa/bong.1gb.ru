@@ -35,16 +35,12 @@ $(document).ready(function () {
             var id = this.id;
             id = parseInt(id);
             var artikul = cart[id]['artikul'];
-//            window.opener.crossCart(customer['id']);
             changeCart(artikul,1);
         })
         $(".down").live('mousedown',function(){
-//            var w = 'crossCart';
-//            alert(window.opener[w]);
             var id = this.id;
             id = parseInt(id);
             var artikul = cart[id]['artikul'];
-//            window.opener.crossCart(customer['id']);
             changeCart(artikul,-1);
         })
         
@@ -91,10 +87,10 @@ $(document).ready(function () {
             $("#back_page").css('color', 'black');
         });
         $("#back_page").mousedown(function(){
-            document.location.href = '?act=sec';
+            history.back();
         });
         
-//  функция изменить корзину window.parent.my_func().
+//  функция изменить корзину 
 
         function changeCart(id,act){
             
@@ -187,17 +183,6 @@ $(document).ready(function () {
                 }
             });
         }
-
-//        function buildOrder(){
-//            $("#your_cart").remove();
-//            $("#order_body").empty();
-//            $("#order_form").css('display', 'block');
-//            for(var i in cart){
-//                var num = (parseInt(i)+1);
-//                $("#order_body").append('<div id="order_row_'+i+'" ></div>');
-//                $("#order_row_"+i).append('<div class="b_num"><p>'+num+'</p></div><div class="b_name"><p id="name_'+i+'">'+cart[i]['name']+'</p></div><div class="b_amount"><p id="amount_'+i+'" >'+cart[i]['amount']+'</p></div><div class="b_cost"><p id="cost_'+i+'" >'+cart[i]['cost']+'</p></div><div class="b_artikul"><p id="artikul_'+i+'">'+cart[i]['artikul']+'</p></div>');
-//            }
-//        }
         function saveOrder(){
             $.ajax({
                 url: '../action/add_order.php',
