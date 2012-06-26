@@ -6,19 +6,8 @@
  */
 ?>
 <script type="text/javascript">
-    var customer = new Object();
+    var bc = "<?php echo $_GET[b];?>";
 </script>
-<?php
-if(isset($user)){
-    ?>
-<script type="text/javascript">
-    
- var customer = {id:<?php echo $user->data[id];?>,name:'<?php echo $user->data[name];?>',surname:'<?php echo $user->data[surname];?>',email:'<?php echo $user->data[email];?>',phone:'<?php echo $user->data[phone];?>'};
-  
-</script>
-    <?php
-}
-?>
 <div id="order_form">
     <div id="order_title"></div>
     <div class="order_header">

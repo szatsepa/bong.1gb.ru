@@ -81,13 +81,13 @@ if (isset($parent_order) and $parent_order > 0) {
 
 mysql_query("DELETE FROM cart WHERE amount = 0");
 
-$out = array();
+$query = "SELECT SUM(c.amount) AS amount, SUM(c.amount*p.price) AS cash  FROM cart AS c, pricelist AS p   WHERE c.customer = $customer  AND p.artikul = c.artikul";
 
-$out['rows'] = $customer;
+$result = mysql_query($query);
 
-$out['query'] = $query1;
+$cart = mysql_fetch_assoc($result);
 
-echo json_encode($out);
+echo json_encode($cart);
 
 mysql_close(); 
 ?>

@@ -6,32 +6,10 @@
  */
 
 ?>
-<script type="text/javascript">
-    var customer = new Object();
-</script>
-<?php
-if(isset($user)){
-    ?>
-<script type="text/javascript">
-    
- var customer = {id:<?php echo $user->data[id];?>,name:'<?php echo $user->data[name];?>',surname:'<?php echo $user->data[surname];?>',email:'<?php echo $user->data[email];?>',phone:'<?php echo $user->data[phone];?>'};
-    
-</script>
-    <?php
-}
-?>
-<div id="s_rabbit">
-    
-</div>
-<div id="beaver">
-    
-</div>
-<div id="squirell">
-    
-</div>
-<div id="table">
-    
-</div>
+<div id="s_rabbit"></div>
+<div id="beaver"></div>
+<div id="squirell"></div>
+<div id="table"></div>
 <div id="items"> 
     <?php
     $row = 0;
@@ -48,9 +26,7 @@ if(isset($user)){
     }
     ?>
 </div>
-<div id="my_cart">
-
-</div>
+<div id="my_cart"></div>
 <?php
 include 'in_form.php';
 ?>

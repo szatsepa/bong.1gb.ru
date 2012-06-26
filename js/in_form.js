@@ -8,17 +8,18 @@ $(document).ready(function () {
 		setTimeout( arguments.callee, 100 );
 		return;
 	}
+        
 //если клиент определен проверяем и выводим его корзину================        
         if(customer['id'] || customer['id'] != undefined){
                 checkCart(customer['id']);
             }
 //начальные установки инициализация переменных
         var cart = new Object();
-        var check = false;
+//        var check = false;
         var items = new Array('товар','товара','товаров');
         
         $("#indicator").hide();
-        $("#closer").hide();
+        $("#closer").show();
         $("#signup").hide();
         $("#signin").hide();
         $("#remindPass").hide();
@@ -29,10 +30,15 @@ $(document).ready(function () {
 
 // тыц по ссылке в виде емейла выведем подробное описание корзины 
 
-        $("#my_cart").mousedown(function(){
-            if(check){
-               document.location.href = '?act=cart'; 
-            }
+        $("#log_in,#my_email,#in_cart,#cost").live('mousedown',function(){
+                var back = document.location.search;
+                back = back.substr(5);
+               document.location.href = '?act=cart&b='+back; 
+            
+        });
+        $("#in_out").live('mousedown',function(){
+            
+            document.location.href = '?act=logout';
         });
          // move=== движение форм ===
 
@@ -175,6 +181,7 @@ $(document).ready(function () {
         } else {
             if ((code != "") && (code == passAgain)) {
                 $("#indicator").show();
+                $("#closer").hide();
                 $.ajax({
                     url:'../action/registration.php',
                     type:'post',
@@ -198,6 +205,7 @@ $(document).ready(function () {
                 });
             } else {
                 $("#indicator").hide();
+                $("#closer").show();
                 ShowError(1);
             }
         }
@@ -208,6 +216,7 @@ $(document).ready(function () {
     function authUser(){
         
             $("#indicator").show();
+            $("#closer").hide();
             var  code = $('#loginPass').val();
             var  email = $('#loginEmail').val();
 
@@ -238,6 +247,7 @@ $(document).ready(function () {
             } else {
                 $('#error1').html(er[5]).slideDown(); 
                 $("#indicator").hide();
+                $("#closer").show();
             }
         }
         
@@ -249,7 +259,7 @@ $(document).ready(function () {
             ShowError(5);
         } else {
             $("#indicator").show();
-                    
+            $("#closer").hide();        
             $.ajax({
                 url:'../query/reminde.php',
                 type:'post',
@@ -264,6 +274,7 @@ $(document).ready(function () {
                     }else {
                         ShowError(4);
                         $("#indicator").hide();
+                        $("#closer").show();
                     } 
                 },
                 error:function(data){
@@ -300,7 +311,7 @@ $(document).ready(function () {
 //проверим содержимое корзины в плане общего количества и суммы
 
     function checkCart(id){
-        
+//        alert(id);
         var id = id;
         $.ajax({
             url:'../query/check_cart.php',
@@ -312,12 +323,13 @@ $(document).ready(function () {
                 $("#log_in").remove();
                 $("#in_cart").remove();
                 $("#cost").remove();
+                $("#in_out").remove();
                 $("#indikator").hide();
                 $("#vrWrapper").css('visibility', 'hidden');
                 $("#my_cart").css({'visibility': 'visible'});
                 $("#my_cart").append("<p id='log_in' name='#'>"+customer['email']+"&nbsp;&nbsp;&nbsp;&nbsp;</p>");
                 if(data['amount'] != null){
-                    check = true;
+//                    check = true;
                   var num = _checkItems(cart['amount']);
                   $("#my_cart").append("<p id='in_cart' name='#'>В корзине "+cart['amount']+" "+items[num]+"&nbsp;&nbsp;&nbsp;&nbsp;</p>");
                   $("#my_cart").append("<p id='cost' name='#'>На сумму "+cart['cash']+" р.&nbsp;&nbsp;&nbsp;&nbsp;</p>");
@@ -325,6 +337,7 @@ $(document).ready(function () {
                     check = false;
                    $("#my_cart").append("<p id='in_cart' name='#'>Корзина пустая.&nbsp;&nbsp;&nbsp;&nbsp;</p>"); 
                 }
+                $("#my_cart").append("<p id='in_out'><a id='logaut' name='#'>Выйти</a></p>"); 
                return;
             },
             error:function(data){

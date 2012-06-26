@@ -83,7 +83,7 @@ $(document).ready(function () {
         $("#back_page").mouseover(function(){
             $("#back_page").css('color', 'blueviolet');
         });
-        $("#to_order").mouseout(function(){
+        $("#back_page").mouseout(function(){
             $("#back_page").css('color', 'black');
         });
         $("#back_page").mousedown(function(){
@@ -123,32 +123,36 @@ $(document).ready(function () {
                 dataType:'json',
                 data:{customer:id},
                 success:function(data){
-                    $("#order_form").css('display', 'none');
-                    
-                    $("#your_cart").remove();
-                    var summ_cash = 0;
-                    cart = data;
-                   $("#main_0").append('<div id="your_cart"></div>');
+                    if(data.length == 0){
+                        document.location.href='?act='+bc;
+                    }else{
+                        $("#order_form").css('display', 'none');
+                        $("#your_cart").remove();
+                        var summ_cash = 0;
+                        cart = data;
+                        $("#main_0").append('<div id="your_cart"></div>');
 
-                    for(var i in cart){
-                        $("#your_cart").append('<div class="row_cart"><div class="image_cart"><img id="image_c'+i+'" src="" alt=""/></div><div class="item_name"><p  id="name_c'+i+'" ></p></div><div class="item_price"><p id="price_c'+i+'" ></p></div><div class="up_down"><div class="up"  id="'+i+'_up" ></div><div class="amount"><p id="amount_c'+i+'" ></p></div><div class="down"  id="'+i+'_down" ></div></div><div class="item_cash"><p id="cash_c'+i+'" ></p></div></div>');
-                        $("#image_c"+i).attr({src:'../images/items/'+cart[i]['img'],alt:cart[i]['artikul']});
-                        $("#name_c"+i).text(cart[i]['name']);
-                        $("#price_c"+i).text(cart[i]['price']);
-                        $("#amount_c"+i).text(cart[i]['amount']);
-                        $("#cash_c"+i).text(cart[i]['cost']);
-                       summ_cash += parseInt(cart[i]['cost']);
+                        for(var i in cart){
+                            $("#your_cart").append('<div class="row_cart"><div class="image_cart"><img id="image_c'+i+'" src="" alt=""/></div><div class="item_name"><p  id="name_c'+i+'" ></p></div><div class="item_price"><p id="price_c'+i+'" ></p></div><div class="up_down"><div class="up"  id="'+i+'_up" ></div><div class="amount"><p id="amount_c'+i+'" ></p></div><div class="down"  id="'+i+'_down" ></div></div><div class="item_cash"><p id="cash_c'+i+'" ></p></div></div>');
+                            $("#image_c"+i).attr({src:'../images/items/'+cart[i]['img'],alt:cart[i]['artikul']});
+                            $("#name_c"+i).text(cart[i]['name']);
+                            $("#price_c"+i).text(cart[i]['price']);
+                            $("#amount_c"+i).text(cart[i]['amount']);
+                            $("#cash_c"+i).text(cart[i]['cost']);
+                            summ_cash += parseInt(cart[i]['cost']);
+                        }
+
+                        $("#your_cart").append('<div class="row_cart"><div class="image_cart"><img id="image_c" src="" alt=""/></div><div class="item_name"><p  id="name_c" ></p></div><div class="item_price"><p id="price_c" ></p></div><div class="up_down"><div class="amount" id="amount"><p id="amount_c" ></p></div></div><div class="item_cash"><p id="cash_c" ></p></div></div>');
+                        $("#amount_c").text("Итого:");
+                        $("#amount").css({'top':'32px'});
+                        $("#amount_c").css({'font-size':'16px','font-weight':'bold'});
+                        $("#cash_c").text(summ_cash+" p.");
+                        $("#cash_c").css({'font-size':'16px','font-weight':'bold'});
+                        $("#your_cart").append('<div class="cr_order"><a name="#" id="crt_order">Оформить заказ</a></div>');
+                        var h = $(document).height();
+                        $("#your_cart").css({'background-color':'gold','height':h}); 
                     }
                     
-                    $("#your_cart").append('<div class="row_cart"><div class="image_cart"><img id="image_c" src="" alt=""/></div><div class="item_name"><p  id="name_c" ></p></div><div class="item_price"><p id="price_c" ></p></div><div class="up_down"><div class="amount" id="amount"><p id="amount_c" ></p></div></div><div class="item_cash"><p id="cash_c" ></p></div></div>');
-                    $("#amount_c").text("Итого:");
-                    $("#amount").css({'top':'32px'});
-                    $("#amount_c").css({'font-size':'16px','font-weight':'bold'});
-                    $("#cash_c").text(summ_cash+" p.");
-                    $("#cash_c").css({'font-size':'16px','font-weight':'bold'});
-                    $("#your_cart").append('<div class="cr_order"><a name="#" id="crt_order">Оформить заказ</a></div>');
-                    var h = $(document).height();
-                    $("#your_cart").css({'background-color':'gold','height':h});
                    return;
                 },
                 error:function(data){
@@ -190,8 +194,8 @@ $(document).ready(function () {
                 dataType:'json',
                 data:{customer:customer['id'],email:customer['email'],shipment:$("#shipment").val(),phone:$("#phone").val(),comment:document.getElementById('comment').value},
                 success:function(data){
-                      var order = data['z_id'];
-                      itemAddOrder(order);
+                        var order = data['z_id'];
+                        itemAddOrder(order);
                 }
             });
         }
