@@ -19,7 +19,7 @@ $(document).ready(function () {
         var items = new Array('товар','товара','товаров');
         
         $("#indicator").hide();
-        $("#closer").show();
+        $("#closer").hide();
         $("#signup").hide();
         $("#signin").hide();
         $("#remindPass").hide();

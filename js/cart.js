@@ -11,7 +11,8 @@ $(document).ready(function () {
         
          $(".main").css({'background-color':'gold'});
          $("#main_0").css({'background-image':'none','background-color':'gold'});
-         
+         $("#prelo").css('display','none');
+//         $("#main_0").css({'visibility':'visible'});
          var h = $(document).height();
                   
          $("#main_0").css('height', h);

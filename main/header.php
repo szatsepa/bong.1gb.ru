@@ -44,4 +44,9 @@ if(isset($user)){
 }
  ?>
         <div class="main"> 
+<!--            <div id="prelo">
+                <div id="img_p" style="">
+                    <img src="../images/indicator_load.gif"/>
+                </div>
+            </div>-->
                 <div id="main_0"> 

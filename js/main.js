@@ -7,7 +7,7 @@ $(document).ready(function () {
     
         if (document.readyState != "complete"){
              
-		setTimeout( arguments.callee, 100 );
+		setTimeout( arguments.callee, 300 );
 		return;
 	}
         
@@ -20,21 +20,41 @@ $(document).ready(function () {
         }
         
         var rbt = false;
+        
                 
-        $("#storefront").css('visibility','hidden');
+        $("#prelo").css('display','none');
         
         $(".rebbit_btn").css('cursor', 'pointer');
         
         $("#vrWrapper").css({'top':'-1100px','left':'147px','visibility':'hidden'});
         
          $("#my_cart").css({'top': '-1155px','color':'black'});
-                 
+         
+//         $("#main_0").css({'visibility':'visible'});
+         
+         $("#storefront").css({'background-image':"url('../images/storefront.png')"});
+         
+         $("#rebbit_1").css({'background-image':"url('../images/rabbit_0.png')"});
+         
+         $("#rebbit_2").css({'background-image':"url('../images/rabbit_1.png')"});
+         
+         $("#rebbit_3").css({'background-image':"url('../images/rabbit_2.png')"});
+         
+         $("#entry").css({'background-image':"url('../images/entry.png')"});
+         
+         $("#barrel").css({'background-image':"url('../images/barrel.png')"});
+         
+         $("#hint_l").css({'background-image':"url('../images/hint_l.png')"});
+         
+         $("#hint_r").css({'background-image':"url('../images/hint_r.png')"});
+         
+               
         $("#entry").mousedown(function(){
             
             if(!customer['id'] || customer['id'] == undefined){
                 
                     $("#vrWrapper").css('visibility','visible');
-
+                    $("#closer").show();
                     $("#signin").show(300, function(){
                         $('#loginEmail').focus();
                     });
