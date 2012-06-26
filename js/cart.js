@@ -11,8 +11,7 @@ $(document).ready(function () {
         
          $(".main").css({'background-color':'gold'});
          $("#main_0").css({'background-image':'none','background-color':'gold'});
-         $("#prelo").css('display','none');
-//         $("#main_0").css({'visibility':'visible'});
+         
          var h = $(document).height();
                   
          $("#main_0").css('height', h);
@@ -195,8 +194,8 @@ $(document).ready(function () {
                 dataType:'json',
                 data:{customer:customer['id'],email:customer['email'],shipment:$("#shipment").val(),phone:$("#phone").val(),comment:document.getElementById('comment').value},
                 success:function(data){
-                        var order = data['z_id'];
-                        itemAddOrder(order);
+                      var order = data['z_id'];
+                      itemAddOrder(order);
                 }
             });
         }

@@ -19,7 +19,7 @@ $(document).ready(function () {
         var items = new Array('товар','товара','товаров');
         
         $("#indicator").hide();
-        $("#closer").hide();
+//        $("#closer").show(400);
         $("#signup").hide();
         $("#signin").hide();
         $("#remindPass").hide();
@@ -32,7 +32,7 @@ $(document).ready(function () {
 
         $("#log_in,#my_email,#in_cart,#cost").live('mousedown',function(){
                 var back = document.location.search;
-                back = back.substr(5);
+                back = back.substr(4);
                document.location.href = '?act=cart&b='+back; 
             
         });

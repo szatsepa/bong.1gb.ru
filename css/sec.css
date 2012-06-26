@@ -10,7 +10,7 @@
     width: 512px;
     height: 521px;
     top: 220px;
-/*    background-image: url('../images/rabbit_s.png');*/
+    background-image: url('../images/rabbit_s.png');
     background-repeat: no-repeat;
     z-index: 1;
 }
@@ -20,7 +20,7 @@
     height: 521px;
     top: -310px;
     left: 512px;
-/*    background-image: url('../images/beaver.png');*/
+    background-image: url('../images/beaver.png');
     background-repeat: no-repeat;
     z-index: 3;
 }
@@ -30,7 +30,7 @@
     height: 445px;
     top: -1000px;
     left: 272px;
-/*    background-image: url('../images/squirell.png');*/
+    background-image: url('../images/squirell.png');
     background-repeat: no-repeat;
     z-index: 2;
 }
@@ -40,7 +40,7 @@
     height: 211px;
     top: -1000px;
     left: 352px;
-/*    background-image: url('../images/table.png');*/
+    background-image: url('../images/table.png');
     background-repeat: no-repeat;
     cursor: pointer;
     z-index: 4;  

@@ -12,19 +12,9 @@ $(document).ready(function () {
         var first = false;
         
         $("#main_0").css('background-image', 'url("../images/bg_1.png")');
-        
-        $("#s_rabbit").css('background-image', 'url("../images/rabbit_s.png")');
-        
-        $("#beaver").css('background-image', 'url("../images/beaver.png")');
-        
-        $("#squirell").css('background-image', 'url("../images/squirell.png")');
-        
-        $("#table").css('background-image', 'url("../images/table.png")');
-        
-        $("#prelo").css('display','none');
-        
-//        $("#main_0").css({'visibility':'visible'});
-        
+        $("#vrWrapper").css('visibility','visible');
+        $("#vrWrapper").css('display','none');
+
 ////клик по столу покажем товары
 
         $("#table").mouseover(function(){
@@ -58,12 +48,14 @@ $(document).ready(function () {
                 
                        _addCart(id);
                 }else{
-                        $("#vrWrapper").css('visibility','visible');
-                        $("#closer").show();
+//                        $("#vrWrapper").css('visibility','visible');
+                        $("#vrWrapper").css('display','block');
+
                         $("#signin").show(300, function(){
                             $("#item_dscr").css('visibility', 'hidden');
                             $("#items").css('visibility', 'hidden');
                             $('#loginEmail').focus();
+                            $("#closer").show(50);
                         });
 
                     }
