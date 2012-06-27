@@ -8,7 +8,7 @@
     left:320px;
     top: -1700px;
     overflow: hidden;
-    z-index: 16;
+/*    z-index: 16;*/
 /*    visibility: hidden;*/
     color: black;
 }
@@ -70,19 +70,17 @@
     top: 25px;
     background: url('../images/ajax-loader.gif') left top no-repeat;
 }
-#closer
+.closer
 {
     width: 18px;
     height: 18px;
-    position: absolute;
-    right: 43px;
-    top: 35px;
-/*    background-color: #f00;*/
+    position: relative;
+    left: 256px;
+    top: -17px;
     text-align: center;
     font-size: 13px;
     font-weight: bold;
     cursor: pointer;
-/*    outline: 1px solid grey;*/
 }
 .buttonDiv
 {
@@ -125,5 +123,8 @@
 }
 #a_user{
     color: black;
+    cursor: pointer;
+}
+#log_in,#in_cart,#cost{
     cursor: pointer;
 }

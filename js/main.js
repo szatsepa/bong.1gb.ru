@@ -34,7 +34,6 @@ $(document).ready(function () {
             if(!customer['id'] || customer['id'] == undefined){
                 
                     $("#vrWrapper").css('visibility','visible');
-
                     $("#signin").show(300, function(){
                         $('#loginEmail').focus();
                     });

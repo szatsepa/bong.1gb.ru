@@ -10,7 +10,11 @@ root {
     display: block;
 }
 body{
-    background-color: gold;
+/*    background-image: url("http://bong.1gb.ru/images/bg_1.png"); */
+    background-color: yellow;
+/*    opacity: 0.32; */
+    background-repeat: repeat-y;
+    z-index: 0;
 }
 #your_cart{
     position: relative;
@@ -19,7 +23,8 @@ body{
     top: 0px;
     z-index: 1;
     visibility: visible;
-    opacity: 0.86;
+    opacity: 1.0;
+    z-index: 2;
 } 
 div.row_cart{
     position:relative;
@@ -116,7 +121,7 @@ div.cr_order{
     font-weight: bold;
     color: black;
     text-align: center;
-    background-color: gold;
+/*    background-color: gold;*/
 }
 #o_order{
     width:520px;

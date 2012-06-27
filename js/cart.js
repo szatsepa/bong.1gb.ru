@@ -9,14 +9,12 @@ $(document).ready(function () {
 		return;
 	}
         
-         $(".main").css({'background-color':'gold'});
-         $("#main_0").css({'background-image':'none','background-color':'gold'});
+         $(".main").css({'opacity':'1.0'});
+//         $("#main_0").css({'background-image':'url("../images/bg_1.png")','opacity':'0.72','background-repeat':'repeat-y'});
          
          var h = $(document).height();
                   
          $("#main_0").css('height', h);
-         
-         
          
          //начальные установки инициализация переменных
         var cart = new Object();
@@ -87,7 +85,7 @@ $(document).ready(function () {
             $("#back_page").css('color', 'black');
         });
         $("#back_page").mousedown(function(){
-            history.back();
+            document.location='?act='+bc;
         });
         
 //  функция изменить корзину 
@@ -124,7 +122,7 @@ $(document).ready(function () {
                 data:{customer:id},
                 success:function(data){
                     if(data.length == 0){
-                        document.location.href='?act='+bc;
+                        document.location='?act='+bc;
                     }else{
                         $("#order_form").css('display', 'none');
                         $("#your_cart").remove();
@@ -150,7 +148,7 @@ $(document).ready(function () {
                         $("#cash_c").css({'font-size':'16px','font-weight':'bold'});
                         $("#your_cart").append('<div class="cr_order"><a name="#" id="crt_order">Оформить заказ</a></div>');
                         var h = $(document).height();
-                        $("#your_cart").css({'background-color':'gold','height':h}); 
+                        $("#your_cart").css({'background':'none','height':h}); 
                     }
                     
                    return;
@@ -208,7 +206,7 @@ $(document).ready(function () {
                 dataType:'json', 
                 data:{cart:my_cart,order:ord,customer:customer['id']},
                 success:function(data){
-                    if(data['out']!=0)document.location.href='../index.php?act=sec';
+                    if(data['out']!=0)document.location='?act='+bc;
                 }
             });
         }

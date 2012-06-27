@@ -12,8 +12,6 @@ $(document).ready(function () {
         var first = false;
         
         $("#main_0").css('background-image', 'url("../images/bg_1.png")');
-        $("#vrWrapper").css('visibility','visible');
-        $("#vrWrapper").css('display','none');
 
 ////клик по столу покажем товары
 
@@ -44,46 +42,38 @@ $(document).ready(function () {
         
         $("div.item").mousedown(function(){
             var id = this.id;
-            if(customer['id'] != undefined){
-                
-                       _addCart(id);
-                }else{
-//                        $("#vrWrapper").css('visibility','visible');
-                        $("#vrWrapper").css('display','block');
+            if(customer['id'] != undefined){                
+                        var artikul = id;
+                        var customer_id = customer['id'];
+                        $.ajax({
+                        url:'../action/add_cart.php',
+                        type:'post',
+                        dataType:'json',
+                        data:{artikul:artikul,customer:customer_id},
+                        success:function(data){                   
+                                var cart = data;
+                                var items = _checkItems(cart['amount']);
+                                $('#in_cart').text("В корзине "+cart['amount']+" "+items);
+                                $("#cost").text("На сумму "+cart['cash']+" р.");
+                        },
+                        error:function(data){
+                            document.write(data['response']); 
+                        }
 
-                        $("#signin").show(300, function(){
-                            $("#item_dscr").css('visibility', 'hidden');
-                            $("#items").css('visibility', 'hidden');
-                            $('#loginEmail').focus();
-                            $("#closer").show(50);
                         });
+//                       _addCart(id);
+                }else{
+                    
+                    $("#vrWrapper").css({'z-index': '16'});
+                    
+                    $("#vrWrapper").css('visibility','visible');
 
+                    $("#signin").show(300, function(){
+                        $('#loginEmail').focus();
+                    });
                     }
         }); 
-        //    добавим товар в корзину
-
-    function _addCart(id){ 
-        
-        var artikul = id;
-        var customer_id = customer['id'];
-        $.ajax({
-           url:'../action/add_cart.php',
-           type:'post',
-           dataType:'json',
-           data:{artikul:artikul,customer:customer_id},
-           success:function(data){                   
-                var cart = data;
-                var items = _checkItems(cart['amount']);
-                $('#in_cart').text("В корзине "+cart['amount']+" "+items);
-                $("#cost").text("На сумму "+cart['cash']+" р.");
-           },
-           error:function(data){
-               document.write(data['response']); 
-           }
-           
-        });
-        
-    }
+ 
     //функция боль мень правильного написание слова товар товаров товара
 
     function _checkItems(items){

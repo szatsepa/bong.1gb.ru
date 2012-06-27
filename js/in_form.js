@@ -15,11 +15,8 @@ $(document).ready(function () {
             }
 //начальные установки инициализация переменных
         var cart = new Object();
-//        var check = false;
-        var items = new Array('товар','товара','товаров');
         
         $("#indicator").hide();
-//        $("#closer").show(400);
         $("#signup").hide();
         $("#signin").hide();
         $("#remindPass").hide();
@@ -30,15 +27,18 @@ $(document).ready(function () {
 
 // тыц по ссылке в виде емейла выведем подробное описание корзины 
 
+        
+
         $("#log_in,#my_email,#in_cart,#cost").live('mousedown',function(){
                 var back = document.location.search;
-                back = back.substr(4);
+                back = back.substr(5);
                document.location.href = '?act=cart&b='+back; 
             
         });
         $("#in_out").live('mousedown',function(){
-            
-            document.location.href = '?act=logout';
+                    if(confirm("Действительно выйти?")){
+                            document.location.href = '?act=logout';
+                        }
         });
          // move=== движение форм ===
 
@@ -90,7 +90,8 @@ $(document).ready(function () {
         
 // еси не надо закроем формы
 
-        $("#closer").mousedown(function(){
+        $("div.closer").mousedown(function(){
+            $("#signin, #signup, #remindPass").toggle();
             $("#vrWrapper").css('visibility', 'hidden');
         });
     
@@ -181,7 +182,7 @@ $(document).ready(function () {
         } else {
             if ((code != "") && (code == passAgain)) {
                 $("#indicator").show();
-                $("#closer").hide();
+                
                 $.ajax({
                     url:'../action/registration.php',
                     type:'post',
@@ -192,7 +193,7 @@ $(document).ready(function () {
                         if(re == 1){
                             ShowMessage(1);
                             $("#indicator").hide();
-                            $("#closer").show();
+                            
                         }else{
                             ShowError(2);
                             $("#indicator").hide();
@@ -205,7 +206,7 @@ $(document).ready(function () {
                 });
             } else {
                 $("#indicator").hide();
-                $("#closer").show();
+                
                 ShowError(1);
             }
         }
@@ -216,7 +217,7 @@ $(document).ready(function () {
     function authUser(){
         
             $("#indicator").show();
-            $("#closer").hide();
+            
             var  code = $('#loginPass').val();
             var  email = $('#loginEmail').val();
 
@@ -232,6 +233,7 @@ $(document).ready(function () {
                         if(re == 1){
                             customer = data;
                             checkCart(data['id']); 
+                            $("#vrWrapper").css('display','none');
                         }else{
                             $("#signin").hide(300, function(){
                                 $("#signup").show(300);
@@ -247,7 +249,7 @@ $(document).ready(function () {
             } else {
                 $('#error1').html(er[5]).slideDown(); 
                 $("#indicator").hide();
-                $("#closer").show();
+                
             }
         }
         
@@ -259,7 +261,7 @@ $(document).ready(function () {
             ShowError(5);
         } else {
             $("#indicator").show();
-            $("#closer").hide();        
+                    
             $.ajax({
                 url:'../query/reminde.php',
                 type:'post',
@@ -270,11 +272,11 @@ $(document).ready(function () {
                     if(re == 1){
                         ShowMessage(0);
                         $("#indicator").hide();                       
-                        $("#closer").show();
+                        
                     }else {
                         ShowError(4);
                         $("#indicator").hide();
-                        $("#closer").show();
+                        
                     } 
                 },
                 error:function(data){
@@ -320,24 +322,26 @@ $(document).ready(function () {
             data:{id:id},
             success:function(data){
                 var cart = data;
-                $("#log_in").remove();
-                $("#in_cart").remove();
-                $("#cost").remove();
-                $("#in_out").remove();
+//                $("#log_in").remove();
+//                $("#in_cart").remove();
+//                $("#cost").remove();
+//                $("#in_out").remove();
+                $("#my_cart").empty();
                 $("#indikator").hide();
                 $("#vrWrapper").css('visibility', 'hidden');
                 $("#my_cart").css({'visibility': 'visible'});
                 $("#my_cart").append("<p id='log_in' name='#'>"+customer['email']+"&nbsp;&nbsp;&nbsp;&nbsp;</p>");
                 if(data['amount'] != null){
 //                    check = true;
-                  var num = _checkItems(cart['amount']);
-                  $("#my_cart").append("<p id='in_cart' name='#'>В корзине "+cart['amount']+" "+items[num]+"&nbsp;&nbsp;&nbsp;&nbsp;</p>");
+                  var items = _checkItems(cart['amount']);
+                  $("#my_cart").append("<p id='in_cart' name='#'>В корзине "+cart['amount']+" "+items+"&nbsp;&nbsp;&nbsp;&nbsp;</p>");
                   $("#my_cart").append("<p id='cost' name='#'>На сумму "+cart['cash']+" р.&nbsp;&nbsp;&nbsp;&nbsp;</p>");
                 }else{
                     check = false;
                    $("#my_cart").append("<p id='in_cart' name='#'>Корзина пустая.&nbsp;&nbsp;&nbsp;&nbsp;</p>"); 
                 }
                 $("#my_cart").append("<p id='in_out'><a id='logaut' name='#'>Выйти</a></p>"); 
+                $("#log_in,#in_cart,#cost").css({'cursor':'pointer'});
                return;
             },
             error:function(data){
@@ -353,6 +357,7 @@ $(document).ready(function () {
 //функция боль мень правильного написание слова товар товаров товара
 
     function _checkItems(items){
+        var items_arr = new Array('товар','товара','товаров');
         var items = items;
         var str = items.toString();
         str = str.substr(-1);
@@ -368,6 +373,6 @@ $(document).ready(function () {
         if(items>10 && items<21){
             num = 2;
         }
-        return num;
+        return items_arr[num];
     }
 });
