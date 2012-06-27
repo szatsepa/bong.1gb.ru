@@ -100,6 +100,13 @@ div.pocket{
     z-index: 8;
     cursor: pointer;  
 }
+.hint{
+    font-size: 22px;
+    font-weight: bold;
+/*    color: white;*/
+/*    padding-top: 73px;*/
+    text-align: center;
+}
 #hint_l{
     position: relative;
     left: -282px; 
@@ -119,6 +126,15 @@ div.pocket{
     opacity: 0;
     background-image: url('../images/hint_r.png');
     z-index: 10;
+}
+.text_hint{
+    position: relative;
+    width: 147px;
+    height: 66px;
+    margin: auto;
+    top: 86px;
+/*    outline: 1px solid red;
+    background-color: greenyellow;*/
 }
 div.rebbit_btn{
     position: relative;

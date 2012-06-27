@@ -100,9 +100,14 @@ $(document).ready(function () {
                 $("#rebbit_3").append('<div class="R_pocket" id="rb_pocket"></div>');
         });
         
+        var Pockets = new Object({'lt_pocket':'Перейти к витрине','rt_pocket':'Закупки','rb_pocket':'Доставка','lb_pocket':'Медпункт'});
+        
+        var Pages = new Object({'lt_pocket':'?act=sec','rt_pocket':'?act=sale','rb_pocket':'?act=move','lb_pocket':'?act=med'});
+        
         $(".L_pocket").live('mouseover',function(){
             var tid = this.id;
-            $(eval(tid)).append('<div id="hint_l"><br/><br/><br/>Text?</div>');
+            $(eval(tid)).append('<div class="hint" id="hint_l"><div class="text_hint"><p id="p_link"></p></div></div>');
+            $("#p_link").text(Pockets[tid]);
             $("#hint_l").animate({opacity:0.6},1200,'linear');
         });
         $(".L_pocket").live('mouseout',function(){
@@ -113,7 +118,8 @@ $(document).ready(function () {
         
         $(".R_pocket").live('mouseover',function(){
             var tid = this.id;
-            $(eval(tid)).append('<div id="hint_r"><br/><br/><br/>Text?</div>');
+            $(eval(tid)).append('<div class="hint" id="hint_r"><div class="text_hint"><p id="p_link"></p></div></div>');
+            $("#p_link").text(Pockets[tid]);
             $("#hint_r").animate({opacity:0.6},1200,'linear');
         });
         $(".R_pocket").live('mouseout',function(){
@@ -134,10 +140,12 @@ $(document).ready(function () {
         });
        
         $(".L_pocket").live('mousedown',function(){
-           document.location = "?act=sec"; 
+            var tid = this.id;
+            document.location = Pages[tid]; 
         });
         $(".R_pocket").live('mousedown',function(){
-           document.location = "?act=sec"; 
+            var tid = this.id;
+            document.location = Pages[tid]; 
         });
         
         $("#barrel").mousedown(function(){

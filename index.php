@@ -45,9 +45,17 @@ switch ($_GET[act]) {
         include 'main/faq.php';
         break;
     
-//    case 'entry':
-//        include 'main/entry.php';
-//        break;
+    case 'sale':
+        include 'main/sale.php';
+        break;
+    
+    case 'move':
+        include 'main/move.php';
+        break;
+    
+    case 'med':
+        include 'main/med.php';
+        break;
     
      case "logout": 
             include 'action/logout.php';
