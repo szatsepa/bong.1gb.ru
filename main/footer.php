@@ -9,5 +9,11 @@
 <div class="footer">
 <!--    <a class="footer" href="http://7905415.ru" target="_blank">kuznetsoff &#169; laboratory-2012</a>-->
 </div>
+
     </body>
+
+
 </html>
+<script type='text/javascript'>
+    QueryLoader.init();
+</script>

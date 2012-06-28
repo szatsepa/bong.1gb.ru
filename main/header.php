@@ -23,7 +23,7 @@ header('Content-Type: text/html; charset=utf-8');
         <script type="text/javascript" src="../js/my_request.js"></script>
         <script type="text/javascript" src="../js/in_form.js"></script>
         <script type="text/javascript" src="../js/<?php echo $_GET[act];?>.js"></script>
-        <script type="text/javascript" src="../js/img_load.js"></script>
+        <script type="text/javascript" src="../js/queryLoader.js"></script>
         
 </head>
     <body onload="">

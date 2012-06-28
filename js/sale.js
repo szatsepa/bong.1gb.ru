@@ -13,13 +13,8 @@ $(document).ready(function () {
 	}
 
 
-    $("#main_0").css({'background-image': "url('../images/purchases.jpg')"}).bindImageLoad(function () {
-            $("#main_0").css({'background-image':'none'});
-        }).css({'margin-top':'0 auto'});
-//    .css({'margin-top':'0 auto'});
-
-    
-
-//         $("#main_0").css({'background-image': "url('../images/purchases.jpg')",'margin-top':'0 auto'});
+    $("#main_0").css({'background-image': "url('../images/purchases.jpg')"}).css({'margin-top':'0 auto','zoom':'100%'});
+        
+        $(document.body).bind("load", function(){alert("Sho pizdets");}); 
 });
 
