@@ -11,7 +11,7 @@ $(document).ready(function () {
 		return;
 	}
         
-        $("#main_0").css({'background-image': "url('../images/bg.png')",'margin-top':'0 auto'});
+//        $("#main_0").css({'background-image': "url('../images/bg.png')",'margin-top':'0 auto'});
         
         var stat = false;
         
@@ -33,7 +33,7 @@ $(document).ready(function () {
             
             if(!customer['id'] || customer['id'] == undefined){
                 
-                    $("#vrWrapper").css('visibility','visible');
+                    $("#vrWrapper").css({'z-index':'16','visibility':'visible'});
                     $("#signin").show(300, function(){
                         $('#loginEmail').focus();
                     });

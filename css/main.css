@@ -5,7 +5,13 @@
     Description:
         Purpose of the stylesheet follows.
 */
-
+#main_0{
+    width: 1023px;
+    height: 730px;
+    z-index: 0;
+    visibility: visible;
+    background-image: url('../images/bg.png');
+}
 #r_btn{
     cursor: pointer;
     position: relative;

@@ -11,7 +11,7 @@ $(document).ready(function () {
         
         var first = false;
         
-        $("#main_0").css('background-image', 'url("../images/bg_1.png")');
+//        $("#main_0").css('background-image', 'url("../images/bg_1.png")');
 
 ////клик по столу покажем товары
 

@@ -5,6 +5,14 @@
     Description:
         Purpose of the stylesheet follows.
 */
+#main_s{
+    width: 1023px;
+    height: 730px;
+    z-index: 0;
+    visibility: visible;
+    background-image: url('../images/bg_1.png');
+}
+
 #s_rabbit{
     position: relative;
     width: 512px;

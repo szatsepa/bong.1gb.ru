@@ -9,9 +9,9 @@ $(document).ready(function () {
 		return;
 	}
     
-   $("#main_0").css({'background-image': "url('../images/faq_bg.png')"});
-   
-   $("#prelo").css('display','none');   
+//   $("#main_0").css({'background-image': "url('../images/faq_bg.png')"});
+//   
+//   $("#prelo").css('display','none');   
         
 });
 

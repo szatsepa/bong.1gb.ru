@@ -9,6 +9,6 @@ $(document).ready(function () {
 		setTimeout( arguments.callee, 100 );
 		return;
 	}
-         $("#main_0").css({'background-image': "url('../images/delivery.jpg')",'margin-top':'0 auto'});
+//         $("#main_0").css({'background-image': "url('../images/delivery.jpg')",'margin-top':'0 auto'});
 });
 

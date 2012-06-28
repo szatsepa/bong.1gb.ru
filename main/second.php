@@ -6,6 +6,7 @@
  */
 
 ?>
+<div id="main_s">
 <div id="s_rabbit"></div>
 <div id="beaver"></div>
 <div id="squirell"></div>
@@ -30,3 +31,4 @@
 <?php
 include 'in_form.php';
 ?>
+</div>

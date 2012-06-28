@@ -14,6 +14,7 @@ var QueryLoader = {
 	loadBar: "",
 	preloader: "",
 	items: new Array(),
+        tmp_items: new Array(),
 	doneStatus: 0,
 	doneNow: 0,
 	selectorPreload: "body",
@@ -58,20 +59,21 @@ var QueryLoader = {
 	getImages: function(selector) {
 		var everything = $(selector).find("*:not(script)").each(function() {
 			var url = "";
-			
+			var obj = new Object();
+                        
 			if ($(this).css("background-image") != "none") {
-				var url = $(this).css("background-image");
-			} else if (typeof($(this).attr("src")) != "undefined" && $(this).attr("tagName").toLowerCase() == "img") {
-				var url = $(this).attr("src");
+				url = $(this).css("background-image");
+			} else if (typeof($(this).attr("src")) != "undefined") {
+				url = $(this).attr("src");
 			}
 			
 			url = url.replace("url(\"", "");
 			url = url.replace("url(", "");
 			url = url.replace("\")", "");
 			url = url.replace(")", "");
-			
 			if (url.length > 0) {
-				QueryLoader.items.push(url);
+                                obj['url'] = url;
+				QueryLoader.items .push(obj);
 			}
 		});
 	},
@@ -86,12 +88,11 @@ var QueryLoader = {
 		
 		var length = QueryLoader.items.length; 
 		QueryLoader.doneStatus = length;
-		
-		for (var i = 0; i < length; i++) {
+                for (var i = 0; i < length; i++) {
 			var imgLoad = $("<img></img>");
-			$(imgLoad).attr("src", QueryLoader.items[i]);
+			$(imgLoad).attr("src", QueryLoader.items[i]['url']);
 			$(imgLoad).unbind("load");
-			$(imgLoad).bind("load", function() {
+			$(imgLoad).bind("load", function() { 
 				QueryLoader.imgCallback();
 			});
 			$(imgLoad).appendTo($(QueryLoader.preloader));
@@ -99,14 +100,17 @@ var QueryLoader = {
 	},
 
 	spawnLoader: function() {
+            var width;
+            var height;
+            var position;
 		if (QueryLoader.selectorPreload == "body") {
-			var height = $(window).height();
-			var width = $(window).width();
-			var position = "fixed";
+			height = $(window).height();
+			width = $(window).width();
+			position = "fixed";
 		} else {
-			var height = $(QueryLoader.selectorPreload).outerHeight();
-			var width = $(QueryLoader.selectorPreload).outerWidth();
-			var position = "absolute";
+			height = $(QueryLoader.selectorPreload).outerHeight();
+			width = $(QueryLoader.selectorPreload).outerWidth();
+			position = "absolute";
 		}
 		var left = $(QueryLoader.selectorPreload).offset()['left'];
 		var top = $(QueryLoader.selectorPreload).offset()['top'];
@@ -149,12 +153,12 @@ var QueryLoader = {
 	doneLoad: function() {
 		//prevent IE from calling the fix
 		clearTimeout(QueryLoader.ieTimeout);
-		
+		var height;
 		//determine the height of the preloader for the effect
 		if (QueryLoader.selectorPreload == "body") {
-			var height = $(window).height();
+			height = $(window).height();
 		} else {
-			var height = $(QueryLoader.selectorPreload).outerHeight();
+			height = $(QueryLoader.selectorPreload).outerHeight();
 		}
 		
 		//The end animation, adjust to your likings

@@ -6,7 +6,7 @@
  */
 
 ?>
-
+<div id="main_0">
 <div id="storefront"></div>
 
 <div id="entry"></div>
@@ -26,3 +26,8 @@
 <?php
 include 'in_form.php';
 ?>
+</div>
+<div id="service">
+    <img src="../images/hint_l.png"/>
+    <img src="../images/hint_r.png"/>
+</div>
