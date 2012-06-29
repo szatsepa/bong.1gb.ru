@@ -15,6 +15,8 @@ $(document).ready(function () {
         
         var stat = false;
         
+        var tid = '';
+        
         if(!stat){
            stat =  _statistic();
         }
@@ -28,6 +30,8 @@ $(document).ready(function () {
         $("#vrWrapper").css({'top':'-1100px','left':'147px','visibility':'hidden'});
         
          $("#my_cart").css({'top': '-1155px','color':'black'});
+         
+//         $("div").css({'outline':'1px solid black'});
                  
         $("#entry").mousedown(function(){
             
@@ -105,26 +109,27 @@ $(document).ready(function () {
         var Pages = new Object({'lt_pocket':'?act=sec','rt_pocket':'?act=sale','rb_pocket':'?act=move','lb_pocket':'?act=med'});
         
         $(".L_pocket").live('mouseover',function(){
-            var tid = this.id;
-            $(eval(tid)).append('<div class="hint" id="hint_l"><div class="text_hint"><p id="p_link"></p></div></div>');
-            $("#p_link").text(Pockets[tid]);
+//            tid = this.id;
+//            alert(tid);
+            $(this).append('<div class="hint" id="hint_l"><div class="text_hint"><p id="p_link"></p></div></div>');
+            $("#p_link").text(Pockets[this.id]);
             $("#hint_l").animate({opacity:0.6},1200,'linear');
         });
         $(".L_pocket").live('mouseout',function(){
-            var tid = this.id;
-            $(eval(tid)).empty();
+//            tid = this.id;
+            $(this).empty();
         });
         
         
         $(".R_pocket").live('mouseover',function(){
-            var tid = this.id;
-            $(eval(tid)).append('<div class="hint" id="hint_r"><div class="text_hint"><p id="p_link"></p></div></div>');
-            $("#p_link").text(Pockets[tid]);
+//            tid = this.id;
+            $(this).append('<div class="hint" id="hint_r"><div class="text_hint"><p id="p_link"></p></div></div>');
+            $("#p_link").text(Pockets[this.id]);
             $("#hint_r").animate({opacity:0.6},1200,'linear');
         });
         $(".R_pocket").live('mouseout',function(){
-            var tid = this.id;
-            $(eval(tid)).empty();
+//            tid = this.id;
+            $(this).empty();
         });
         
         $("#midle_penis").live('mouseover',function(){
@@ -140,12 +145,12 @@ $(document).ready(function () {
         });
        
         $(".L_pocket").live('mousedown',function(){
-            var tid = this.id;
-            document.location = Pages[tid]; 
+//            var tid = this.id;
+            document.location = Pages[this.id]; 
         });
         $(".R_pocket").live('mousedown',function(){
-            var tid = this.id;
-            document.location = Pages[tid]; 
+//            var tid = this.id;
+            document.location = Pages[this.id]; 
         });
         
         $("#barrel").mousedown(function(){

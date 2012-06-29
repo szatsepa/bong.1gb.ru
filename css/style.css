@@ -19,17 +19,18 @@ html, body {
   font-size: 12pt;
 }
 div.main{ 
-    width: 100%;
+    width: 1023px;
+    height:730px;
 }
 #service{
     display: none;
 }
-.main_n{
+/*.main_n{
     width: 1023px;
     height: 730px;
     z-index: 0;
     visibility: visible;
-}
+}*/
 #my_cart{
     position: relative;
     width: 160px;
@@ -174,13 +175,13 @@ div.cr_order{
 }
 /*===========preloader=================================*/
 .QOverlay {
-	background-color: #000000;
+	background-color: #aaa;
 	z-index: 9999;
 }
 
 .QLoader {
-	background-color: #CCCCCC;
-	height: 1px;
+	background-color: #00f;
+	height: 2px;
 }
 
 .QAmt {

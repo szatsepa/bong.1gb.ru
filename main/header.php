@@ -19,8 +19,6 @@ header('Content-Type: text/html; charset=utf-8');
         <link rel="stylesheet" href="../css/user_forms.css" type="text/css" media="screen, projection" />
        
         <script type='text/javascript' src='http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js'></script>
-<!--        <script type="text/javascript" src="../js/jQuery -1.7.2.js"></script>
-        <script type="text/javascript" src="../js/jquery-1.4.4.min.js"></script>-->
         <script type="text/javascript" src="../js/my_request.js"></script>
         <script type="text/javascript" src="../js/in_form.js"></script>
         <script type="text/javascript" src="../js/<?php echo $_GET[act];?>.js"></script>
@@ -43,4 +41,4 @@ if(isset($user)){
 }
  ?>
         <div class="main"> 
-                <div class="main_n"> 
+<!--                <div class="main_n"> -->

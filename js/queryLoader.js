@@ -100,17 +100,14 @@ var QueryLoader = {
 	},
 
 	spawnLoader: function() {
-            var width;
-            var height;
-            var position;
 		if (QueryLoader.selectorPreload == "body") {
-			height = $(window).height();
-			width = $(window).width();
-			position = "fixed";
+			var height = $(window).height();
+			var width = $(window).width();
+			var position = "fixed";
 		} else {
-			height = $(QueryLoader.selectorPreload).outerHeight();
-			width = $(QueryLoader.selectorPreload).outerWidth();
-			position = "absolute";
+			var height = $(QueryLoader.selectorPreload).outerHeight();
+			var width = $(QueryLoader.selectorPreload).outerWidth();
+			var position = "absolute";
 		}
 		var left = $(QueryLoader.selectorPreload).offset()['left'];
 		var top = $(QueryLoader.selectorPreload).offset()['top'];
@@ -133,11 +130,21 @@ var QueryLoader = {
 			top: "50%",
 			width: "0%"
 		});
+		
+		QueryLoader.loadAmt = $("<div>0%</div>").appendTo($(QueryLoader.overlay));
+		$(QueryLoader.loadAmt).addClass("QAmt");
+		
+		$(QueryLoader.loadAmt).css({
+			position: "relative",
+			top: "50%",
+			left: "50%"
+		});
 	},
 	
 	animateLoader: function() {
 		var perc = (100 / QueryLoader.doneStatus) * QueryLoader.doneNow;
 		if (perc > 99) {
+			$(QueryLoader.loadAmt).html("100%");
 			$(QueryLoader.loadBar).stop().animate({
 				width: perc + "%"
 			}, 500, "linear", function() { 
@@ -147,6 +154,7 @@ var QueryLoader = {
 			$(QueryLoader.loadBar).stop().animate({
 				width: perc + "%"
 			}, 500, "linear", function() { });
+			$(QueryLoader.loadAmt).html(Math.floor(perc)+"%");
 		}
 	},
 	
@@ -165,9 +173,9 @@ var QueryLoader = {
 		$(QueryLoader.loadBar).animate({
 			height: height + "px",
 			top: 0
-		}, 500, "linear", function() {
-			$(QueryLoader.overlay).fadeOut(800);
+		}, 400, "linear", function() {
+			$(QueryLoader.overlay).fadeOut(600);
 			$(QueryLoader.preloader).remove();
-		});
-	}
+		}); 
+}
 }
