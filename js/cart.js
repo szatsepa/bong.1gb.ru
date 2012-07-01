@@ -10,11 +10,10 @@ $(document).ready(function () {
 	}
         
          $(".main").css({'opacity':'1.0'});
-//         $("#main_0").css({'background-image':'url("../images/bg_1.png")','opacity':'0.72','background-repeat':'repeat-y'});
-         
+
          var h = $(document).height();
                   
-         $("#main_0").css('height', h);
+         $("#main_cart").css('height', h);
          
          //начальные установки инициализация переменных
         var cart = new Object();
@@ -128,7 +127,7 @@ $(document).ready(function () {
                         $("#your_cart").remove();
                         var summ_cash = 0;
                         cart = data;
-                        $("#main_0").append('<div id="your_cart"></div>');
+                        $("#main_cart").append('<div id="your_cart"></div>');
 
                         for(var i in cart){
                             $("#your_cart").append('<div class="row_cart"><div class="image_cart"><img id="image_c'+i+'" src="" alt=""/></div><div class="item_name"><p  id="name_c'+i+'" ></p></div><div class="item_price"><p id="price_c'+i+'" ></p></div><div class="up_down"><div class="up"  id="'+i+'_up" ></div><div class="amount"><p id="amount_c'+i+'" ></p></div><div class="down"  id="'+i+'_down" ></div></div><div class="item_cash"><p id="cash_c'+i+'" ></p></div></div>');

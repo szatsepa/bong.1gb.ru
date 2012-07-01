@@ -10,28 +10,50 @@ $code = $_POST[code];
 
 $email = $_POST[email];
 
-$query = "INSERT INTO customers (code,email,activ) VALUES ('$code','$email',1)";
+$out['ok']=NULL;
 
-$result = mysql_query($query) or die($query);
+$query = "SELECT Count(id) FROM customers WHERE email = '$email'";
 
-$id = mysql_insert_id();
+$result = mysql_query($query);
 
-$message ="Здравствуйте! Почтовый ящик  - $email зарегистрирован на brioso-lab.ru.\r\n Пароль для входа - $code.\r\nДля активации аккаунта перейдите по ссылке - http://brioso-lab.ru/index.php?act=activation&id=$id&code=$code\r\n C уважением. Администрация. ";              
+$row  = mysql_fetch_row($result);
 
-$headers = 'From: administrator@brioso-lab.ru\r\n';
+if($row[0] == 0){
+    $query = "SELECT Count(id) FROM customers WHERE code = '$code'";
 
-$headers  .= 'MIME-Version: 1.0' . "\r\n";
+    $result = mysql_query($query);
 
-$headers .= 'Content-type: text/plain; charset=utf-8' . "\r\n";
+    $row  = mysql_fetch_row($result);
+    
+    if($row[0] == 0){
+        $query = "INSERT INTO customers (code,email,activ) VALUES ('$code','$email',1)";
 
-$out = array();
+        $result = mysql_query($query) or die($query);
 
-if(mail($email, 'Регистрация', $message, $headers)){
-   $out['ok']=1; 
+        $id = mysql_insert_id();
 
+        $message ="Здравствуйте! Почтовый ящик  - $email зарегистрирован на brioso-lab.ru.\r\n Пароль для входа - $code.\r\nДля активации аккаунта перейдите по ссылке - http://brioso-lab.ru/index.php?act=activation&id=$id&code=$code\r\n C уважением. Администрация. ";              
+
+        $headers = 'From: administrator@brioso-lab.ru\r\n';
+
+        $headers  .= 'MIME-Version: 1.0' . "\r\n";
+
+        $headers .= 'Content-type: text/plain; charset=utf-8' . "\r\n";
+
+        $out = array();
+
+        if(mail($email, 'Регистрация', $message, $headers)){
+            $out['ok']=1; 
+        }
+    }else{
+        $out['ok'] = 6;        
+    }
 }else{
-    $out['ok']=NULL;
+    $out['ok'] = 2;    
 }
+
+$out['query'] = $query;
+
 
 echo json_encode($out);
 

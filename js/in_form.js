@@ -107,6 +107,7 @@ $(document).ready(function () {
     $("#passwordAgain").keydown(function(event){
 
         if(event.keyCode==13) {
+            $('#error2').slideUp();
             SignUp();
         }
     });
@@ -124,6 +125,7 @@ $(document).ready(function () {
     });
     
     $("#registerButton").mousedown(function(event){
+            $('#error2').slideUp();
             SignUp();
     });
     
@@ -140,31 +142,41 @@ $(document).ready(function () {
     er[3] = "Не угадали пароль. Или email. Попробуйте еще раз"; //1
     er[4] = "Пользователя с таким email'oм у нас еще нету"; //2
     er[5] = "Неправильный формат email'a, или забыли вписать пароль"; //2
+    er[6] = "Такой пароль(код) уже используется!";
 
     function HideError() {
         $('.error').hide();
     }
     function ShowError(code) {
-
+        
         switch (code) {
-            case 0:
-                $('#error0').html(er[0]).slideDown();
+            case 0: 
+                $('#error0').text(er[code]).slideDown();
                 $('#email').select().focus();
-                            break;
+                 break;
             case 1:
-                $('#error0').html(er[1]).slideDown();
-                            break;
+                $('#error0').text(er[code]).slideDown();
+                $('#passwordAgain').select().focus();
+                 break;
             case 2:
-                $('#error0').html(er[2]).slideDown();
-                            break;
+                $('#error0').text(er[code]).slideDown();
+                $('#email').select().focus();
+                break;
             case 3:
-                $('#error1').html(er[3]).slideDown();
+                $('#error1').text(er[code]).slideDown();
+                $('#loginEmail').select().focus();
                 break;
             case 4:
-                $('#error2').html(er[4]).slideDown();
+                $('#error2').text(er[code]).slideDown();
+                $('#loginEmail').select().focus();
                 break;
             case 5:
-                $('#error2').html(er[5]).slideDown();
+                $('#error2').text(er[code]).slideDown();
+                $('#loginEmail').select().focus();
+                break;
+           case 6:
+                $('#error0').text(er[code]).slideDown();
+                $('#password').select().focus();
                 break;
         }
     }
@@ -190,12 +202,14 @@ $(document).ready(function () {
                     data:{email:email,code:code},
                     success:function(data){
                         var re = data['ok'];
+                        re = parseInt(re);
+                        
                         if(re == 1){
                             ShowMessage(1);
                             $("#indicator").hide();
                             
                         }else{
-                            ShowError(2);
+                            ShowError(re);
                             $("#indicator").hide();
                         }
                     },
@@ -247,7 +261,7 @@ $(document).ready(function () {
                 });
 
             } else {
-                $('#error1').html(er[5]).slideDown(); 
+                ShowError(5);
                 $("#indicator").hide();
                 
             }
@@ -269,14 +283,16 @@ $(document).ready(function () {
                 data:{email:email},
                 success:function(data){
                    var re = data['ok'];
+                   
+                   re = parseInt(re);
+//                   alert(re);
                     if(re == 1){
                         ShowMessage(0);
-                        $("#indicator").hide();                       
-                        
-                    }else {
+                        $("#indicator").hide();                    
+                    }
+                    if(re == 2){
                         ShowError(4);
-                        $("#indicator").hide();
-                        
+                        $("#indicator").hide();                        
                     } 
                 },
                 error:function(data){
@@ -296,12 +312,24 @@ $(document).ready(function () {
     m[1] = "Вы зарегистрированы. Инструкции в письме."
 
     function ShowMessage(code) {
+        
         HideError();
+        
+//        $('#error0').slideUp();
+//        
+//        $('#error1').slideUp();
+//        
+//        $('#error2').slideUp();
+        
         $('.message').fadeOut();
+
         switch (code) {
             case 0:
-                $('#message0').html(m[0]).slideDown();
+                $('#message0').text(m[0]).slideDown();
                 break;
+            case 1:
+                $('#message1').text(m[1]).slideDown();
+                break;    
             }
     }
 
@@ -313,7 +341,6 @@ $(document).ready(function () {
 //проверим содержимое корзины в плане общего количества и суммы
 
     function checkCart(id){
-//        alert(id);
         var id = id;
         $.ajax({
             url:'../query/check_cart.php',
@@ -322,22 +349,16 @@ $(document).ready(function () {
             data:{id:id},
             success:function(data){
                 var cart = data;
-//                $("#log_in").remove();
-//                $("#in_cart").remove();
-//                $("#cost").remove();
-//                $("#in_out").remove();
                 $("#my_cart").empty();
                 $("#indikator").hide();
                 $("#vrWrapper").css('visibility', 'hidden');
                 $("#my_cart").css({'visibility': 'visible'});
                 $("#my_cart").append("<p id='log_in' name='#'>"+customer['email']+"&nbsp;&nbsp;&nbsp;&nbsp;</p>");
                 if(data['amount'] != null){
-//                    check = true;
                   var items = _checkItems(cart['amount']);
                   $("#my_cart").append("<p id='in_cart' name='#'>В корзине "+cart['amount']+" "+items+"&nbsp;&nbsp;&nbsp;&nbsp;</p>");
                   $("#my_cart").append("<p id='cost' name='#'>На сумму "+cart['cash']+" р.&nbsp;&nbsp;&nbsp;&nbsp;</p>");
                 }else{
-                    check = false;
                    $("#my_cart").append("<p id='in_cart' name='#'>Корзина пустая.&nbsp;&nbsp;&nbsp;&nbsp;</p>"); 
                 }
                 $("#my_cart").append("<p id='in_out'><a id='logaut' name='#'>Выйти</a></p>"); 
