@@ -22,20 +22,32 @@
     left: 156px;
     z-index: 16;
 }
-#storefront{
+#storefront_on{
     position: relative;
     left: -3px;
     top: -3px;
-    background-image:url('../images/storefront.png');
+    background-image:url('../images/storefront_on.png');
     width: 228px;
     height: 176px;
     z-index: 1;
-    visibility: hidden;
+    display: block;
+/*    visibility: hidden;*/
+}
+#storefront_off{
+    position: relative;
+    left: -3px;
+    top: -3px;
+    background-image:url('../images/storefront_off.png');
+    width: 228px;
+    height: 176px;
+    z-index: 1;
+    display: none;
+/*    visibility: hidden;*/
 }
 #barrel{
     position: relative;
-    left: 864px;
-    top: -462px;
+    left: 788px;
+    top: -472px;
     background-image:url('../images/barrel.png');
     width: 122px;
     height: 327px;
@@ -49,53 +61,41 @@
     width: 395px;
     height: 594px;
     z-index: 12;
-    cursor: pointer;
     text-align: center;
     font-size: 14px;
     font-weight: bold;
 }
 #lt_pocket{
-   position: relative;
     left: 59px;
     top: 278px;
-    width: 53px;
-    height: 53px;
-
-    z-index: 4;
-    cursor: pointer;  
+    z-index: 4;  
 }
 #lb_pocket{
-   position: relative;
     left: 67px;
     top: 303px;
-    width: 53px;
-    height: 53px;
-
-    z-index: 5;
-    cursor: pointer;  
+    z-index: 5;  
 }
 #rt_pocket{
-   position: relative;
     left: 266px;
     top: 157px;
-    width: 53px;
-    height: 53px;
-
-    z-index: 6;
-    cursor: pointer;  
+    z-index: 6;  
 }
 #rb_pocket{
-   position: relative;
     left: 266px;
     top: 193px;
+    z-index: 7;  
+}
+.L_pocket{
+    position: relative;
     width: 53px;
     height: 53px;
-
-    z-index: 7;
-    cursor: pointer;  
+    cursor: pointer;
 }
-div.pocket{
-/*    background-color: blue;*/
+.R_pocket{
+    position: relative;
+    width: 53px;
+    height: 53px;
+    cursor: pointer;
 }
 #midle_penis{
    position: relative;
@@ -103,33 +103,26 @@ div.pocket{
     top: 445px;
     width: 53px;
     height: 63px;
-/*    background-color: green;*/
     z-index: 8;
     cursor: pointer;  
 }
 .hint{
+    width: 282px;
+    height: 276px;
     font-size: 22px;
     font-weight: bold;
-/*    color: white;*/
-/*    padding-top: 73px;*/
     text-align: center;
 }
 #hint_l{
     position: relative;
-    left: -282px; 
-    top: -276px;
-    width: 282px;
-    height: 276px;
+    left: -198px;
     opacity: 0;
     background-image: url('../images/hint_l.png');
     z-index: 9;
 }
 #hint_r{
     position: relative;
-    left: 56px; 
-    top: -276px;
-    width: 282px;
-    height: 276px;
+    left: 286px;
     opacity: 0;
     background-image: url('../images/hint_r.png');
     z-index: 10;
@@ -140,8 +133,6 @@ div.pocket{
     height: 66px;
     margin: auto;
     top: 86px;
-/*    outline: 1px solid red;
-    background-color: greenyellow;*/
 }
 div.rebbit_btn{
     position: relative;
@@ -155,6 +146,7 @@ div.rebbit_btn{
 }
 #rebbit_2{
     display: none;
+    top: 2px;
     background-image: url('../images/rabbit_1.png');
 }
 #rebbit_3{

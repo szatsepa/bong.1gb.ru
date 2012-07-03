@@ -173,8 +173,8 @@ var QueryLoader = {
 		$(QueryLoader.loadBar).animate({
 			height: height + "px",
 			top: 0
-		}, 400, "linear", function() {
-			$(QueryLoader.overlay).fadeOut(600);
+		}, 140, "linear", function() {
+			$(QueryLoader.overlay).fadeOut(120);
 			$(QueryLoader.preloader).remove();
 		}); 
 }

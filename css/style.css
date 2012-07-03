@@ -180,7 +180,8 @@ div.cr_order{
 }
 
 .QLoader {
-	background-color: #00f;
+	background-color: #aaa;
+        opacity: .72;
 	height: 2px;
 }
 
@@ -190,8 +191,11 @@ div.cr_order{
 	font-size:40px;
 	font-weight:bold;
 	line-height:50px;
-	height:50px;
-	width:100px;
-	margin:-60px 0 0 -50px;
+	height:354px;
+	width:211px;
+	margin:-220px 0 0 -50px;
+        background-image: url('../images/bulbulator.png');
+        background-repeat: no-repeat;
+/*        outline: 2px solid red;*/
 }
 /*===========preloader=================================*/

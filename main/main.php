@@ -7,8 +7,8 @@
 
 ?>
 <div id="main_0">
-<div id="storefront"></div>
-
+<div id="storefront_on"></div>
+<div id="storefront_off"></div>
 <div id="entry"></div>
 
 <div id="rabbit">

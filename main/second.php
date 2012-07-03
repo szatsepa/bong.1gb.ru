@@ -7,9 +7,9 @@
 
 ?>
 <div id="main_s">
-<div id="s_rabbit"></div>
+<!--<div id="s_rabbit"></div>
 <div id="beaver"></div>
-<div id="squirell"></div>
+<div id="squirell"></div>-->
 <div id="table"></div>
 <div id="items"> 
     <?php

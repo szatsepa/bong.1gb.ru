@@ -11,7 +11,9 @@ $(document).ready(function () {
         
         var first = false;
         
-//        $("#main_0").css('background-image', 'url("../images/bg_1.png")');
+       $("#vrWrapper").css({'top':'-210px','left':'310px','visibility':'visible'});
+        
+        $("#my_cart").css({'top': '-1155px','color':'black'});
 
 ////клик по столу покажем товары
 
@@ -64,13 +66,11 @@ $(document).ready(function () {
 //                       _addCart(id);
                 }else{
                     
-                    $("#vrWrapper").css({'z-index': '16'});
-                    
-                    $("#vrWrapper").css('visibility','visible');
-
-                    $("#signin").show(300, function(){
-                        $('#loginEmail').focus();
-                    });
+                        $("#vrWrapper").css({'z-index':'16','visibility':'visible'});
+                        
+                        $("#signin").show(300, function(){
+                            $('#loginEmail').focus();
+                        });
                     }
         }); 
  

@@ -10,57 +10,32 @@
     height: 730px;
     z-index: 0;
     visibility: visible;
-    background-image: url('../images/bg_1.png');
+    background-image: url('../images/bg_storefront.png');
 }
 
-#s_rabbit{
-    position: relative;
-    width: 512px;
-    height: 521px;
-    top: 220px;
-    background-image: url('../images/rabbit_s.png');
-    background-repeat: no-repeat;
-    z-index: 1;
-}
-#beaver{
-    position: relative;
-    width: 512px;
-    height: 521px;
-    top: -310px;
-    left: 512px;
-    background-image: url('../images/beaver.png');
-    background-repeat: no-repeat;
-    z-index: 3;
-}
-#squirell{
-    position: relative;
-    width: 404px;
-    height: 445px;
-    top: -1000px;
-    left: 272px;
-    background-image: url('../images/squirell.png');
-    background-repeat: no-repeat;
-    z-index: 2;
-}
 #table{
     position: relative;
     width: 331px;
     height: 211px;
-    top: -1000px;
-    left: 352px;
+    top: 470px;
+    left: 337px;
     background-image: url('../images/table.png');
     background-repeat: no-repeat;
     cursor: pointer;
-    z-index: 4;  
+    z-index: 4; 
+/*    outline: 3px solid yellow;*/
 }
 #items{
     position: relative;
     width: 320px;
     height: 130px;
     visibility: hidden;
+/*    background-image: url('../images/items.png');
+    background-repeat: no-repeat;*/
     z-index: 5;
-    top: -1410px;
+    top: 0px;
     left: 322px;
+/*    outline: 2px solid yellow;*/
 }
 div.item{
     position: relative;
