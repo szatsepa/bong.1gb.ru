@@ -10,9 +10,43 @@ root {
     display: block;
 }
 #main_move{
+    position: relative;
     width: 1023px;
     height: 730px;
     z-index: 0;
     visibility: visible;
     background-image: url('../images/delivery.png');
+}
+.tell{
+   position: relative;
+   cursor: pointer;
+   width: 82px;
+   height: 43px;
+/*   padding-top: 36px;*/
+}
+#tell_right{
+   background:  url('../images/tell_r.png') 100% 100% no-repeat;
+   background-size: contain;
+   z-index: 1;
+   left: 518px;
+   top: 86px;
+/*   outline: 1px solid yellow;*/
+}
+#tell_left{
+   background:  url('../images/tell_l.png') 100% 100% no-repeat;
+   background-size: contain;
+   z-index: 2;
+   left: 643px;
+   top: 46px;
+   
+}
+.tell_in{
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+    position: relative;
+    width: 164px;
+    height: 68px;
+    margin: auto;
+    top: 26px;
 }
