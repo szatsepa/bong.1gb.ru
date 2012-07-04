@@ -39,10 +39,12 @@ if($row[0] == 0){
         $headers  .= 'MIME-Version: 1.0' . "\r\n";
 
         $headers .= 'Content-type: text/plain; charset=utf-8' . "\r\n";
+        
+        $to= $row[name]." ".$row[surname]."<".$row[email].">" ; 
 
         $out = array();
 
-        if(mail($email, 'Регистрация', $message, $headers)){
+        if(mail($to, 'Регистрация', $message, $headers)){
             $out['ok']=1; 
         }
     }else{

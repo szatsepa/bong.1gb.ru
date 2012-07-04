@@ -283,7 +283,6 @@ $(document).ready(function () {
                 data:{email:email},
                 success:function(data){
                    var re = data['ok'];
-                   
                    re = parseInt(re);
 //                   alert(re);
                     if(re == 1){

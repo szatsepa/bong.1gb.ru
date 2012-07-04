@@ -6,6 +6,7 @@
  */
 ?>
 <div id="main_move">
+    <div id="tell_tm"></div>
     <div class="tell" id="tell_right"></div>
     <div class="tell" id="tell_left"></div>
 </div>

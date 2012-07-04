@@ -22,6 +22,7 @@ root {
    cursor: pointer;
    width: 82px;
    height: 43px;
+   opacity: .73;
 /*   padding-top: 36px;*/
 }
 #tell_right{
@@ -29,7 +30,7 @@ root {
    background-size: contain;
    z-index: 1;
    left: 518px;
-   top: 86px;
+   top: 64px;
 /*   outline: 1px solid yellow;*/
 }
 #tell_left{
@@ -37,8 +38,20 @@ root {
    background-size: contain;
    z-index: 2;
    left: 643px;
-   top: 46px;
+   top: 24px;
    
+}
+#tell_tm{
+   position: relative;
+   cursor: pointer;
+   width: 82px;
+   height: 43px;
+   background:  url('../images/tell_r.png') 100% 100% no-repeat;
+   background-size: contain;
+   z-index: 1;
+   left: 278px;
+   top: 206px;
+   visibility: hidden;
 }
 .tell_in{
     text-align: center;

@@ -6,5 +6,10 @@
  */
 ?>
 <div id="main_sale">
+        <div id="tell_tm"></div>
+        <div class="tell" id="tell_rebbit"></div>
+        <div class="tell" id="tell_beaver"></div>
+        <div class="tell" id="tell_bear"></div>
+    
     
 </div>
