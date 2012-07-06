@@ -14,7 +14,7 @@ root {
     height: 722px;
     z-index: 0;
     visibility: visible;
-    background-image: url('../images/faq_bg.png');
+    background-image: url('../images/med_bg.png');
 }
 .tell{
    position: relative;
