@@ -10,6 +10,5 @@
         <div class="tell" id="tell_rebbit"></div>
         <div class="tell" id="tell_beaver"></div>
         <div class="tell" id="tell_bear"></div>
-    
-    
+        <div class="m_cart" id="my_cart"></div>    
 </div>

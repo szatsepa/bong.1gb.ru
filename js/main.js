@@ -23,7 +23,7 @@ $(document).ready(function () {
         
         $("#vrWrapper").css({'top':'-1100px','left':'147px','visibility':'hidden'});
         
-        $("#my_cart").css({'top': '-1155px','color':'black'});
+        $("#my_cart").css({'top': '-1155px','color':'gold'});
                  
         $("#entry").mousedown(function(){
             

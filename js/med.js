@@ -11,6 +11,17 @@ $(document).ready(function () {
 	}
          var tyts = false;
          var position;
+         
+         $("#my_cart").css({'top': '-222px','color':'blue'});
+         
+          function moveCart(pos){ 
+           if(!pos){
+              $("#my_cart").css({'top': '-222px'}); 
+           }else{
+              $("#my_cart").css({'top': '-321px'});  
+           }
+           
+       }
 
         $("#tell_rebbit").mousedown(function(){
             if(!tyts){
@@ -25,6 +36,7 @@ $(document).ready(function () {
                 $("#tell_rebbit").css({'top':(position['top']-43),'left':position['left'],'z-index':'4'});
             }
             tyts = !tyts;
+            moveCart(tyts);
             return;
         });
         $("#tell_squirell").mousedown(function(){
@@ -40,6 +52,7 @@ $(document).ready(function () {
                 $("#tell_squirell").css({'top':(position['top']-129),'left':position['left'],'z-index':'2'});
             }
             tyts = !tyts;
+            moveCart(tyts);
             return;
         }); 
         $("#tell_beaver").mousedown(function(){
@@ -55,6 +68,7 @@ $(document).ready(function () {
                 $("#tell_beaver").css({'top':(position['top']-86),'left':position['left'],'z-index':'2'});
             }
             tyts = !tyts;
+            moveCart(tyts);
             return;
         });
         $("#tell_narick").mousedown(function(){
@@ -70,6 +84,7 @@ $(document).ready(function () {
                 $("#tell_narick").css({'top':(position['top']-172),'left':position['left'],'z-index':'2'});
             }
             tyts = !tyts;
+            moveCart(tyts);
             return;
         });
 });

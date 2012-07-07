@@ -7,7 +7,8 @@ $(document).ready(function () {
     if (document.readyState != "complete"){
 		setTimeout( arguments.callee, 100 );
 		return;
-	}  
+	} 
         
+     $("#my_cart").css({'top': '0px','color':'blue'});   
 });
 

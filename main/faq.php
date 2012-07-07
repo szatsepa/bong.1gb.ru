@@ -6,5 +6,5 @@
  */
 ?>
 <div id="main_faq">
-    
+    <div class="m_cart" id="my_cart"></div>
 </div>

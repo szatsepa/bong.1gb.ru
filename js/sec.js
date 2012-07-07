@@ -13,7 +13,7 @@ $(document).ready(function () {
         
        $("#vrWrapper").css({'top':'-210px','left':'310px','visibility':'visible'});
         
-        $("#my_cart").css({'top': '-1155px','color':'black'});
+        $("#my_cart").css({'top': '-355px','color':'gold'});
 
 ////клик по столу покажем товары
 

@@ -26,21 +26,13 @@ div.main{
 #service{
     display: none;
 }
-/*.main_n{
-    width: 1023px;
-    height: 730px;
-    z-index: 0;
-    visibility: visible;
-}*/
 #my_cart{
     position: relative;
     width: 160px;
-    top: -1844px;
     left: 852px;
     text-align: left;
     visibility: hidden;
     color: gold;
-/*    outline: 1px solid yellow;*/
 }
 #my_email{
 /*    text-align: center;*/

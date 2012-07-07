@@ -11,4 +11,5 @@
     <div class="tell" id="tell_beaver"></div>
     <div class="tell" id="tell_squirell"></div>
     <div class="tell" id="tell_narick"></div>
+    <div class="m_cart" id="my_cart"></div>
 </div>
