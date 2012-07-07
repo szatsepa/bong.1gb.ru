@@ -32,17 +32,17 @@
         <div class="order_footer">
             <div id="address">
                 <p>
-                    <label>Адрес доставки:&nbsp;&nbsp;&nbsp;&nbsp;</label><input id="shipment" type="text" value="" size="72"/>
+                    <label>Адрес доставки:&nbsp;&nbsp;&nbsp;&nbsp;</label><input class="crt_o" id="shipment" type="text" value="" size="68"/>
                 </p>
             </div>
             <div id="o_phone">
                 <p>
-                    <label>Телефон:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label><input id="phone" type="text" value="" size="72"/>
+                    <label>Телефон:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label><input class="crt_o" id="phone" type="text" value="" size="68"/>
                 </p>
             </div>
             <div id="o_comm">
                 <p>
-                    <label>Пожелания:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label><textarea id="comment" cols="72" rows="6"></textarea>
+                    <label>Пожелания:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label><textarea class="crt_o" id="comment" cols="68" rows="6"></textarea>
                 </p>
             </div>
             <div id="o_order" >

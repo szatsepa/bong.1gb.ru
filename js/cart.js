@@ -7,20 +7,21 @@ $(document).ready(function () {
         if (document.readyState != "complete"){
 		setTimeout( arguments.callee, 100 );
 		return;
-	}
-        
-         $(".main").css({'opacity':'1.0'});
-
-         var h = $(document).height();
-                  
-         $("#main_cart").css('height', h);
-         
+	}   
+       
          //начальные установки инициализация переменных
-        var cart = new Object();
+         var cart = new Object();
+         
+         var bcg = new Object({sec:'../images/bg_storefront.png',sale:'../images/purchases.jpg',move:'../images/delivery.png',med:'../images/med_bg.png',main:'../images/bg.png',faq:'../images/faq_bg.png'});
         
          var month = new Array('- 01 -','- 02 -','- 03 -','- 04 -','- 05 -','- 06 -','- 07 -','- 08 -','- 09 -','- 10 -','- 11 -','- 12 -')
         
-        //   ========== суета вокруг корзины =================     
+        //   ========== суета вокруг корзины =================   
+        var h = $(document).height();
+
+        $("body").css({'height':h, 'background-image':'url('+bcg[bc]+')'}); 
+        
+        $("#main_cart").css({'height':h});
 
 // тыц по ссылке в виде емейла выведем подробное описание корзины 
 
@@ -87,6 +88,16 @@ $(document).ready(function () {
             document.location='?act='+bc;
         });
         
+         $("#back_page_f").live('mouseover',function(){
+            $("#back_page_f").css('color', 'blueviolet');
+        });
+        $("#back_page_f").live('mouseout',function(){
+            $("#back_page_f").css('color', 'black');
+        });
+        $("#back_page_f").live('mousedown',function(){
+            document.location='?act='+bc;
+        });
+        
 //  функция изменить корзину 
 
         function changeCart(id,act){
@@ -145,7 +156,7 @@ $(document).ready(function () {
                         $("#amount_c").css({'font-size':'16px','font-weight':'bold'});
                         $("#cash_c").text(summ_cash+" p.");
                         $("#cash_c").css({'font-size':'16px','font-weight':'bold'});
-                        $("#your_cart").append('<div class="cr_order"><a name="#" id="crt_order">Оформить заказ</a></div>');
+                        $("#your_cart").append('<div class="cr_order"><p id="form_menager"><a id="back_page_f" name="#">Вернутся</a>&nbsp;&nbsp;<a name="#" id="crt_order">Оформить заказ</a></p></div>');
                         var h = $(document).height();
                         $("#your_cart").css({'background':'none','height':h}); 
                     }
