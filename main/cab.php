@@ -16,6 +16,16 @@ $order_count = array(0,0,0,0,0,0,0);
     var my_orders = new Array();
 </script>
 <div id="content">
+    <div class="">
+        <p style="text-align:left;">
+            <input type="button" id="go_main"   value="На главную" class="submit2"/>
+            &nbsp;
+            <input type="button" id="go_storefront"   value="Витрина" class="submit2"/>
+            &nbsp;
+            <input type="button" id="go_faq"   value="FAQ" class="submit2"/>
+        </p>
+        <br/><br/><br/>
+    </div>
     <?php
     
         foreach ($orders_week as $value) {
@@ -34,15 +44,15 @@ $order_count = array(0,0,0,0,0,0,0);
         $status = "<span class='edit'>Рассмотрен</span>";
         $dsp    = "&amp;dsp=decline";
     }
-    if($value["status"] == 3) $status = "<span class='edit4'>Отменен</span>";
+    if($value["status"] == 3) $status = "<span class='edit4'>Отгружен</span>";
     
     if($value["status"] == 4) {
-        $status = "<span class='edit3'>Отгружен</span>";
+        $status = "<span class='edit3'>Выполнен</span>";
         $dsp    = "&amp;dsp=fin";
     }
-    if($value["status"] == 5) $status = "<span class='edit5'>Выполнен</span>";
+    if($value["status"] == 5) $status = "<span class='edit5'>Отменен</span>";
     if($value["status"] == 6) $status = "<span class='edit2'>Демо</span>";
-    $dat = $zakaz[$value["weekday"]]."<p style='margin-left:5px;margin-top:5px;margin-bottom:10px;margin-right:3px;'><a href='index.php?act=view_order'>N".$value["id"]."&nbsp;".$value["zakaz_date"]."<br />".$value["price_name"]."</a><br />".$status."</p>";
+    $dat = $zakaz[$value["weekday"]]."<p style='margin-left:5px;margin-top:5px;margin-bottom:10px;margin-right:3px;'><a class='order_lnk' name='".$value["id"]."' style='text-decoration:underline;cursor:pointer'>N".$value["id"]."&nbsp;".$value["zakaz_date"]."<br />".$value["price_name"]."</a><br />".$status."</p>";
 
     $zakaz[$value["weekday"]] = $dat;
     
@@ -51,7 +61,7 @@ $order_count = array(0,0,0,0,0,0,0);
     $order_count[$value["weekday"]] = $counter;
     
 }
-
+ $fields = array ("Артикул","Наименование","Емкость","Цена ед.","Кол-во (л.)","Скидка","Цвет");
 ?> 
  <div style="margin-left:5px;">
     <p class="order">Заказы по дням недели:</p>
@@ -72,9 +82,41 @@ foreach ($zakaz as $dat) {
     
 <!--    <p><a href="index.php?act=all_orders" class="help" style="text-decoration:underline;">Архив заказов</a>&nbsp;&nbsp;</p>-->
 </div>   
+    <div id="any_order">
+        <p class="order" id="order_h"></p>
+        <br/>
+        <p style="text-align:left;">
+            <input type="button" id="close_table"   value="Закрыть" class="submit2"/>
+            &nbsp;
+            <input type="button" id="delivered"   value="Заказ доставлен" class="submit2"/>
+            &nbsp;
+            <input type="button" id="similar"   value="Создать подобный" class="submit2"/>
+        </p>
+<br/>
+<br/>
+<table border='0' class='cart' id='order_table'>
+    <thead>
+    <?php 
 
+    // Выводим заголовок таблицы
+
+    foreach ($fields as $value) {
+        if($value != "Емкость") echo "<th class='cart'>".$value."</th>";           
+        // Место под кнопку
+    }
+
+   ?>
+  </thead>
+   <tbody>
+       
+   </tbody>
+</table>
+        
+    </div>
 <br/>
 <?php if(count($my_cart)) { ?>
+<div style="position: relative;display:block;">
+    
 <p class="order">Незавершенные заказы</p>
 
 <br/>&nbsp;
@@ -85,19 +127,19 @@ foreach ($zakaz as $dat) {
         <tr>
             <td class="btp">
                 
-                    <input style="cursor: pointer;" type="button" onClick="javascript:document.location.href = '?act=main';" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#000'" value="Прайс заказа" class="submit2"/>
+                    <input id="go_nah" type="button" onClick="javascript:document.location.href = '?act=sec';"  value="Прайс заказа" class="submit2"/>
                
             </td>
             <td class="btp">
                 <form action="" method="post"> 
                    
-                    <input  style="cursor: pointer;" id="createOrder" type='button' onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#000'" value='Оформить заказ'   class="submit2"/>
+                    <input  id="createOrder" type='button'  value='Оформить заказ'   class="submit2"/>
                 </form>
             </td>
             <td class="btp">
                 <form action="" method="post">
                      
-                    <input style="cursor: pointer;" id="clear_all" type='button' onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#000'" value='Удалить заказ'  class="submit2" />
+                    <input id="clear_all" type='button'  value='Удалить заказ'  class="submit2" />
                 </form>
             </td>
         </tr>
@@ -106,15 +148,13 @@ foreach ($zakaz as $dat) {
 <br />
 
 <br />
-
+</div>
 <div style="margin-left:5px;margin-bottom:10px;">
 <?php
 
 $field_count	=	0;
 
 if(count($my_cart, COUNT_RECURSIVE)){
-       
-$fields = array ("Артикул","Наименование","Емкость","Цена ед.","Кол-во (л.)","Скидка","Цвет");
 
 echo "<table border='0' class='cart'>";
 
@@ -131,7 +171,7 @@ $row_count = 0;
 
 $total = 0;
 
-foreach ($my_cart as $key => $value) {
+foreach ($my_cart as $value) {
     ?>
      <script type="text/javascript">
     var tmp = <?php echo json_encode($value);?>;
@@ -154,11 +194,11 @@ foreach ($my_cart as $key => $value) {
 //    
     $single_price = $value[price]; 
     $amount       = $value[amount];
-    $price_id     = $value[price_id];
+//    $price_id     = $value[price_id];
     $discount = $value[discount];
     $total += ($single_price*$amount)*(1-$discount/100);
+
     
-    $artikul = $value[artikul];
     echo "<td class='cart' style='cursor: pointer;'><input id='clear_row' name='$value[id]' class='submit3' type='button' value='X'></td>";
     
    echo "</tr>"; 
@@ -171,12 +211,12 @@ foreach ($my_cart as $key => $value) {
 if ($total == 0) {
 //    echo"<tr><td colspan='5'>В корзине нет товаров</td><td colspan='2' align='right'>&nbsp;</td></tr>";
 }
-echo"<tr><td colspan='5'></td><td class='cart' colspan='2' align='right'>Итого: ".$total."руб. </td></tr>";
+echo"<tr class='footer_table'><td colspan='5'></td><td class='footer_table' colspan='2'>Итого: ".$total." руб. </td></tr>";
 echo "</table>";
 
-if ($mobile != 'true') {?>
+?>
 </div>
-    <?php }
+    <?php 
     }
 }
 
@@ -234,9 +274,9 @@ if ($mobile != 'true') {?>
                 <label>Адрес доставки:&nbsp;&nbsp;&nbsp;&nbsp;</label><input id="shipment" type="text" value="" size="72"/>
             </p>
         </div>
-        <div id="o_email">
+<!--        <div id="o_email">
             <p><label>Email:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label><input id="act_email" type="text" value="" size="72"/></p>
-        </div>
+        </div>-->
         <div id="o_phone">
             <p>
                 <label>Телефон:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label><input id="phone" type="text" value="" size="72"/>
@@ -265,3 +305,8 @@ if ($mobile != 'true') {?>
         </div>
     
 </div>
+<div class="m_cart" id="my_cart"></div>
+
+<?php
+include 'in_form.php';
+?>

@@ -29,12 +29,19 @@ $(document).ready(function () {
 
         
 
-        $("#log_in,#my_email,#in_cart,#cost").live('mousedown',function(){
+        $("#in_cart,#cost").live('mousedown',function(){
                 var back = document.location.search;
                 back = back.substr(5);
                document.location.href = '?act=cart&b='+back; 
             
         });
+        $("#log_in").live('mousedown',function(){
+                var back = document.location.search;
+                back = back.substr(5);
+                document.location.href = '?act=cab&b='+back; 
+            
+        });
+        
         $("#in_out").live('mousedown',function(){
                     if(confirm("Действительно выйти?")){
                             document.location.href = '?act=logout';

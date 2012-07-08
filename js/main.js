@@ -48,8 +48,6 @@ $(document).ready(function () {
         
         var step = 0;
         
-//        var val = 0;
-        
         var store_array = new Array();
         
         for(var i = 0;i < 127; i++){
@@ -186,12 +184,9 @@ $(document).ready(function () {
                 url: '../action/statistics.php',
                 type:'post',
                 dataType:'json',
-                data:{scr_W:scr_W,scr_H:scr_H,colorDepth:colorDepth},
-                success:function(data){
-                    return true;
-                }
+                data:{scr_W:scr_W,scr_H:scr_H,colorDepth:colorDepth}
             });
-            return true;
+            return false;
         }
         
 

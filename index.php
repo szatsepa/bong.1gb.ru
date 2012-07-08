@@ -32,6 +32,7 @@ switch ($_GET[act]) {
     case 'main':
         include 'main/main.php';
         break;
+    
     case 'sec':
         include 'query/items.php';
         include 'main/second.php';
@@ -57,10 +58,19 @@ switch ($_GET[act]) {
         include 'main/med.php';
         break;
     
-     case "logout": 
-            include 'action/logout.php';
-            break;
+    case 'cab':
+        if(!isset($_SESSION[auth]))header ("location:index.php?act=main");
+        include 'query/cart_cab.php';
+        include 'query/my_orders.php';
+        include 'query/my_cart.php';
+        include 'query/orders_of_week.php';
+        include 'main/cab.php';
+        break;
     
+    case "logout": 
+        include 'action/logout.php';
+        break;
+
     
     default :
         header("location:?act=main");

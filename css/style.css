@@ -63,11 +63,10 @@ div.main{
     font-size: 18px;
     font-weight: bold;
     cursor: pointer;
-/*    text-align: right;*/
+    text-align: center;
 }
 #logaut{    
     text-decoration: underline;
-/*    outline: 1px solid yellow;*/
 }
 #your_cart{
     position: relative;
