@@ -11,81 +11,80 @@ $(document).ready(function () {
 	}
          var tyts = false;
          var position;
+         var tell_objects = new Object();
          
          $("#my_cart").css({'top': '-222px','color':'blue'});
          
-          function moveCart(pos){ 
+//         $('div').css('outline','1px solid black');
+       
+       setStartPosition();
+       
+       function setStartPosition(){
+           var row = 0;
+           $(".tell").each(function(){
+               tell_objects[this.id] = {pos_left:this.offsetLeft, zid:(row+2)};
+               if(this.id == 'tell_rebbit'){
+                   tell_objects[this.id]['pos_top'] = (this.offsetTop-43);
+                   tell_objects[this.id]['new_top'] = -17;
+                   tell_objects[this.id]['new_left'] = 188;
+                   tell_objects[this.id]['tell'] = 'Наверное надо клизму поставить!';
+               }else if(this.id == 'tell_squirell'){
+                   tell_objects[this.id]['pos_top'] = (this.offsetTop-129);
+                   tell_objects[this.id]['new_top'] = -96;
+                   tell_objects[this.id]['new_left'] = 346;
+                   tell_objects[this.id]['tell'] = 'Нет, просто душновато. Я буду вентилятором.';
+               }else if(this.id == 'tell_beaver'){
+                   tell_objects[this.id]['pos_top'] = (this.offsetTop-86);
+                   tell_objects[this.id]['new_top'] = 100;
+                   tell_objects[this.id]['new_left'] = 248;
+                   tell_objects[this.id]['tell'] = 'Шота мне не харашо. Наверное что то съел.';
+               }else if(this.id == 'tell_narick'){
+                   tell_objects[this.id]['pos_top'] = (this.offsetTop-172);
+                   tell_objects[this.id]['new_top'] = -156;
+                   tell_objects[this.id]['new_left'] = 563;
+                   tell_objects[this.id]['tell'] = 'Ой боже мой! Вот пыхни и все пройдет.';
+               }
+               
+           });
+           
+           row++;
+          } 
+          $(".tell").mousedown(function(){
+              var id = this.id;
+              var did;
+              
+              if(!tyts){
+                  
+                $(eval(id)).css({width:236,height:124,top:tell_objects[id]['new_top'],left:tell_objects[id]['new_left'],'z-index':'999'});
+                $(eval(id)).append('<div class="tell_in"><p id="tell_r"></p></div>');
+                $("#tell_r").text(tell_objects[id]['tell']);
+                $(".tell").each(function(){
+                    did = this.id;
+                    if(did != id){
+                       $(eval(did)).css({'visibility':'hidden'}); 
+                    }
+                });
+                
+              }else{
+                  $(".tell").empty();
+                  $(".tell").each(function(){
+                   did = this.id; 
+                   $(eval(did)).css({'width':'82px','height':'43px','visibility':'visible',top:tell_objects[did]['pos_top'],left:tell_objects[did]['pos_left'],'z-index':tell_objects[did]['zid']}); 
+                    
+                });
+            }
+            tyts = !tyts;
+            moveCart(tyts);
+            return false;
+            });
+
+        function moveCart(pos){ 
            if(!pos){
               $("#my_cart").css({'top': '-222px'}); 
            }else{
               $("#my_cart").css({'top': '-321px'});  
            }
-           
-       }
-
-        $("#tell_rebbit").mousedown(function(){
-            if(!tyts){
-                position = $("#tell_rebbit").offset();
-                $("#tell_rebbit").css({'width':'236px','height':'124px','top':'-17px','left':'188px','z-index':'999'});
-                $("#tell_rebbit").append('<div class="tell_in"><p id="tell_r"></p></div>');
-                $("#tell_r").text('Наверное надо клизму поставить!');
-                $("#tell_squirell,#tell_beaver,#tell_narick").css({'visibility':'hidden'});               
-            }else{
-                $(".tell").empty();
-                $(".tell").css({'width':'82px','height':'43px','visibility':'visible'});
-                $("#tell_rebbit").css({'top':(position['top']-43),'left':position['left'],'z-index':'4'});
-            }
-            tyts = !tyts;
-            moveCart(tyts);
-            return;
-        });
-        $("#tell_squirell").mousedown(function(){
-            if(!tyts){
-                position = $("#tell_squirell").offset();
-                $("#tell_squirell").css({'width':'236px','height':'124px','top':'-96px','left':'346px','z-index':'999'});
-                $("#tell_squirell").append('<div class="tell_in"><p id="tell_r"></p></div>');
-                $("#tell_r").text('Нет, просто душновато. Я буду вентилятором.');
-                $("#tell_rebbit,#tell_beaver,#tell_narick").css({'visibility':'hidden'});               
-            }else{
-                $(".tell").empty();
-                $(".tell").css({'width':'82px','height':'43px','visibility':'visible'});
-                $("#tell_squirell").css({'top':(position['top']-129),'left':position['left'],'z-index':'2'});
-            }
-            tyts = !tyts;
-            moveCart(tyts);
-            return;
-        }); 
-        $("#tell_beaver").mousedown(function(){
-            if(!tyts){
-                position = $("#tell_beaver").offset();
-                $("#tell_beaver").css({'width':'236px','height':'124px','top':'100px','left':'248px','z-index':'999'});
-                $("#tell_beaver").append('<div class="tell_in"><p id="tell_r"></p></div>');
-                $("#tell_r").text('Шота мне не харашо. Наверное что то съел.');
-                $("#tell_rebbit,#tell_squirell,#tell_narick").css({'visibility':'hidden'});               
-            }else{
-                $(".tell").empty();
-                $(".tell").css({'width':'82px','height':'43px','visibility':'visible'});
-                $("#tell_beaver").css({'top':(position['top']-86),'left':position['left'],'z-index':'2'});
-            }
-            tyts = !tyts;
-            moveCart(tyts);
-            return;
-        });
-        $("#tell_narick").mousedown(function(){
-            if(!tyts){
-                position = $("#tell_narick").offset();
-                $("#tell_narick").css({'width':'236px','height':'124px','top':'-156px','left':'563px','z-index':'999'});
-                $("#tell_narick").append('<div class="tell_in"><p id="tell_r"></p></div>');
-                $("#tell_r").text('Ой боже мой! Вот пыхни и все пройдет.');
-                $("#tell_rebbit,#tell_squirell,#tell_beaver").css({'visibility':'hidden'});               
-            }else{
-                $(".tell").empty();
-                $(".tell").css({'width':'82px','height':'43px','visibility':'visible'});
-                $("#tell_narick").css({'top':(position['top']-172),'left':position['left'],'z-index':'2'});
-            }
-            tyts = !tyts;
-            moveCart(tyts);
-            return;
-        });
+           return false;
+       }       
 });
 

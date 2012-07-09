@@ -59,12 +59,12 @@ root {
    cursor: pointer;
    width: 82px;
    height: 43px;
-   background:  url('../images/tell_r.png') 100% 100% no-repeat;
-   background-size: contain;
-   z-index: 1;
-   left: 278px;
-   top: 206px;
-   visibility: hidden;
+/*   background:  url('../images/tell_r.png') 100% 100% no-repeat;*/
+/*   background-size: contain;*/
+/*   z-index: 1;*/
+/*   left: 278px;
+   top: 206px;*/
+/*   visibility: hidden;*/
 }
 .tell_in{
     text-align: center;

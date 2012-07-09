@@ -26,7 +26,9 @@ $(document).ready(function () {
         //   ========== суета вокруг корзины =================     
 
 // тыц по ссылке в виде емейла выведем подробное описание корзины 
-
+        
+        var font_color;
+        var fc = false;
         
 
         $("#in_cart,#cost").live('mousedown',function(){
@@ -41,11 +43,45 @@ $(document).ready(function () {
                 document.location.href = '?act=cab&b='+back; 
             
         });
+        $("#in_cart,#cost").live('mousedown',function(){
+                var back = document.location.search;
+                back = back.substr(5);
+               document.location.href = '?act=cart&b='+back; 
+            
+        });
+        $("#log_in").live('mousedown',function(){
+                var back = document.location.search;
+                back = back.substr(5);
+                document.location.href = '?act=cab&b='+back; 
+            
+        });
+        $("#in_cart,#cost,#log_in,#in_out").live('mouseover',function(){
+                var id = this.id;
+                if(!fc){
+                    font_color = $(eval(id)).css('color');
+                    fc = !fc;
+                }
+                $(eval(id)).css('color','blueviolet');
+            
+        });
+        $("#in_cart,#cost,#log_in,#in_out").live('mouseout',function(){
+               var id = this.id;
+               $(eval(id)).css('color',font_color);
+            
+        });
+//        $("#log_in").live('mouseover',function(){
+//               var id = this.id;
+//               $(eval(id)).css('color','blueviolet');      
+//        });
+//        $("#log_in").live('mouseout',function(){
+//              var id = this.id;
+//               $(eval(id)).css('color','default');
+//        });
         
         $("#in_out").live('mousedown',function(){
-                    if(confirm("Действительно выйти?")){
-                            document.location.href = '?act=logout';
-                        }
+            if(confirm("Действительно выйти?")){
+                    document.location.href = '?act=logout';
+                }
         });
          // move=== движение форм ===
 
