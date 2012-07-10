@@ -23,43 +23,37 @@ root {
    width: 82px;
    height: 43px;
    opacity: .73;
-/*   padding-top: 36px;*/
 }
 #tell_right{
+    position: absolute;
    background:  url('../images/tell_r.png') 100% 100% no-repeat;
    background-size: contain;
    z-index: 1;
-   left: 518px;
+   left: 428px;
    top: 64px;
-/*   outline: 1px solid yellow;*/
 }
 #tell_left{
+    position: absolute;
    background:  url('../images/tell_l.png') 100% 100% no-repeat;
    background-size: contain;
    z-index: 2;
-   left: 643px;
-   top: 24px;
+   left: 543px;
+   top: 64px;
    
 }
 #tell_tm{
    position: relative;
-   cursor: pointer;
-   width: 82px;
-   height: 43px;
-   background:  url('../images/tell_r.png') 100% 100% no-repeat;
-   background-size: contain;
-   z-index: 1;
-   left: 278px;
-   top: 206px;
-   visibility: hidden;
+   width: 720px;
+   height: 330px;
+   top: 23px;
+   left: 100px;
 }
 .tell_in{
     text-align: center;
     font-size: 18px;
     font-weight: bold;
     position: relative;
-    width: 164px;
+    width: 194px;
     height: 68px;
-    margin: auto;
-    top: 26px;
+    margin: 8px auto;
 }

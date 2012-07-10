@@ -11,11 +11,11 @@ $(document).ready(function () {
 	}
          var tyts = false;
          var position;
-         var tell_objects = new Object();
+         
          
          $("#my_cart").css({'top': '-222px','color':'blue'});
          
-//         $('div').css('outline','1px solid black');
+      var tell_objects = new Object();   
        
        setStartPosition();
        
@@ -24,29 +24,20 @@ $(document).ready(function () {
            $(".tell").each(function(){
                tell_objects[this.id] = {pos_left:this.offsetLeft, zid:(row+2)};
                if(this.id == 'tell_rebbit'){
-                   tell_objects[this.id]['pos_top'] = (this.offsetTop-43);
-                   tell_objects[this.id]['new_top'] = -17;
-                   tell_objects[this.id]['new_left'] = 188;
+                   tell_objects[this.id]['pos_top'] = (this.offsetTop);
                    tell_objects[this.id]['tell'] = 'Наверное надо клизму поставить!';
                }else if(this.id == 'tell_squirell'){
-                   tell_objects[this.id]['pos_top'] = (this.offsetTop-129);
-                   tell_objects[this.id]['new_top'] = -96;
-                   tell_objects[this.id]['new_left'] = 346;
+                   tell_objects[this.id]['pos_top'] = (this.offsetTop);
                    tell_objects[this.id]['tell'] = 'Нет, просто душновато. Я буду вентилятором.';
                }else if(this.id == 'tell_beaver'){
-                   tell_objects[this.id]['pos_top'] = (this.offsetTop-86);
-                   tell_objects[this.id]['new_top'] = 100;
-                   tell_objects[this.id]['new_left'] = 248;
+                   tell_objects[this.id]['pos_top'] = (this.offsetTop);
                    tell_objects[this.id]['tell'] = 'Шота мне не харашо. Наверное что то съел.';
                }else if(this.id == 'tell_narick'){
-                   tell_objects[this.id]['pos_top'] = (this.offsetTop-172);
-                   tell_objects[this.id]['new_top'] = -156;
-                   tell_objects[this.id]['new_left'] = 563;
+                   tell_objects[this.id]['pos_top'] = (this.offsetTop);
                    tell_objects[this.id]['tell'] = 'Ой боже мой! Вот пыхни и все пройдет.';
                }
                
            });
-           
            row++;
           } 
           $(".tell").mousedown(function(){
@@ -55,7 +46,7 @@ $(document).ready(function () {
               
               if(!tyts){
                   
-                $(eval(id)).css({width:236,height:124,top:tell_objects[id]['new_top'],left:tell_objects[id]['new_left'],'z-index':'999'});
+                $(eval(id)).css({width:236,height:124,top:(tell_objects[this.id]['pos_top']-79),left:(tell_objects[id]['pos_left']-77),'z-index':'999'});
                 $(eval(id)).append('<div class="tell_in"><p id="tell_r"></p></div>');
                 $("#tell_r").text(tell_objects[id]['tell']);
                 $(".tell").each(function(){
