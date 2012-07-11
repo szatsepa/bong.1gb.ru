@@ -22,9 +22,7 @@ $(document).ready(function () {
         var rbt = false;
         
         $("#vrWrapper").css({'top':'-1100px','left':'147px','visibility':'hidden'});
-        
-        $("#my_cart").css({'top': '-1155px','color':'gold'});
-                 
+                         
         $("#entry").mousedown(function(){
             
             if(!customer['id'] || customer['id'] == undefined){

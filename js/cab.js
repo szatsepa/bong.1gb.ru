@@ -8,7 +8,7 @@ $(document).ready(function(){
 		return;
 	}
         
-    $("#my_cart").css({'top': '-792px','color':'#330000'});
+    $("#my_cart").css({'color':'#330000'});
     
     $("#order_form").hide(); 
     

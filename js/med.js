@@ -13,7 +13,7 @@ $(document).ready(function () {
          var position;
          
          
-         $("#my_cart").css({'top': '-222px','color':'blue'});
+         $("#my_cart").css({'color':'blue'});
          
       var tell_objects = new Object();   
        
@@ -65,17 +65,17 @@ $(document).ready(function () {
                 });
             }
             tyts = !tyts;
-            moveCart(tyts);
+//            moveCart(tyts);
             return false;
             });
 
-        function moveCart(pos){ 
-           if(!pos){
-              $("#my_cart").css({'top': '-222px'}); 
-           }else{
-              $("#my_cart").css({'top': '-321px'});  
-           }
-           return false;
-       }       
+//        function moveCart(pos){ 
+//           if(!pos){
+//              $("#my_cart").css({'top': '-222px'}); 
+//           }else{
+//              $("#my_cart").css({'top': '-321px'});  
+//           }
+//           return false;
+//       }       
 });
 

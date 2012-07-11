@@ -17,17 +17,17 @@ $(document).ready(function () {
        
        setStartPosition();
        
-       $("#my_cart").css({'left':'832px','top': '-141px','color':'gold'});
+//       $("#my_cart").css({'left':'832px','top': '-141px','color':'gold'});
        
-       function moveCart(pos){ 
-           if(!pos){
-              $("#my_cart").css({'top': '-141px'}); 
-           }else{
-              $("#my_cart").css({'top': '-240px'});  
-           }
-           
-       }
-       
+//       function moveCart(pos){ 
+//           if(!pos){
+//              $("#my_cart").css({'top': '-141px'}); 
+//           }else{
+//              $("#my_cart").css({'top': '-240px'});  
+//           }
+//           
+//       }
+//       
        
        
        function setStartPosition(){
@@ -77,7 +77,7 @@ $(document).ready(function () {
                 });
             }
             tyts = !tyts;
-            moveCart(tyts);
+//            moveCart(tyts);
             return false;
             });
 

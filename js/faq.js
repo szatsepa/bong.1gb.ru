@@ -9,6 +9,6 @@ $(document).ready(function () {
 		return;
 	} 
         
-     $("#my_cart").css({'top': '0px','color':'blue'});   
+     $("#my_cart").css({'color':'blue'});   
 });
 

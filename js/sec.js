@@ -12,8 +12,6 @@ $(document).ready(function () {
         var first = false;
         
        $("#vrWrapper").css({'top':'-210px','left':'310px','visibility':'visible'});
-        
-        $("#my_cart").css({'top': '-355px','color':'gold'});
 
 ////клик по столу покажем товары
 

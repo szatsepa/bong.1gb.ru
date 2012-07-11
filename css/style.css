@@ -8,7 +8,6 @@
 
 root { 
     display: block;
-/*    zoom: 1.0;*/
 }
 html, body {
   margin:0;
@@ -27,37 +26,30 @@ div.main{
     display: none;
 }
 #my_cart{
-    position: relative;
+    position: absolute;
     width: 160px;
-    left: 852px;
+    left: 846px;
+    top: 4px;
     text-align: left;
     visibility: hidden;
     color: gold;
 }
 #my_email{
-/*    text-align: center;*/
     font-size: 16px;
     font-weight: bold;
     
 }
 #in_cart{
-/*    text-align: right;*/
-    font-size: 14px;
-/*    color: gold;*/
-    
+    font-size: 14px;    
 }
 #log_in{
-/*    text-align: right;*/
     font-size: 16px;
     font-weight: bold;
-/*    color: gold;*/
     cursor: pointer;
     text-decoration: underline;
 }
 #cost{
-/*    text-align: right;*/
     font-size: 14px;
-/*    color: gold;*/
 }
 #in_out{
     font-size: 18px;
@@ -188,6 +180,4 @@ div.cr_order{
 	margin:-220px 0 0 -50px;
         background-image: url('../images/bulbulator.png');
         background-repeat: no-repeat;
-/*        outline: 2px solid red;*/
 }
-/*===========preloader=================================*/
