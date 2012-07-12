@@ -32,9 +32,9 @@ if($row[0] == 0){
 
         $id = mysql_insert_id();
 
-        $message ="Здравствуйте! Почтовый ящик  - $email зарегистрирован на brioso-lab.ru.\r\n Пароль для входа - $code.\r\nДля активации аккаунта перейдите по ссылке - http://brioso-lab.ru/index.php?act=activation&id=$id&code=$code\r\n C уважением. Администрация. ";              
+        $message ="Здравствуйте! Почтовый ящик  - $email зарегистрирован на bong.1gb.ru.\r\n Пароль для входа - $code.\r\nДля активации аккаунта перейдите по ссылке - http://brioso-lab.ru/index.php?act=activation&id=$id&code=$code\r\n C уважением. Администрация. ";              
 
-        $headers = 'From: administrator@brioso-lab.ru\r\n';
+        $headers = 'From: administrator@bong.1gb.ru\r\n';
 
         $headers  .= 'MIME-Version: 1.0' . "\r\n";
 

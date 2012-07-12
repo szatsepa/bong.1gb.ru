@@ -27,8 +27,17 @@ $(document).ready(function () {
 
         $("div.item").mouseover(function(){
             var id = this.id;
-            $(eval('"#'+id+'"')).append('<div id="item_dscr"><p id="description"></p></div>');
-            $("#description").text(id);  
+            var hed = '';
+            var bod = '';
+            
+             $.each(items_array,function(){
+                if(id == this['artikul']){
+                    hed = this['name'];
+                    bod = "Цена "+this['price']+" руб/кг"
+                }
+            });
+            $(eval('"#'+id+'"')).append('<div id="item_dscr"><p class="description">'+hed+'</p><p class="description">'+bod+'</p></div>');
+//            $("#item_dscr").text(str);  
         });
 ////        скроем описание
 
@@ -41,7 +50,7 @@ $(document).ready(function () {
 //        =======================================================
         
         $("div.item").mousedown(function(){
-            var id = this.id;
+            var id = this.id;           
             if(customer['id'] != undefined){                
                         var artikul = id;
                         var customer_id = customer['id'];

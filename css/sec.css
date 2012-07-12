@@ -53,8 +53,12 @@ div.item{
     opacity: 0.77;
     top: -290px;
     left: -256px;
+    padding-top: 16px;
+/*    font-size: 2em;
+    text-align: center;*/
 }
-#description{
-    font-size: 2em;
+.description{
+    font-size: 16px;
+    font-weight: bold;
     text-align: center;
 }

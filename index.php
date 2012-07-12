@@ -81,5 +81,4 @@ include 'main/footer.php';
 
 mysql_close();
 
-//print_r($user);
 ?>
